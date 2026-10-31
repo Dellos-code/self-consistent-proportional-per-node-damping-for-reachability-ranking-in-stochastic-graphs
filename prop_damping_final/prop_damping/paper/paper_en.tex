@@ -1,0 +1,541 @@
+% Self-Consistent Proportional Per-Node Damping for Reachability Ranking in Uncertain Graphs
+% Compile with:  xelatex paper_en.tex  (three times, until the cross-references are stable)
+% Every experimental number is a macro from generated/macros.tex or a table from
+% generated/tables_en.tex, both written by ../make_paper_assets.py from ../results/.
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.2cm,right=2.2cm]{geometry}
+\usepackage{amsmath,amsthm}
+\usepackage{mathptmx}
+\usepackage{amssymb}
+\usepackage[no-math]{fontspec}
+\usepackage[english]{babel}
+\babelfont{rm}[Language=Default,RawFeature={-ccmp}]{FreeSerif}
+\babelfont{sf}[Language=Default]{FreeSans}
+\babelfont{tt}[Language=Default,Scale=0.86]{DejaVu Sans Mono}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\graphicspath{{../figures/}}
+\usepackage[font=small,labelfont=bf,skip=4pt]{caption}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=3pt}
+\usepackage{cite}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{placeins}
+
+\emergencystretch=2em
+\setlength{\parskip}{0pt}
+\renewcommand{\floatpagefraction}{0.8}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\textfraction}{0.08}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\theoremstyle{plain}
+\newcommand{\genpropname}{}
+\newtheorem*{genprop}{\genpropname}
+\newenvironment{prop}[1]{\renewcommand{\genpropname}{Proposition #1}\begin{genprop}}{\end{genprop}}
+
+\newcommand{\Pesc}{P_{\mathrm{esc}}}
+\newcommand{\Pescbar}{\bar{P}_{\mathrm{esc}}}
+\newcommand{\clip}{\mathrm{clip}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\AP}{\mathrm{AP}}
+\newcommand{\one}{\mathbf{1}}
+
+\input{generated/macros.tex}
+\input{generated/tables_en.tex}
+
+\title{\textbf{Self-Consistent Proportional Per-Node Damping for Reachability Ranking in Uncertain Graphs: Exact Theory, Dynamical Obstructions, and Hybrid Dual-Operator Polishing}}
+\author{Ioannis Konstantellos\\[2pt]
+\small Computer Engineering and Informatics Department\\
+\small University of Patras, Greece}
+\date{October 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Damped diffusions rank the vertices of an uncertain graph $G=(V,E,p)$ by expected reachable mass $y^*_i=\E\big[\sum_{v\in C(i)}x_v\big]$ at the cost of a few sparse matrix--vector products, but they apply one damping factor to every vertex. Our earlier work calibrated that factor from the mean escape probability~\cite{konstantellos26} and reported that a per-vertex damping vector fitted by an oracle gains a further \PrevHeadAll{} in Spearman~$\rho$ (\PrevHeadGrid{} on grids). This paper studies a parameter-free way to set per-vertex damping, the Proportional Relative Influence Principle $\alpha_i/(1-\alpha_i)=(y_i-x_i)/x_i$, coupled with the diffusion update $y_i=(1-\alpha_i)x_i+\alpha_iS_i$. The coupled system factorises exactly as $(y_i-x_i)(y_i+x_i-S_i)=0$ (Theorem~1). We prove six properties of its realizations: finite-time collapse to the prior on substochastic operators, absorption with quadratic contraction for the lagged form, instability of every positive self-consistent solution, a Lehmer-mean contraction whose fixed point falls below the prior, a sign obstruction under which the law lowers well-connected vertices wherever their neighbour signal is below their prior, and degeneracy of the pull variant under uniform priors; an exact log-dispersion identity replaces the prior-uniformity heuristic. A pre-registered evaluation on \NTotal{} instances, with every configuration frozen on a development panel and Holm correction over \NFrozen{} configurations, confirms the theory: against the calibrated scalar rule the anchored law changes $\rho$ by \TestAPoneD, the hybrid mode as written by \TestPBXnomBD, and the law evaluated with the true $y^*$ by \TestTruePropD. Measured out of sample, the per-node headroom is \HeadAll. What does gain is the hybrid architecture used as a dual-operator ensemble: blending the calibrated diffusion with a few sweeps of propagation on the raw probability adjacency improves $\rho$ by \TestPBXbestD{} to \TestLinNineD{} on held-out instances and transfers to real networks and to $n=900$. Matched controls attribute the gain to the low correlation of the two operators' rank errors rather than to the proportional law. We also correct two claims of~\cite{konstantellos26}: the calibration is prior-dependent, and a batched Monte Carlo sampler is fast enough that the deterministic ensemble is cheaper than equally accurate sampling only beyond a family-dependent graph size.
+\end{abstract}
+
+\section{Introduction}\label{sec:intro}
+
+Let $G=(V,E)$ be an undirected graph on $n$ vertices in which every edge $(i,j)\in E$ is present independently with probability $p_{ij}\in(0,1]$, and let $x\in\mathbb{R}^n_{>0}$ with $\sum_ix_i=1$ be a prior over the vertices. In a sampled world $G'\sim G$ let $C(i)$ be the connected component of vertex $i$. The \emph{expected reachable mass}
+\begin{equation}\label{eq:target}
+y^*_i=\E_{G'\sim G}\Big[\sum_{v\in C(i)}x_v\Big]
+\end{equation}
+is the single-seed influence spread of the node-weighted independent cascade model~\cite{kkt03} and, under the uniform prior, the edge-percolated component (EPC) centrality~\cite{hubba08,cytohubba14} divided by $n$. Computing it exactly is \#P-hard, since it contains two-terminal network reliability~\cite{provanball83}; in practice it is estimated by Monte Carlo sampling of worlds, by message passing~\cite{knz14}, or by cheap deterministic heuristics that only need to \emph{rank} the vertices correctly. Damped diffusions of the personalised PageRank family~\cite{pagerank99,jeh03,haveliwala03,gleich15} are the most common heuristics of the last kind.
+
+A damped diffusion mixes the prior with a propagated signal, $y\leftarrow(1-\alpha)x+\alpha Ty$, and the damping factor $\alpha$ decides how far mass travels. In~\cite{konstantellos26} we showed that $\alpha$ need not be inherited from web search or tuned against ground truth: the clipped-linear rule
+\begin{equation}\label{eq:rule}
+\alpha_0=\clip\big(0.502+0.558\,\Pescbar,\;0.4,\;1\big),\qquad \Pesc(i)=1-\prod_{j\in N(i)}(1-p_{ij}),\qquad \Pescbar=\tfrac1n\textstyle\sum_i\Pesc(i),
+\end{equation}
+recovers \PrevPctOracle\% of a per-instance scalar oracle. The same study reported that a \emph{per-vertex} damping vector fitted by coordinate ascent beats the best scalar damping by \PrevHeadAll{} in Spearman's $\rho$ overall and by \PrevHeadGrid{} on regular grids, where the one-hop escape probability is identical for all interior vertices. If even part of that headroom could be captured without supervision, a diffusion could adapt its damping to every vertex.
+
+The companion manuscripts of this paper proposed such a mechanism, the \emph{Proportional Relative Influence Principle}: at every vertex the odds of propagating rather than retaining mass should equal the vertex's external influence relative to its own prior,
+\begin{equation}\label{eq:system}
+\begin{cases}
+y_i=(1-\alpha_i)\,x_i+\alpha_i\,S_i & \text{(diffusion equation)},\\[3pt]
+\dfrac{\alpha_i}{1-\alpha_i}=\dfrac{y_i-x_i}{x_i} & \text{(proportionality equation)},
+\end{cases}
+\end{equation}
+where $S_i=(Ty)_i$ is the neighbour signal of a propagation operator $T$. The system is solved in closed form, it suggests three iterative realizations, and it can be executed either from scratch (Mode~(a)) or as a ``polishing'' stage after a calibrated base diffusion (Mode~(b)).
+
+This paper examines the principle as rigorously as we can, through exact analysis and through a pre-registered experiment, and reports what survives. The result is largely negative, and the negative part is explained: the coupled system is not satisfied by the target~\eqref{eq:target} on any normalised operator, its realizations either collapse onto the prior or move away from their self-consistent point, and the law raises or lowers a vertex according to the sign of $S_i-x_i$ rather than its reachability. The experiment confirms each of these mechanisms. The architecture of Mode~(b), however, turns out to be useful for a reason that the principle did not anticipate: combining two propagation operators whose errors are weakly correlated. Our contributions are:
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Exact algebra and a nested generalisation} (Section~\ref{sec:principle}). We prove the factorisation of the coupled system (Theorem~\ref{thm:factor}), identify what it requires of the operator scale, define the realizations precisely and embed the law in an anchored power family $\AP(\eta)$ that contains the calibrated scalar rule at $\eta=0$.
+\item \textbf{Dynamical obstructions} (Section~\ref{sec:theory}). Propositions~A--F establish finite-time collapse, absorption, instability with a closed-form spectral radius, a Lehmer-mean contraction below the prior, a sign obstruction (with a rigorous version for linear per-node diffusions) and a degeneracy of the pull variant. Proposition~$2'$ turns the prior-uniformity hypothesis into an exact identity.
+\item \textbf{A pre-registered evaluation} (Sections~\ref{sec:protocol}--\ref{sec:results}) on \NTotal{} instances in five panels, with \CfgTotal{} configurations searched on a development panel, \NFrozen{} frozen before any held-out result was seen, paired tests with Holm correction and matched controls that isolate the contribution of the per-node law.
+\item \textbf{A re-measurement of the per-node headroom}: \HeadAll{} out of sample (\HeadApparent{} in sample), \HeadGrid{} on grids, concentrated in the dense, heterogeneous-prior regime.
+\item \textbf{Dual-operator polishing}: a constructive outcome of Mode~(b) that recovers \TestLinNinePctOracle\% of the scalar oracle on held-out instances, together with the evidence that its gain comes from operator complementarity.
+\item \textbf{Two corrections to~\cite{konstantellos26}} --- the calibration depends on the prior, and batched Monte Carlo is far cheaper than assumed --- and a measured, family-dependent cost crossover between deterministic ranking and sampling.
+\end{enumerate}
+
+Section~\ref{sec:related} reviews related work, Section~\ref{sec:principle} develops the principle and its algebra, Section~\ref{sec:theory} the dynamical theory, Section~\ref{sec:protocol} the experimental protocol and Section~\ref{sec:results} the results. Section~\ref{sec:discussion} discusses their implications, Section~\ref{sec:limitations} the threats to validity, and Section~\ref{sec:conclusion} concludes.
+
+\section{Related work}\label{sec:related}
+
+\paragraph{Reachability in uncertain graphs.} Uncertain (probabilistic) graphs with independent edges are the standard model for unreliable links and uncertain interactions; queries such as nearest neighbours~\cite{potamias10} and connectivity require reasoning over exponentially many worlds, and two-terminal reliability is \#P-complete~\cite{provanball83}. Expected reachable mass coincides with single-seed influence spread under the independent cascade~\cite{kkt03}, for which sampling-based estimators dominate influence maximisation~\cite{borgs14,tim14}. Message passing for percolation on sparse networks~\cite{knz14,newman23} gives accurate component statistics on locally tree-like graphs, and the escape probability $\Pesc$ used in~\cite{konstantellos26} is exactly its correlation-free zeroth iterate. Edge-percolated component centrality~\cite{hubba08,cytohubba14} is the uniform-prior special case of~\eqref{eq:target}.
+
+\paragraph{The damping factor.} PageRank~\cite{pagerank99}, personalised and topic-sensitive PageRank~\cite{jeh03,haveliwala03} and their many variants~\cite{gleich15} share the damping (or restart) parameter $\alpha$. Its effect on rankings has been studied as a function~\cite{boldi05} and as a source of ranking instability~\cite{bressan10}; Constantine and Gleich~\cite{constantine10} treat $\alpha$ as a random variable and average over it, and mean-field analyses describe personalised PageRank on random graph models~\cite{avrachenkov18}. Our earlier calibration rule~\cite{konstantellos26} predicts the best scalar $\alpha$ for reachability ranking from $\Pescbar$.
+
+\paragraph{Node-dependent damping and restart.} Allowing the restart probability to depend on the vertex has been studied from several angles. Avrachenkov, van der Hofstad and Sokol~\cite{avrachenkov14} introduced two generalisations of personalised PageRank with node-dependent restart, one based on the proportion of visits to each vertex before restart and one on the vertex visited just before restart; the two coincide for a constant restart probability, and both connect direct and reverse personalised PageRank. Partially absorbing random walks~\cite{wu12} assign each vertex its own absorption rate. Supervised restart probabilities have been learned for ranking and link prediction~\cite{jung19}, and generalised PageRank methods learn hop-dependent diffusion coefficients for seed expansion and graph neural networks~\cite{li19gpr,gprgnn21,berberidis19}; Katz's status index~\cite{katz53} is the undamped ancestor of these truncated walks. In all of these works the per-vertex (or per-hop) parameters are exogenous: they are fixed by design or learned with supervision. The principle studied here makes $\alpha_i$ an \emph{endogenous} function of the score being computed. That feedback produces both the exact algebra of Section~\ref{sec:principle} and the dynamical obstructions of Section~\ref{sec:theory}.
+
+\paragraph{Combining rankings.} Score and rank averaging are the simplest rank-aggregation methods~\cite{dwork01}; ensembles help when their members' errors are weakly correlated~\cite{krogh95}. Our dual-operator polishing is a two-member ensemble of this kind, and we measure the correlation of its members' errors directly.
+
+\section{The principle and its exact algebra}\label{sec:principle}
+
+\subsection{Operators and the calibrated diffusion}\label{sec:operators}
+
+Write $N(i)$ for the neighbours of $i$ and $\Pesc(i)$ for its escape probability~\eqref{eq:rule}, the probability that at least one of its edges is present. Following~\cite{konstantellos26} we use the row-stochastic matrix $W$ with $w_{ij}\propto-\ln(1-p_{ij})$ on the edges ($\sum_jw_{ij}=1$ for non-isolated $i$), the escape-scaled pull operator $EW=\diag(\Pesc)\,W$, the push operator $W^{\top}$ of standard personalised PageRank, the raw probability adjacency $P=(p_{ij})$ and its escape-scaled version $EP=\diag(\Pesc)\,P$. The rows of $W$ sum to one and those of $EW$ to $\Pesc(i)\le1$; the rows of $P$ sum to the expected degree $\sum_jp_{ij}$, which may exceed one.
+
+For a damping vector $\alpha\in[0,1]^n$ and $D=\diag(\alpha)$, the \emph{normalised damped diffusion} is the Perron vector of
+\begin{equation}\label{eq:diffusion}
+B(\alpha)=(I-D)\,x\,\one^{\top}+D\,T,
+\end{equation}
+that is, the fixed point of $y\leftarrow\N\big((1-\alpha)\circ x+\alpha\circ Ty\big)$ with $\N(v)=v/\one^{\top}v$. We compute it with the lazy power iteration $y\leftarrow\N\big(\tfrac12(y+B(\alpha)y)\big)$, which has the same fixed point and also converges on bipartite graphs. With $T=EW$ and the scalar $\alpha_0$ of~\eqref{eq:rule} this is the \emph{calibrated rule} of~\cite{konstantellos26}, the reference method of this paper. A score vector is evaluated by Spearman's $\rho$ with~\eqref{eq:target}; tied scores receive average ranks and a constant score vector receives $\rho=0$.
+
+\subsection{The principle and Theorem~1}\label{sec:theorem}
+
+\begin{theorem}[exact solution of the coupled system]\label{thm:factor}
+Let $x_i>0$ and $S_i\ge0$. A pair $(y_i,\alpha_i)$ with $y_i>0$ and $\alpha_i\neq1$ solves~\eqref{eq:system} if and only if $\alpha_i=1-x_i/y_i$ and
+\begin{equation}\label{eq:factor}
+(y_i-x_i)\,(y_i+x_i-S_i)=0 .
+\end{equation}
+The solutions are the trivial branch $(y_i,\alpha_i)=(x_i,0)$ and, when $S_i>x_i$, the active branch
+\begin{equation}\label{eq:active}
+y_i=S_i-x_i,\qquad \alpha_i=\frac{S_i-2x_i}{S_i-x_i}=1-\frac{x_i}{S_i-x_i}.
+\end{equation}
+The active branch has $\alpha_i\in(0,1)$ if and only if $S_i>2x_i$; the two branches coincide at $S_i=2x_i$, where the discriminant $(S_i-2x_i)^2$ vanishes.
+\end{theorem}
+
+\begin{proof}
+Adding one to both sides of the proportionality equation gives $1/(1-\alpha_i)=y_i/x_i$, so $\alpha_i=1-x_i/y_i$ (this uses $\alpha_i\ne1$ and $y_i\neq0$), and conversely this value of $\alpha_i$ satisfies the proportionality equation. Substituting it into the diffusion equation and multiplying by $y_i>0$ gives $y_i^2=x_i^2+(y_i-x_i)S_i$, that is $(y_i-x_i)(y_i+x_i)-S_i(y_i-x_i)=0$, which is~\eqref{eq:factor}. The root $y_i=x_i$ gives $\alpha_i=0$. The root $y_i=S_i-x_i$ is positive exactly when $S_i>x_i$ and gives $\alpha_i=1-x_i/(S_i-x_i)=(S_i-2x_i)/(S_i-x_i)$, which lies in $(0,1)$ exactly when $S_i>2x_i$. Expanding~\eqref{eq:factor} gives $y_i^2-S_iy_i+x_iS_i-x_i^2=0$ with discriminant $S_i^2-4x_iS_i+4x_i^2=(S_i-2x_i)^2$.
+\end{proof}
+
+Theorem~\ref{thm:factor} is the algebraic core of the companion manuscripts, and it is correct: in our implementation both branches satisfy both equations to a relative residual of \ThmResidual. Its interpretation, however, deserves care.
+
+\begin{remark}[what the system asks of the operator]\label{rem:scale}
+On the active branch the score $y_i=S_i-x_i$ \emph{decreases} in the vertex's own prior for a fixed neighbour signal, whereas the target $y^*_i=x_i+\E\big[\sum_{v\in C(i)\setminus\{i\}}x_v\big]$ increases in it. The target satisfies the coupled system on the active branch only if $Ty^*=y^*+x$, that is, only if the operator maps the target to itself plus the prior. Since $y^*+x>y^*$ componentwise, the Collatz--Wielandt bound~\cite{hornjohnson13} then forces $\rho(T)>1$: no substochastic operator, and in particular none of the normalised diffusions used in practice, can satisfy the system at the target. The coupled system is therefore a constraint on the scale of the operator, not a property of reachability.
+\end{remark}
+
+\subsection{Three realizations and their scales}\label{sec:realizations}
+
+An iterative solver evaluates $S^{(t)}=Ty^{(t)}$ and updates every vertex in parallel. Following the manuscripts we study three realizations, all of the form $y^{(t+1)}=R\big((1-\alpha^{(t+1)})\circ x+\alpha^{(t+1)}\circ S^{(t)}\big)$ for a scale map $R$ discussed below:
+\begin{description}[leftmargin=1.2em,style=nextline]
+\item[Realization A (simultaneous root).] $\alpha_i^{(t+1)}=\clip\big((S_i^{(t)}-2x_i)/(S_i^{(t)}-x_i),0,\alpha_{\max}\big)$ if $S_i^{(t)}>2x_i$ and $0$ otherwise. Without the cap this is the upper envelope $y_i^{(t+1)}=\max\big(x_i,\,S_i^{(t)}-x_i\big)$ of Theorem~\ref{thm:factor}.
+\item[Realization B (time-lagged).] $\alpha_i^{(t+1)}=1-x_i/y_i^{(t)}$, implemented as $(y_i^{(t)}-x_i)_+/\big((y_i^{(t)}-x_i)_++x_i\big)$ so that $\alpha$ is never negative; hence $y_i^{(t+1)}=x_i^2/y_i^{(t)}+(1-x_i/y_i^{(t)})S_i^{(t)}$ while $y_i^{(t)}\ge x_i$. Its fixed points are exactly the solutions of~\eqref{eq:factor}.
+\item[Realization C (direct neighbour signal).] $\alpha_i^{(t+1)}=\gamma S_i^{(t)}/\big(x_i+\gamma S_i^{(t)}\big)$; for the manuscripts' $\gamma=1$ the update is the Lehmer mean $y_i^{(t+1)}=L_2(x_i,S_i^{(t)})=(x_i^2+S_i^{(t)2})/(x_i+S_i^{(t)})$~\cite{lehmer71}.
+\end{description}
+All realizations start from the one-hop warm start $y^{(0)}=x+Tx$. Because the law compares $y_i$ with $x_i$, the scale of $y$ matters, and we study four conventions for $R$: the \emph{raw} scale ($R$ is the identity), the \emph{$L_1$} scale ($R=\N$), and the \emph{excess} scale $\mathrm{ex}(\gamma)$,
+\begin{equation}\label{eq:excess}
+R(y)=x+\gamma\,\frac{z}{\tfrac1n\sum_jz_j/x_j},\qquad z=(y-x)_+,
+\end{equation}
+which keeps every vertex at or above its prior and fixes the mean excess odds $\tfrac1n\sum_j(y_j-x_j)/x_j$ at $\gamma\in\{1,4,16\}$. The operators of Section~\ref{sec:operators} give the two variants of the manuscripts: $S=EW\,y$ (escape-scaled pull) and $S=Wy$ (``standard PPR'' as written, i.e.\ pull without escape scaling); we add the push operator $W^{\top}$, the raw adjacency $P$ and $EP$.
+
+\subsection{The anchored power family}\label{sec:ap}
+
+On a normalised scale the excess $y_i-x_i$ has no fixed origin: half of the vertices fall below their prior after $L_1$ normalisation, and multiplying $y$ by a constant changes $(y_i-x_i)/x_i$ non-uniformly. The ratio $q_i=y_i/x_i=1+(y_i-x_i)/x_i$ does not have this problem, because a global rescaling multiplies all $q_i$ by the same factor. We therefore embed the law in the family
+\begin{equation}\label{eq:ap}
+\frac{\alpha_i}{1-\alpha_i}=\exp\Big(c+\eta\Big(\log q_i-\frac1n\sum_{j}\log q_j\Big)\Big),\qquad q_i=\frac{y_i}{\tilde x_i},\qquad \tilde x=(1-\tau)\,x+\frac{\tau}{n}\one,
+\end{equation}
+where $c$ is the unique constant with $\frac1n\sum_i\alpha_i=\alpha_0$ (the left-hand mean is strictly increasing in $c$; we solve for it by a safeguarded Newton iteration). We call~\eqref{eq:ap} the \emph{anchored proportional law} $\AP(\eta)$. It has three properties that make it the fairest test of the principle: at $\eta=0$ it \emph{is} the calibrated scalar rule ($\alpha_i\equiv\alpha_0$); it is invariant to the global scale of $y$; and at $\eta=1$ it sets the damping odds proportional to $q_i$, which is the principle with its global level fixed by the rule of~\cite{konstantellos26} (the additive unit that separates $q_i$ from $(y_i-x_i)/x_i$ is not identifiable on a normalised scale and is absorbed by the anchor). The regulariser $\tau$ implements the denominator regularisation proposed in the manuscripts; $\tau=0$ unless stated. $\AP(\eta)$ is run either to its self-consistent fixed point (joint lazy iteration of $y$ and $\alpha$) or as a fixed-$\alpha$ polish.
+
+\subsection{Execution modes}\label{sec:modes}
+
+\emph{Mode~(a)} runs a realization or $\AP(\eta)$ from the warm start for $T$ steps or to convergence. \emph{Mode~(b)} first computes a base vector $y^{\mathrm{base}}$ --- the calibrated rule, or two iterations of the message passing of~\cite{knz14} --- embeds it on the excess scale, $y^{(0)}=x+\gamma z$ with $z=\N(y^{\mathrm{base}})/\big(\tfrac1n\sum_j\N(y^{\mathrm{base}})_j/x_j\big)$, runs $K$ sweeps of a law on some operator to obtain $y^{\mathrm{prop}}$, and blends
+\begin{align}
+y^{\mathrm{final}}&=(1-\beta)\,\N\big(y^{\mathrm{base}}\big)+\beta\,\N\big(y^{\mathrm{prop}}\big) &&\text{(score blend)},\label{eq:blend}\\
+r^{\mathrm{final}}&=(1-\beta)\,r\big(y^{\mathrm{base}}\big)+\beta\,r\big(y^{\mathrm{prop}}\big) &&\text{(rank blend)},\nonumber
+\end{align}
+where $r(\cdot)$ denotes the vector of ranks. The manuscripts' nominal Mode~(b) --- Realization~B on the excess scale, $K=1$ sweep, $\beta=0.5$ --- is reported as \emph{Mode~(b) as written}.
+
+\section{Dynamical theory}\label{sec:theory}
+
+Throughout this section $T\ge0$ entrywise, inequalities between vectors hold componentwise, and $T$ is \emph{row-substochastic} if $T\one\le\one$; $W$ and $EW$ are row-substochastic, while the push operator $W^{\top}$ has column sums one and spectral radius one. Unless stated otherwise the realizations run on the raw scale with $\alpha_{\max}=1$. Figure~\ref{fig:dynamics} and Table~\ref{tab:dynamics} (Appendix~\ref{app:tables}) show the corresponding measurements on the development panel.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\linewidth]{fig1_dynamics.pdf}
+\caption{Dynamics of the realizations (development panel). (a)~Fraction of vertices on the trivial branch $y_i=x_i$ for Realizations A, B and C on $EW$ at the raw scale: under uniform priors A collapses at $t=1$ (Proposition~A) and B is absorbed within a few steps (Proposition~B). (b)~Mean Spearman $\rho$ along the iterations, colours as in~(a); solid: $EW$, raw scale; dashed: $EW$, excess scale $\gamma=16$; dotted: Realization~C on the raw adjacency $P$. Every configuration stays below the calibrated rule of~\cite{konstantellos26}. (c)~Spectral radii of the Jacobians at the positive self-consistent point for $T=\lambda W$; both exceed one on $1<\lambda<2$ (Proposition~C); circles are numerical values. (d)~The Realization~C update $S\mapsto L_2(x,S)/x$: it falls below the prior when $S<x$ and decreases on $S<(\sqrt2-1)x$ (Proposition~D).}
+\label{fig:dynamics}
+\end{figure}
+
+\subsection{Collapse and absorption on contractive operators}
+
+\begin{prop}{A}[finite-time collapse of Realization A]
+Let $T$ be row-substochastic, $x=\tfrac1n\one$, and run Realization~A from any $y^{(0)}\ge x$. Then $M_t=\max_iy^{(t)}_i$ satisfies $M_{t+1}\le\max\big(\tfrac1n,\,M_t-\tfrac1n\big)$, so $y^{(t)}=x$ for every $t\ge\lceil nM_0\rceil-1$. From the warm start $y^{(0)}=x+Tx$ the collapse happens at $t=1$.
+\end{prop}
+
+\begin{proof}
+Every iterate satisfies $y^{(t)}\ge x$, because the update is $\max(x,S-x)$. Since $T\ge0$ and $T\one\le\one$, $S_i=(Ty^{(t)})_i\le M_t$, hence $y^{(t+1)}_i=\max\big(\tfrac1n,S_i-\tfrac1n\big)\le\max\big(\tfrac1n,M_t-\tfrac1n\big)$. By induction $M_t\le\max\big(\tfrac1n,M_0-\tfrac tn\big)$, which equals $\tfrac1n$ once $t\ge nM_0-1$; together with $y^{(t)}\ge x$ this gives $y^{(t)}=x$. The trivial point is then fixed, because $Tx\le x$ implies $S-x\le0<x$. For the warm start, $y^{(0)}=x+Tx\le2x$, so $M_0\le2/n$ and one step suffices.
+\end{proof}
+
+Under uniform priors \TrivAOneUnif\% of the vertices are on the trivial branch after one step on $EW$ (Figure~\ref{fig:dynamics}a), and over all tested instance--operator pairs the largest relative excess left after one step is \CollapseExcess, i.e.\ round-off. Under heterogeneous priors a vertex stays active only while $(Ty)_i>2x_i$, which requires neighbours with much more prior mass than the vertex itself; \ActADirEnd\% of the vertices remain active under Dirichlet(1) priors. The condition favours vertices whose own prior is small relative to their neighbours', not vertices that are well connected.
+
+\begin{prop}{B}[absorption and quadratic contraction of Realization B]
+Let $T$ be row-substochastic and run Realization~B. (i)~If $y_i^{(t)}\le x_i$ for some $t$, then $y_i^{(s)}=x_i$ for every $s>t$. (ii)~If $x=\xi\one$ is uniform and $m_t=\max_i\big(y_i^{(t)}-\xi\big)_+$, then
+\begin{equation}\label{eq:quad}
+m_{t+1}\le\frac{m_t^2}{\xi+m_t},
+\end{equation}
+so $m_t$ decreases to zero, quadratically once $m_t\ll\xi$, and $y^{(t)}\to x$.
+\end{prop}
+
+\begin{proof}
+(i) If $y_i^{(t)}\le x_i$ the implemented law gives $\alpha_i^{(t+1)}=0$, hence $y_i^{(t+1)}=x_i$ and, repeating the argument, $y_i^{(s)}=x_i$ for all $s>t$. (ii) Let $e_i=(y_i^{(t)}-\xi)_+\le m_t$. Then $\alpha_i^{(t+1)}=e_i/(e_i+\xi)\le m_t/(m_t+\xi)$ because $e\mapsto e/(e+\xi)$ is increasing, and $S_i\le\max_jy^{(t)}_j\le\xi+m_t$ because $T$ is row-substochastic. If $S_i\le\xi$ the update $(1-\alpha_i)\xi+\alpha_iS_i$ does not exceed $\xi$. Otherwise $y_i^{(t+1)}-\xi=\alpha_i^{(t+1)}(S_i-\xi)\le\frac{m_t}{m_t+\xi}\,m_t$. This is~\eqref{eq:quad}. Since $m^2/(\xi+m)<m$ for $m>0$ and $m_t\le m_0$, the excess contracts at least geometrically with ratio $m_0/(\xi+m_0)<1$, and quadratically when $m_t\ll\xi$; vertices below $\xi$ return to $\xi$ at the next step by~(i).
+\end{proof}
+
+On $EW$ under uniform priors \TrivBFiveUnif\% of the vertices are absorbed by $t=5$ and \TrivBTwentyUnif\% by $t=20$. Absorption is what the lagged form was designed to avoid: the manuscripts introduced it precisely because it has no threshold at $2x_i$, but on a contractive operator the excess it feeds on shrinks at every step.
+
+\subsection{Instability of the self-consistent solution}
+
+\begin{prop}{C}[positive self-consistent solutions are repelling]
+Let $T\ge0$ and let $y>0$ be an all-active fixed point, $y=Ty-x$ with $Ty>2x$.
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item $\rho(T)>1$. In particular no such point exists when $\rho(T)\le1$, e.g.\ for $W$, $EW$ and $W^{\top}$.
+\item The Jacobians of the Realization A and B maps at $y$ are $J_A=T$ and $J_B=\diag(x/y)+\diag(\one-x/y)\,T$, and $\rho(J_A)>1$, $\rho(J_B)>1$; the point is unstable for both realizations.
+\item For $T=\lambda W$ with $W$ row-stochastic and $x=\xi\one$, the vector $y=x/(\lambda-1)$ is an all-active fixed point if and only if $1<\lambda<2$, and then
+\begin{equation}\label{eq:rhoJB}
+\rho(J_A)=\lambda,\qquad \rho(J_B)=-\lambda^2+3\lambda-1,
+\end{equation}
+both larger than one on $(1,2)$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+We use the Collatz--Wielandt bound~\cite[Thm.~8.1.26]{hornjohnson13}: if $A\ge0$, $v>0$ and $Av\ge cv$, then $\rho(A)\ge c$. (i)~$Ty=y+x$ gives $(Ty)_i/y_i=1+x_i/y_i$, whose minimum exceeds one. (ii)~On the active set the A map is $y\mapsto Ty-x$, with Jacobian $T$. The B map is $y'_i=x_i^2/y_i+(1-x_i/y_i)S_i$ with $S=Ty$; its explicit derivative in $y_i$ is $x_i(S_i-x_i)/y_i^2=x_i/y_i$ at the fixed point (where $S_i-x_i=y_i$), and its derivative in $S_i$ is $1-x_i/y_i$, which gives $J_B$. Both Jacobians are nonnegative, because $y=S-x>x$. Moreover $J_Ay=y+x>y$ and
+\[
+J_By=x+(\one-x/y)\circ(y+x)=y+x\circ\frac{y-x}{y}>y,
+\]
+so $\rho(J_A)>1$ and $\rho(J_B)>1$ by the same bound. A fixed point at which the Jacobian has an eigenvalue of modulus greater than one is unstable. (iii)~Since $W\one=\one$, $y=c\one$ solves $y=\lambda Wy-\xi\one$ if and only if $c=\xi/(\lambda-1)$, which is positive if and only if $\lambda>1$ and exceeds $\xi$ (equivalently $S>2x$) if and only if $\lambda<2$. Then $x/y=(\lambda-1)\one$ and $J_B=(\lambda-1)I+(2-\lambda)\lambda W$. For $a,b\ge0$ the spectral radius of $aI+bW$ is $a+b\,\rho(W)=a+b$, which gives~\eqref{eq:rhoJB}; finally $-\lambda^2+3\lambda-2=(\lambda-1)(2-\lambda)>0$ on $(1,2)$.
+\end{proof}
+
+At $\lambda={}$\LamValOne{}, \LamValTwo{} and \LamValThree{} the numerically computed spectral radii of $J_B$ are \RhoJBOne, \RhoJBTwo{} and \RhoJBThree, as~\eqref{eq:rhoJB} predicts (Figure~\ref{fig:dynamics}c), and a perturbation of relative size $10^{-9}$ grows until the iterates leave the fixed point. Proposition~C and Remark~\ref{rem:scale} say the same thing from two sides: the active solution needs an expansive operator, and on an expansive operator it repels. Contractive operators therefore collapse (Propositions~A and~B), and on expansive ones such as $P$ the raw-scale iterates either grow along the dominant eigenvector of $T$ or fall onto the trivial branch.
+
+\subsection{Realization C is a different law}
+
+\begin{prop}{D}[Realization C contracts to a point below the prior]
+Let $\gamma=1$, let $T$ be row-substochastic, write $f(x_i,s)=(x_i^2+s^2)/(x_i+s)=L_2(x_i,s)$, and start from any $y^{(0)}>0$.
+\begin{enumerate}[label=(\roman*),leftmargin=2em]
+\item $f(x_i,s)\ge(2\sqrt2-2)\,x_i$ for all $s\ge0$, with equality if and only if $s=(\sqrt2-1)x_i$; $f$ decreases in $s$ on $[0,(\sqrt2-1)x_i]$ and increases afterwards; and $f(x_i,s)<x_i$ if and only if $0<s<x_i$.
+\item For $X\ge\max\big(\max_ix_i,\max_iy^{(0)}_i\big)$ the box $\mathcal B=\{y:(2\sqrt2-2)x\le y\le X\one\}$ contains every iterate from $t=1$ on, and the Realization~C map is an $\infty$-norm contraction on $\mathcal B$. The iteration therefore converges to a unique fixed point $y^C$ from every positive start.
+\item Every vertex with $0<S_i<x_i$ at $y^C$ has $y^C_i<x_i$, and an isolated vertex ($S_i=0$, $y^C_i=x_i$) is ranked above any non-isolated vertex with the same prior and $S_i<x_i$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+(i) With $r=s/x_i$, $f/x_i=(1+r^2)/(1+r)$ has derivative $(r^2+2r-1)/(1+r)^2$, which vanishes at $r=\sqrt2-1$, is negative before and positive after; the minimum value is $(4-2\sqrt2)/\sqrt2=2\sqrt2-2$. Also $f<x_i$ if and only if $s^2<x_is$. (ii) By~(i) every iterate is at least $(2\sqrt2-2)x$. The Lehmer mean lies between its arguments, so $y^{(t+1)}_i\le\max(x_i,S_i)\le\max(x_i,\max_jy^{(t)}_j)\le X$, using $S_i\le\max_jy^{(t)}_j$. The map $F(y)_i=f\big(x_i,(Ty)_i\big)$ has Jacobian $\diag(c)\,T$ with $c_i=\partial_sf=1-2x_i^2/(x_i+S_i)^2\in(-1,1)$ for $S_i>0$. On $\mathcal B$, a vertex with at least one neighbour has $S_i\in\big[(2\sqrt2-2)(Tx)_i,\;X\big]$, a compact interval inside $(0,\infty)$, so $|c_i|\le\kappa_i<1$; an isolated vertex has a zero row. Hence $\|\diag(c)T\|_\infty\le\max_i\kappa_i<1$ on the convex set $\mathcal B$, $F$ is a contraction there by the mean-value inequality, and Banach's theorem gives a unique fixed point and convergence. Boxes for larger $X$ contain those for smaller $X$, so the fixed point does not depend on $X$. (iii) follows from~(i) applied at the fixed point.
+\end{proof}
+
+Three random starts reach the same fixed point to within \CStartsDiff{} (Figure~\ref{fig:dynamics}d). For general $\gamma>0$ the update is $(x_i^2+\gamma S_i^2)/(x_i+\gamma S_i)$, and part~(iii) holds verbatim because $x_i^2+\gamma S_i^2<x_i(x_i+\gamma S_i)$ if and only if $S_i<x_i$. Realization~C is thus well behaved as a dynamical system, but it is not the proportional law: its odds $S_i/x_i$ compare the \emph{incoming} signal with the prior instead of the accumulated excess, and its fixed point inverts the order of weakly connected and isolated vertices.
+
+\subsection{The sign obstruction}
+
+\begin{prop}{E}[sign obstruction]
+(i) For any update $u_i=(1-\alpha_i)x_i+\alpha_iS_i$, $\partial u_i/\partial\alpha_i=S_i-x_i$. A law that gives larger $\alpha_i$ to better-connected vertices --- as $\alpha_i=1-x_i/y_i$ does --- raises them only where $S_i>x_i$ and lowers them where $S_i<x_i$.
+(ii) Let $T$ be row-substochastic, $\alpha\in[0,1)^n$, $D=\diag(\alpha)$, and let $y(\alpha)=(I-DT)^{-1}(I-D)x$ be the linear per-node diffusion with $S=Ty$. Then
+\begin{equation}\label{eq:sign}
+\frac{\partial y}{\partial\alpha_k}=(S_k-x_k)\,G e_k,\qquad G=(I-DT)^{-1}\ge0,\qquad g_{kk}\ge g_{jk}\ \ \text{for all }j,
+\end{equation}
+so $\partial(y_k-y_j)/\partial\alpha_k=(S_k-x_k)(g_{kk}-g_{jk})$ has the sign of $S_k-x_k$ or vanishes: raising $\alpha_k$ can move vertex~$k$ up the ranking only if $S_k>x_k$.
+(iii) For $T=EW$ and the uniform prior, $S=EW\,x$ has $S_i=\Pesc(i)/n<x_i$ for every vertex with $\Pesc(i)<1$.
+\end{prop}
+
+\begin{proof}
+(i) is immediate. (ii) The rows of $DT$ sum to at most $\max_k\alpha_k<1$, so $\rho(DT)<1$ and $G=\sum_{m\ge0}(DT)^m\ge0$. Differentiating $y=(I-D)x+DTy$ in $\alpha_k$ gives $(I-DT)\,\partial y/\partial\alpha_k=(S_k-x_k)e_k$. For the column property let $v=Ge_k/g_{kk}$ (note $g_{kk}\ge1$), so $v_k=1$ and $v_j=\sum_l(DT)_{jl}v_l$ for $j\ne k$. Suppose $\mu=\max_jv_j>1$ and let $A=\{j:v_j=\mu\}\not\ni k$. For $j\in A$, $\mu=\sum_l(DT)_{jl}v_l\le\mu\sum_l(DT)_{jl}\le\mu$, so every row of $DT$ indexed by $A$ sums to one and is supported in $A$; the principal submatrix $(DT)_{AA}$ is then row-stochastic and has spectral radius one, contradicting $\rho\big((DT)_{AA}\big)\le\rho(DT)<1$. Hence $v\le\one$, i.e.\ $g_{jk}\le g_{kk}$. (iii) $W\one=\one$ on non-isolated vertices, so $(EW\,\tfrac1n\one)_i=\Pesc(i)/n$.
+\end{proof}
+
+Part~(iii) means that at the prior itself every vertex sits on the wrong side of the sign condition; at the rule's fixed point on a sparse Erdős--Rényi instance the same holds for \SparseFracSbelowX\% of the vertices. For the normalised diffusion of Section~\ref{sec:operators}, finite differences agree with the sign rule (the change of a vertex's own score after raising its $\alpha$ has the sign of $S_k-x_k$) on \SignAgree{} of 20 randomly chosen vertices. Section~\ref{sec:sign} shows that the share of vertices with $S_i>x_i$ predicts, across instances, whether the optimal per-node damping agrees with the law.
+
+\subsection{The pull variant without escape scaling}
+
+\begin{prop}{F}[degeneracy of pull diffusion under uniform priors]
+Let $W$ be row-stochastic with no isolated vertices, $x$ uniform, and $S=Wy$. Then every iterate of Realizations A, B and C from the warm start $x+Wx$, on the raw, $L_1$ or excess scale, is a multiple of $x$: all vertices tie and $\rho=0$.
+\end{prop}
+
+\begin{proof}
+$Wx=x$. If $y^{(t)}=cx$ then $S=cx$, and the three updates give $\max(1,c-1)\,x$, $\big((1-a)+ac\big)x$ with $a=(1-1/c)_+$, and $\frac{1+\gamma c^2}{1+\gamma c}\,x$; the three scale maps send multiples of $x$ to multiples of $x$. The warm start is $2x$.
+\end{proof}
+
+On the development panel \PullZeroPct\% of the standalone runs with $S=Wy$ under uniform priors score exactly $\rho=0$, and the panel mean is \PullMean. The meaningful ``standard PPR'' variant is the push operator $W^{\top}$, which~\cite{konstantellos26} used and which we include throughout.
+
+\subsection{Proposition~2 re-examined}\label{sec:prop2}
+
+The companion manuscripts state, as their Proposition~2, that (1)~under the uniform prior $\alpha_i=1-1/(ny_i)$ is a strictly monotone, shift-invariant function of the reachability $y_i$ alone, and (2)~as the prior localises, $|\partial_{x_i}((y_i-x_i)/x_i)|=y_i/x_i^2\to\infty$ and $\alpha_i\to1$ for every non-seed vertex. Part~(1) is correct about monotonicity but does not imply a ranking advantage, because by Proposition~E a monotone law still acts with the sign of $S_i-x_i$; and the map is not shift-invariant (adding a constant to $y$ changes the $\alpha_i$ non-uniformly). Part~(2) is a correct derivative, and its consequence --- saturation --- is what we observe under seed priors. Under smooth heterogeneous priors the failure is of a different kind, which the following identity makes exact.
+
+\begin{prop}{$2'$}[log-dispersion identity]
+Let $z_i=y_i-x_i>0$ be the external mass and $r_i=z_i/x_i$ the proportional ratio. Over the vertices let $\log z$ and $\log x$ have standard deviations $\sigma_z,\sigma_x>0$ and correlation $\phi$, and assume $\log r$ is not constant. Then
+\begin{equation}\label{eq:logdisp}
+\mathrm{corr}(\log r,\log z)=\frac{\sigma_z-\phi\,\sigma_x}{\sqrt{\sigma_z^2+\sigma_x^2-2\phi\,\sigma_z\sigma_x}},\qquad
+\mathrm{corr}(\log r,-\log x)=\frac{\sigma_x-\phi\,\sigma_z}{\sqrt{\sigma_z^2+\sigma_x^2-2\phi\,\sigma_z\sigma_x}} .
+\end{equation}
+As $\sigma_x/\sigma_z\to\infty$ the first tends to $-\phi$ and the second to one: when the log-dispersion of the prior dominates that of the external mass, the ratio orders the vertices by $1/x_i$ and retains no information about $z$ beyond its correlation with the prior.
+\end{prop}
+
+\begin{proof}
+$\log r=\log z-\log x$, so
+\[
+\mathrm{Var}(\log r)=\sigma_z^2+\sigma_x^2-2\phi\sigma_z\sigma_x,\quad
+\mathrm{Cov}(\log r,\log z)=\sigma_z^2-\phi\sigma_z\sigma_x,\quad
+\mathrm{Cov}(\log r,-\log x)=\sigma_x^2-\phi\sigma_z\sigma_x.
+\]
+Dividing gives~\eqref{eq:logdisp}; dividing numerators and denominators by $\sigma_x$ gives the limits.
+\end{proof}
+
+Evaluated on the ground truth of the prior panel (Section~\ref{sec:prior}), the rank correlation of $r$ with $1/x$ rises from \RinvDirTen{} under Dirichlet(10) to \RinvDirSmall{} under Dirichlet(0.3) ($\log_{10}\kappa\approx{}$\KappaDirSmall{}), while its correlation with $y^*$ falls from \RyDirTen{} to \RyDirSmall. Under seed priors the non-seed majority shares a single prior value, so $r$ stays ordinal with $y^*$ (\RySeedFive{} and \RySeedOne{} for five and one seeds) but saturates: \SatSeedOne\% of the vertices receive $\alpha_i>0.99$ under a single seed, which removes the restart for most of the graph. The denominator regularisation $\tilde x=(1-\tau)x+\tau/n$ addresses both failures, and at $\tau=1$ it removes the prior from the denominator altogether.
+
+\FloatBarrier
+\section{Experimental protocol}\label{sec:protocol}
+
+\subsection{Benchmark panels}\label{sec:panels}
+
+Table~\ref{tab:panels} lists the five panels (\NTotal{} instances). Synthetic instances come from \NFamilies{} families: Erdős--Rényi~\cite{erdos59} (mean degree~5), Barabási--Albert~\cite{barabasi99} ($m=2$), Watts--Strogatz~\cite{watts98} ($k=6$, rewiring probability $0.1$), square grids and $1{:}4$ rectangular grids (the lattices on which~\cite{konstantellos26} reported its largest headroom), four-block stochastic block models~\cite{holland83}, core--periphery graphs~\cite{borgatti00}, uniform random trees and barbells. Edge probabilities are drawn uniformly from one of five ranges, $R_1=[0.01,0.06]$, $R_2=[0.06,0.18]$, $R_3=[0.18,0.40]$, $R_4=[0.40,0.70]$ and $R_5=[0.70,0.95]$; on Erdős--Rényi graphs alone $\Pescbar$ then spans \ERPbarMin{} to \ERPbarMax.
+
+The development and test panels cross the nine families, the five ranges and two priors (uniform and Dirichlet(1)) with two independent replicates each, at $n=100$; the scale panel repeats the design at $n=900$ with one replicate. The prior panel keeps the graph and the edge probabilities fixed and varies only the prior, over ten types: uniform; Dirichlet($\theta$) with $\theta\in\{10,3,1,0.3\}$; log-normal with $\sigma\in\{0.5,1,2\}$; and softened seed priors in which 5 or 1 seeds share $1-\varepsilon$ of the mass and $\varepsilon=0.1$ is spread uniformly. It covers five families and the ranges $R_2$--$R_4$. The real panel uses Zachary's karate club~\cite{zachary77}, the Les Misérables co-appearance network~\cite{knuth93} and the Davis southern-women network~\cite{davis41}, together with two 500-vertex snowball samples of each of Cora, CiteSeer, Amazon-Photo and MS-Academic-CS from the benchmark collection of~\cite{shchur18}. Each real graph receives four probability schemes --- uniform on $[0.05,0.2]$, $[0.2,0.5]$ and $[0.5,0.9]$, and a symmetrised weighted cascade $p_{ij}=1/\max(\deg i,\deg j)$~\cite{kkt03} --- and both priors.
+
+\TabPanels
+
+\subsection{Ground truth}\label{sec:gt}
+
+Every instance carries two independent Monte Carlo estimates of~\eqref{eq:target}, $y^*_A$ and $y^*_B$, each from \MGT{} sampled worlds. Worlds are sampled in batches that are stacked into one block-diagonal graph, so that a single connected-components call labels all the worlds of a batch. On small graphs the estimator agrees with exact enumeration of all $2^{|E|}$ worlds within sampling error (largest $|z|$-score \MCExactZ). Every method is scored against $y^*_A$; every oracle and every ``true-$y^*$'' experiment uses $y^*_B$ only, so no fitted quantity sees the evaluation sample. The rank correlation between $y^*_B$ and $y^*_A$, the \emph{split-sample reference}, measures the reliability of the ground truth. Because both samples are noisy, an exact predictor of $y^*$ would score roughly the square root of this reference, so the reference is not a hard ceiling.
+
+\subsection{Methods}\label{sec:methods}
+
+\emph{References.} The calibrated rule (normalised diffusion on $EW$ with $\alpha_0$)~\cite{konstantellos26}; the same diffusion with the canonical $\alpha=0.85$; the calibrated push personalised PageRank of~\cite{konstantellos26} ($W^{\top}$ with $\alpha=\clip(0.241+0.859\,\Pescbar,0.4,1)$); the naive local damping $\alpha_i=\Pesc(i)$; and two iterations of the message passing of Karrer, Newman and Zdeborová~\cite{knz14}.
+
+\emph{Oracles.} The scalar oracle picks the best of the 40 values $\alpha\in\{0.025,0.05,\dots,1\}$ for $y^*_B$. The per-node oracle runs coordinate ascent over $\alpha\in[0,1]^n$ from the scalar oracle's value, with a 14-value grid per coordinate, at most three sweeps and a time cap (120\,s, or 240\,s on the \NPernodeScale{} grid, rectangular-grid, Erdős--Rényi and Barabási--Albert instances of the scale panel on which it is run). Because it is fitted on $y^*_B$ and scored on $y^*_A$, it estimates the out-of-sample headroom of per-node damping; in sample it is a lower bound on the optimum.
+
+\emph{The law with the true $y^*$.} The diffusion on $EW$ with $\alpha_i=1-x_i/y^*_{B,i}$, and the anchored law~\eqref{eq:ap} with $q=y^*_B/x$. These remove every source of estimation error from the principle.
+
+\subsection{Selection, freezing and statistics}\label{sec:stats}
+
+All design choices of the principle were searched on the development panel only: the realization; the operator ($EW$, $W$, $W^{\top}$, $P$, $EP$); the scale (raw, $L_1$, excess with $\gamma\in\{1,4,16\}$); the number of steps; $\eta\in\{-1,-0.5,-0.25,0,0.25,0.5,1,2\}$; the base (calibrated rule or message passing); $K\in\{1,2,5,\infty\}$; $\beta\in\{0.25,0.5,0.75,1\}$; and the blend type. The search covered \CfgSA{} standalone, \CfgAP{} anchored, \CfgPB{} anchored-polishing and \CfgPBX{} realization-polishing configurations, \CfgTotal{} in all. The winners, the manuscripts' nominal settings and the matched controls described below were frozen as \NFrozen{} configurations (Table~\ref{tab:configs}, Appendix~\ref{app:tables}) in a file whose SHA-256 digest begins with \texttt{\SelHash} (\SelTime), before any test, prior, real or scale result was examined. Each frozen configuration was then evaluated once on every held-out panel.
+
+\emph{Matched controls.} To isolate the contribution of the per-node law inside a pipeline, every frozen configuration that runs a realization is re-run with its $\alpha$ vector replaced at every step by its mean (the \emph{mean-field twin}) or by a random permutation of itself; operator, embedding, $K$ and blend stay fixed. Four of the frozen configurations are controls of this kind for the best realization polisher: its mean-field twin, its permutation, and the same pipeline with a constant $\alpha\in\{0.5,0.9\}$.
+
+\emph{Statistics.} For each method we report the panel mean of $\rho$ and the paired difference to the calibrated rule, with a 95\% percentile-bootstrap interval from 20{,}000 resamples~\cite{efron93}; wins, ties and losses (W/T/L, with $|\Delta\rho|\le10^{-9}$ counted as a tie); and a two-sided Wilcoxon signed-rank test~\cite{wilcoxon45} on the untied pairs. Within each panel the $p$-values of the \NFrozen{} frozen configurations are Holm-corrected~\cite{holm79}; references and oracles are reported uncorrected. The Wilcoxon test concerns the location of the paired differences and the bootstrap interval their mean; the two can disagree when a few large differences dominate the mean, and we report both. Differences are printed with three decimals, and a signed zero such as $-0.000$ denotes a difference below $5\times10^{-4}$ in magnitude. Secondary metrics are Kendall's $\tau$-b~\cite{kendall38}, the overlap of the top 10\% and NDCG@10\%~\cite{jarvelin02} with relevance $y^*_A$.
+
+\emph{Implementation.} All methods are implemented in Python with NumPy and SciPy sparse matrices~\cite{harris20,virtanen20}, and synthetic graphs are generated with NetworkX~\cite{hagberg08}. Every random draw is seeded from a SHA-256 digest of its role, and all timings are single-process wall-clock medians on one machine.
+
+\FloatBarrier
+\section{Results}\label{sec:results}
+
+\subsection{\texorpdfstring{Replication of~\cite{konstantellos26} and the per-node headroom}{Replication of the calibration rule and the per-node headroom}}\label{sec:replication}
+
+Table~\ref{tab:replication} reproduces the calibration of~\cite{konstantellos26} on the development and test panels. Under Dirichlet priors the rule recovers \RepPctDir\% of the in-sample scalar oracle and beats the best constant chosen with hindsight (\RepRuleDir{} against \RepBestConstDir{} at $\alpha={}$\RepBestConstAlphaDir{}), as reported there. Under uniform priors it recovers only \RepPctUnif\%: the oracle's mean $\alpha$ is \RepOracleAlphaUnif{} against the rule's \RepRuleAlpha, the single constant $\alpha={}$\RepConstAlphaUnif{} scores \RepConstUnif{} against the rule's \RepRuleUnif, and even the canonical $\alpha=0.85$ scores \RepFixedUnif. The calibration of~\cite{konstantellos26} is therefore prior-dependent: it was fitted where the best damping is high, and it over-damps when the prior is uniform.
+
+\TabReplication
+
+Table~\ref{tab:headroom} re-measures the headroom of per-node damping with the oracle fitted on $y^*_B$ and scored on $y^*_A$. Out of sample, the per-node oracle exceeds the scalar oracle by \HeadAll{} (in sample by \HeadApparent, so \HeadOverfitPct\% of the apparent gain is overfitting to the fitting sample), by \HeadGrid{} on square grids, \HeadRect{} on rectangular grids and \HeadTree{} on trees. The headroom concentrates in the dense, heterogeneous-prior corner (range $R_5$ with Dirichlet priors: \HeadCorner{} averaged over families), where no scalar $\alpha$ ranks well; a gain of the size reported in~\cite{konstantellos26} appears only on individual dense lattice instances (largest \HeadMax). Per-node damping does have headroom, but it is smaller and more localised than the motivation of the principle assumed.
+
+\TabHeadroom
+
+\subsection{Confirmatory evaluation}\label{sec:confirm}
+
+Table~\ref{tab:confirm} reports every frozen configuration on the held-out test panel together with the references and oracles, and Figure~\ref{fig:modeb}a summarises the main methods on all four held-out panels.
+
+\emph{Mode~(a).} Every standalone realization loses to the rule: the best A, B and C configurations change $\rho$ by \TestAbestD, \TestBbestD{} and \TestCbestD{} (Holm $p$ = \TestAbestHolm, \TestBbestHolm{} and \TestCbestHolm). The two prior-specific picks do well only under the prior they were chosen for. Realization~C on the raw adjacency, the best pick for Dirichlet priors, scores \TestCdirOnDir{} under Dirichlet priors but \TestCdirOnUnif{} under uniform ones; Realization~B on the push operator, the best pick for uniform priors, scores \TestBunifOnUnif{} under uniform priors but \TestBunifOnDir{} under Dirichlet ones.
+
+\emph{The anchored law.} $\AP(\eta=1)$ changes $\rho$ by \TestAPoneD{} \TestAPoneCI{} (Holm $p$ = \TestAPoneHolm) and $\AP(\eta=0.25)$ by \TestAPquarterD{} (Holm $p$ = \TestAPquarterHolm). Figure~\ref{fig:sign}c shows the whole $\eta$-curve. Under Dirichlet priors it peaks at $\eta={}$\EtaBestDir{}, which is the scalar rule itself, on both the development and the test panel, and it declines on the test panel from \EtaZeroTestDir{} at $\eta=0$ to \EtaOneTestDir{} at $\eta=1$ and \EtaTwoTestDir{} at $\eta=2$; under uniform priors it is flat (range \EtaUnifRange{} over $\eta\in[-1,2]$). Per-node variation in the direction of the law never helps.
+
+\emph{Mode~(b) with the law.} Mode~(b) as written changes $\rho$ by \TestPBXnomBD{} (Holm $p$ = \TestPBXnomBHolm): one sweep of Realization~B on the excess scale damages the base ranking, and the 50\% blend does not repair it. Its anchored counterpart ($\AP(\eta=1)$, $K=1$, $\beta=0.5$) changes $\rho$ by \TestPBnomD{} (Holm $p$ = \TestPBnomHolm) and the self-consistent, rank-blended version by \TestPBoneD. The best anchored polish found on the development panel uses $\eta=-0.25$, i.e.\ it points \emph{against} the law, and it is indistinguishable from the rule (\TestPBbestDfour; ties on most instances, W/T/L \TestPBbestWTL).
+
+\emph{The law with the true $y^*$.} Setting $\alpha_i=1-x_i/y^*_i$ with the independent sample $y^*_B$ removes estimation error altogether. It scores \TestTrueProp{} (\TestTruePropD), and the anchored law with the true $y^*$ scores \TestTrueAPone{} (\TestTrueAPoneD). Knowing $y^*$ does not make the law useful: the obstruction lies in the law, not in its inputs.
+
+\emph{Mode~(b) with a second operator.} The frozen configurations that do improve on the rule all combine the calibrated diffusion with a \emph{different} propagation operator. Realization~C on the raw adjacency as a polisher ($\gamma=4$, $K=5$, $\beta=0.5$) gains \TestPBXbestD{} \TestPBXbestCI{} (Holm $p$ = \TestPBXbestHolm). Its matched controls gain as much or more: the mean-field twin \TestCmeanD, a constant $\alpha=0.5$ on $P$ \TestLinHalfD, and a constant $\alpha=0.9$ on $P$ with a rank blend \TestLinNineD{} \TestLinNineCI{} (Holm $p$ = \TestLinNineHolm, W/T/L \TestLinNineWTL). The last reaches $\bar\rho={}$\TestLinNine{}, \TestLinNinePctOracle\% of the scalar oracle; it closes \TestLinNineGapScalar\% of the gap between the rule and the scalar oracle and \TestLinNineGapNode\% of the gap to the per-node oracle. Polishing the two-iteration message-passing base with the scalar rule ($\eta=0$) gains \TestMPzeroD, while the law in the same pipeline ($\eta=1$) gains less (\TestMPoneD). The permutation control gains \TestCpermD{} on average but loses on most instances (W/T/L \TestCpermWTL; Holm $p$ = \TestCpermHolm), an example of the mean and the Wilcoxon location disagreeing.
+
+\TabConfirm
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\linewidth]{fig2_sign_obstruction.pdf}
+\caption{The sign obstruction in data. (a)~Rank correlation between the per-node oracle's damping $\alpha^*$ and the law $1-x_i/y^*_i$, against the fraction of vertices whose neighbour signal exceeds their prior at the rule's fixed point (one point per development or test instance; black: binned means). (b)~Difference in $\rho$ between the law evaluated with the true $y^*$ and the calibrated rule. (c)~Mean $\rho$ of the anchored law $\AP(\eta)$ on the development (dashed) and test (solid) panels; $\eta=0$ (solid vertical line) is the scalar rule and $\eta=1$ (dotted line) the proportional law.}
+\label{fig:sign}
+\end{figure}
+
+\subsection{The sign obstruction in data}\label{sec:sign}
+
+Proposition~E predicts that the law can only agree with good per-node damping on vertices with $S_i>x_i$. Figure~\ref{fig:sign}a tests this across the \SignN{} development and test instances. The fraction of vertices with $S_i>x_i$ at the rule's fixed point predicts the rank correlation between the per-node oracle's $\alpha^*$ and the law (Spearman \SignSpearman, $p={}$\SignSpearmanP{}). In the \SignLowN{} instances where fewer than 10\% of the vertices satisfy $S_i>x_i$ the correlation is \SignLowCorr{} --- the optimal damping moves \emph{against} the law --- and the law with the true $y^*$ loses \SignLowDrop{} in $\rho$, i.e.\ it inverts the ranking (Figure~\ref{fig:sign}b). Where most vertices satisfy the sign condition the correlation turns positive, but it never exceeds \SignMaxCorr.
+
+\subsection{Prior uniformity}\label{sec:prior}
+
+Table~\ref{tab:prior} and Figure~\ref{fig:prior} report the prior panel, in which only the prior changes. The difference between $\AP(\eta=1)$ and the rule is \PriorAPUnif{} under the uniform prior and falls with dispersion, monotonically within each prior family, to \PriorAPDirTen{} under Dirichlet(10), \PriorAPDirSmall{} under Dirichlet(0.3), \PriorAPLognTwo{} under log-normal(2) and \PriorAPSeedOne{} under a single seed; its Spearman correlation with $\log_{10}\kappa(x)$ is \PriorSpearman{} ($p={}$\PriorSpearmanP{}). The direction of the manuscripts' Proposition~2 is confirmed, but there is no regime of advantage: ``best under uniform priors'' means ``harmless under uniform priors''. Figure~\ref{fig:prior}b shows the mechanism identified by Proposition~$2'$, and Figure~\ref{fig:prior}c the effect of regularisation: $\tau=0.5$ shrinks the loss (e.g.\ \PriorTauHalfLognTwo{} under log-normal(2)) and $\tau=1$ removes it (between \PriorTauOneMin{} and \PriorTauOneMax{} over all prior types). At $\tau=1$ the denominator no longer depends on $x$, and the law reduces to a monotone transform of $y$ anchored at the rule. The dual-operator configurations gain under every prior type (constant $\alpha=0.9$ on $P$: \PriorLinMin{} to \PriorLinMax; Realization~C on $P$: \PriorPBXMin{} to \PriorPBXMax).
+
+\TabPrior
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\linewidth]{fig3_prior_uniformity.pdf}
+\caption{Prior uniformity (prior panel). (a)~Paired difference $\AP(\eta=1)$ minus rule against the dynamic range $\log_{10}\kappa(x)$ of the prior, one point per instance. (b)~Mean rank correlation of the ratio $r_i=(y^*_i-x_i)/x_i$ with $1/x_i$ and with $y^*_i$ per prior type, in order of increasing dispersion (D: Dirichlet, LN: log-normal). (c)~Effect of the regularisation $\tilde x=(1-\tau)x+\tau/n$ on $\AP(\eta=1)$ minus rule for uniform, smooth heterogeneous and seed priors.}
+\label{fig:prior}
+\end{figure}
+
+\subsection{Attribution: the law against its mean-field twin}\label{sec:attribution}
+
+Table~\ref{tab:attribution} and Figure~\ref{fig:modeb}b compare every frozen configuration that runs a realization with its mean-field twin and its permutation. On the test panel the best polisher is slightly \emph{worse} than its twin (\AttTestPBXD{} \AttTestPBXCI; Holm $p$ = \AttTestPBXHolm), and at $n=900$ the two are equal (\AttScalePBXD{} \AttScalePBXCI). On the real panel the law retains a small positive effect inside the best polisher (\AttRealPBXD{} \AttRealPBXCI; Holm $p$ = \AttRealPBXHolm) and inside the uniform-prior polisher (\AttRealPBXunifD; Holm $p$ = \AttRealPBXunifHolm); these are the only positive effects of the law that survive correction, and in both cases the pipeline with a constant $\alpha=0.9$ is better still (Table~\ref{tab:transfer}). Standalone laws lose to their own twins, often heavily: Realization~C on the raw adjacency loses \AttTestCdirD{} on the test panel, \AttRealCdirD{} on real networks and \AttScaleCdirD{} at $n=900$, because replacing its per-node damping by the mean turns it into a plain damped propagation on $P$. The permuted controls are below the mean-field twins in every row: the assignment of damping values to vertices matters, but the law's assignment beats a uniform one only in the two small real-panel effects noted above. The per-node variation that the law introduces is, at best, neutral.
+
+\TabAttribution
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\linewidth]{fig4_modeb_and_controls.pdf}
+\caption{Mode~(b) and its controls. (a)~Mean $\rho$ of references, configurations using the proportional law and matched controls on the four held-out panels (dotted line: calibrated rule). (b)~Paired difference between every frozen configuration that runs a realization and its mean-field twin (same pipeline, $\alpha$ replaced by its per-step mean), with 95\% bootstrap intervals; triangles mark differences below $-0.10$, whose values are printed.}
+\label{fig:modeb}
+\end{figure}
+
+\subsection{Transfer to real networks and to larger graphs}\label{sec:transfer}
+
+Table~\ref{tab:transfer} reports the frozen configurations on the real and scale panels, neither of which played any role in selection. On real networks the rule scores \RealRule, the scalar oracle \RealOracleScalar{} and the per-node oracle \RealOraclePernode; the per-node headroom over the scalar oracle is larger than on synthetic graphs (\RealHeadroom; \RealHeadCora{} on Cora samples). The law does not capture it: $\AP(\eta=1)$ changes $\rho$ by \RealAPoneD{} and the law with the true $y^*$ by \RealTruePropD. The dual-operator configurations transfer: Realization~C on $P$ gains \RealPBXbestD, the constant-$\alpha$ control \RealLinNineD{} \RealLinNineCI, and the message-passing base polished by the scalar rule \RealMPzeroD. At $n=900$ (rule \ScaleRule) the picture is the same: the constant-$\alpha$ control gains \ScaleLinNineD, Realization~C on $P$ \ScalePBXbestD, the anchored law changes $\rho$ by \ScaleAPoneD, and the best standalone realization by \ScaleCbestD. On the \NPernodeScale{} instances where the per-node oracle runs at this size, it exceeds the scalar oracle by \ScaleHeadroom; there the oracle's time cap binds, so this headroom is understated.
+
+\TabTransfer
+
+\subsection{Secondary metrics}\label{sec:secondary}
+
+The conclusions do not depend on the metric (Table~\ref{tab:secondary}). On the test panel, Kendall's $\tau$ rises from \SecTestRuleTau{} for the rule to \SecTestLinNineTau{} for the constant-$\alpha$ control (scalar oracle \SecTestOracleScalarTau), and the top-10\% overlap from \SecTestRuleTop{} to \SecTestPBXbestTop{} for the Realization~C polisher and \SecTestCmeanTop{} for its mean-field twin. On real networks the same configurations raise NDCG@10\% from \SecRealRuleNdcg{} to \SecRealPBXbestNdcg{} and \SecRealCmeanNdcg. The anchored law and its polish are below the rule on all three metrics.
+
+\TabSecondary
+
+\subsection{Why the dual-operator blend works}\label{sec:complement}
+
+If the proportional law is not what improves Mode~(b), the second operator must be. Table~\ref{tab:complement} isolates it with the configuration of Section~\ref{sec:explore}: five sweeps of $y\leftarrow0.1\,x+0.9\,Py$ from scratch on the raw probability adjacency, with no calibrated base at all, already score \RawPTest{} on the test panel (\RawPTestD{} over the rule), \RawPReal{} on real networks and \RawPScale{} at $n=900$. The rank blend of the two improves on both members (\BlendTest, \BlendReal{} and \BlendScale), because their rank errors are only weakly correlated: the correlation of the per-vertex rank errors is \ErrTest{} on the test panel, \ErrReal{} on real networks and \ErrScale{} at $n=900$. The two operators err differently. The escape-scaled pull diffusion weights edges by $-\ln(1-p_{ij})$ and normalises them per vertex, while $P$ propagates raw probabilities and lets high-degree vertices accumulate mass, so the blend behaves like a two-member ensemble with decorrelated errors~\cite{krogh95}. Realization~C on $P$ works for the same reason: its damping $S_i/(x_i+S_i)$ is close to one for most vertices once the base is embedded on the excess scale, so it is nearly a linear propagation on $P$, which is exactly what its mean-field twin shows.
+
+\TabComplement
+
+\subsection{Cost, and the comparison with Monte Carlo}\label{sec:cost}
+
+Table~\ref{tab:cost} and Figure~\ref{fig:cost} compare accuracy with single-process, end-to-end wall clock (operator construction, diffusion, embedding, sweeps and blending included). At $n=100$ the calibrated rule takes \CostTestRuleMs\,ms and the constant-$\alpha$ ensemble \CostTestEnsMs\,ms, while a batched 200-world Monte Carlo estimate takes \CostTestMCTwoHundredMs\,ms and ranks better (\CostTestMCTwoHundredRho{} against \TestLinNine); 1000 worlds reach \CostTestMCThousandRho{} in \CostTestMCThousandMs\,ms. At this size, sampling is both cheaper and more accurate than every deterministic method in this paper. At $n=900$ the order of costs reverses: the ensemble takes \CostScaleEnsMs\,ms against \CostScaleMCTwoHundredMs\,ms for 200 worlds (\CostScaleSpeedup$\times$ faster) at equal accuracy (\ScaleLinNine{} against \CostScaleMCTwoHundredRho).
+
+To locate the crossover we timed the ensemble and Monte Carlo on \SweepN{} Erdős--Rényi, Barabási--Albert, Watts--Strogatz and grid instances with $n$ from \SweepNmin{} to \SweepNmax{} (range $R_3$, both priors; Table~\ref{tab:sweep} and Figure~\ref{fig:cost}c--d). The size at which the ensemble becomes faster than 200 worlds depends on the family: $n={}$\CrossER{} on Erdős--Rényi graphs (Monte Carlo is faster at $n\le{}$\CrossERBelow{}), $n={}$\CrossBA{} on Barabási--Albert graphs, $n={}$\CrossGrid{} on grids, and between $n={}$\CrossWSBelow{} and $n={}$\CrossWS{} on Watts--Strogatz graphs. Giving Monte Carlo the ensemble's time budget (the number of worlds that fit in the same time, interpolated in $\log k$) gives the fairer comparison. The median difference is \EqSmall{} at $n\le150$ (the ensemble wins on \EqWinSmall\% of the instances), \EqMid{} at $n=400$--$600$, and \EqLarge{} at $n\approx2000$ (wins on \EqWinLarge\%). The family matters as much as the size. The median difference is \EqBudgetER{} on Erdős--Rényi graphs, \EqBudgetBA{} on Barabási--Albert graphs and \EqBudgetGrid{} on grids, but \EqBudgetWS{} on Watts--Strogatz graphs, where every deterministic method is far less accurate than sampling (median $\rho$ \SweepWSEnsRho{} for the ensemble against \SweepWSMCRho{} for 200 worlds). On grids at this range the calibrated rule alone is the more accurate deterministic method (\SweepGridRuleRho{} against \SweepGridEnsRho).
+
+This corrects the cost argument of~\cite{konstantellos26}, which compared its heuristics with a sampler roughly an order of magnitude slower than a batched one. With batching, deterministic diffusions are worth their bias only on larger graphs and away from strongly clustered, near-critical structures; on the real panel even 50 worlds rank at \RealMCFiftyRho{} (200 worlds: \RealMCTwoHundredRho), above every deterministic method we evaluated.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\linewidth]{fig5_cost_and_monte_carlo.pdf}
+\caption{Accuracy, cost and Monte Carlo. (a,\,b)~Mean $\rho$ against single-process, end-to-end wall clock at $n=100$ and $n=900$ (log scale), with batched Monte Carlo at $k=50$, $200$ and $1000$ worlds. (c)~Wall clock against $n$ for the dual-operator ensemble and batched Monte Carlo (size sweep, medians). (d)~Difference in $\rho$ between the ensemble and Monte Carlo given the ensemble's time budget, per family (medians).}
+\label{fig:cost}
+\end{figure}
+
+\TabCost
+
+\TabSweep
+
+\subsection{Exploratory: propagation on the raw adjacency alone}\label{sec:explore}
+
+\emph{This subsection is exploratory and was not part of the frozen protocol.} After the development and test results were known, we asked whether the second operator could be used without any calibrated base. We varied $a\in\{0.5,0.9\}$, $K\in\{2,5,10\}$ and the blend weight $\beta\in\{0.5,1\}$ for $y\leftarrow(1-a)\,x+a\,Py$ started from $x$ --- a truncated Katz-type score~\cite{katz53} with probability weights --- either alone or rank-blended with the rule. The configuration $a=0.9$, $K=5$, $\beta=0.5$ was the best on both panels. Since it was chosen after seeing them, only the real and scale panels can act as its hold-out: there it scores \BlendReal{} and \BlendScale{} (Table~\ref{tab:complement}), in line with the frozen constant-$\alpha$ control (\RealLinNine{} and \ScaleLinNine). Raw-$P$ propagation alone (\RawPReal{} and \RawPScale) is better than the rule on these panels but worse than either blend. Two cheap, structurally different propagations are better together than either is alone; whether the calibrated rule is the best partner for $P$ is a question for a future pre-registered study.
+
+\FloatBarrier
+\section{Discussion}\label{sec:discussion}
+
+\paragraph{Why the principle fails.} Four independent mechanisms, each proved in Section~\ref{sec:theory} and each visible in the data, explain the negative result. \emph{Scale:} the coupled system holds at the target only if $Ty^*=y^*+x$, which no operator of spectral radius at most one allows (Remark~\ref{rem:scale}, Proposition~C); the realizations therefore try to reach a solution that the normalised operators do not have, and they collapse (Propositions A and~B) or converge to a different law (Proposition~D). \emph{Stability:} where the active solution exists, it repels (Proposition~C), so it cannot be found by iteration. \emph{Sign:} the law raises the damping of well-connected vertices, which raises their scores only where $S_i>x_i$ (Proposition~E); on normalised operators in sparse regimes this fails for most vertices, and the optimal per-node damping moves against the law (Section~\ref{sec:sign}). \emph{Prior:} under smooth heterogeneous priors the proportional ratio measures $1/x_i$ (Proposition~$2'$), and under seed priors it saturates. Anchoring and regularisation can make the law harmless --- at $\eta=0$ or $\tau=1$, where it no longer is the law --- but they cannot make it useful. Because the law with the \emph{true} $y^*$ fails as well, none of these failures is an artefact of estimation.
+
+\paragraph{What per-node damping would need.} Per-node damping does have out-of-sample headroom (\HeadAll{} on synthetic graphs, \RealHeadroom{} on real networks), but the oracle's damping is at best weakly aligned with the law, even where the sign condition holds (correlation at most \SignMaxCorr). Proposition~E indicates what a useful law must respect: at the operating point, raising $\alpha_k$ helps vertex~$k$ exactly when $S_k>x_k$, so any per-node rule has to depend on the sign of $S_k-x_k$ and not only on how much mass the vertex has accumulated. Designing and pre-registering such a rule is left for future work.
+
+\paragraph{What Mode~(b) contributes.} The architecture of Mode~(b) --- a calibrated base diffusion, a few sweeps of a second propagation and a blend --- is the part of the proposal that works, provided that the second propagation uses a \emph{different operator}. A constant damping on the raw probability adjacency is the best second stage among the frozen configurations, costs $K$ sparse matrix--vector products, transfers to real networks and to $n=900$, and owes its gain to the weak correlation of the two operators' rank errors (Section~\ref{sec:complement}). The proportional law can be placed in that stage without harm (Realization~C), but its mean-field twin is equally good, and a constant is better.
+
+\paragraph{Positioning against sampling.} Deterministic ranking heuristics for uncertain graphs are often motivated by the cost of Monte Carlo sampling. With block-diagonal batching that cost is small: on graphs of a hundred vertices a 200-world estimate is cheaper and more accurate than every heuristic in this paper, and the deterministic ensemble is worth its bias only beyond a family-dependent size and away from clustered, near-critical structures such as Watts--Strogatz graphs. We recommend that evaluations of such heuristics include a batched sampler at matched wall clock.
+
+\paragraph{Corrections to~\cite{konstantellos26}.} Two findings revise our earlier study. First, its calibration is prior-dependent: it reproduces under Dirichlet priors (\RepPctDir\% of the scalar oracle) but recovers only \RepPctUnif\% under the uniform prior, where a fixed constant beats it. Second, its cost comparison used a sampler much slower than a batched one; measured end to end, the deterministic advantage appears only on larger graphs. The motivating headroom of the principle (\PrevHeadAll{} overall, \PrevHeadGrid{} on grids) re-measures at \HeadAll{} and \HeadGrid{} out of sample.
+
+\section{Threats to validity}\label{sec:limitations}
+
+\emph{Ground-truth noise.} With \MGT{} worlds per sample, dense instances have unreliable ground-truth ranks; on dense Watts--Strogatz instances of the development panel the split-sample reference is only \WSDenseCeiling. All comparisons are paired, so this noise adds variance but no bias. \emph{Oracle strength.} The per-node oracle is a coordinate ascent on a 14-value grid with at most three sweeps and a time cap; it is a lower bound in sample, and at $n=900$ on lattices the cap binds, so the headroom there is understated, as it was in~\cite{konstantellos26}. \emph{Selection.} The development searches are large, which is why the winners were frozen before any held-out evaluation and why the held-out tests are Holm-corrected; the exploratory Section~\ref{sec:explore} is not covered by this protection. \emph{Scope of the operators.} The law was tested on five operators and four scale conventions, standalone and as a polisher, anchored and unanchored, and with the true $y^*$. A different operator could behave differently, but Remark~\ref{rem:scale} and Proposition~C constrain every operator: the target satisfies the system only on an expansive operator, on which the solution repels. \emph{Reimplementation.} The calibrated rule uses the published constants of~\cite{konstantellos26}; implementation details such as iteration counts and prior generators may differ from the original study, but the replication reproduces its Dirichlet-prior results. \emph{Timing.} All timings are single-process Python and SciPy on one machine; ratios transfer better than absolute times, and compiled implementations of either side could move the crossovers. \emph{Coverage.} The panels span nine synthetic families, five probability ranges, ten prior types and seven real networks with $n\le{}$\SweepNmax{}; larger graphs and directed or correlated edge models remain untested.
+
+\section{Conclusion}\label{sec:conclusion}
+
+The Proportional Relative Influence Principle couples a diffusion step with a per-vertex damping law, and its algebra is exact: the coupled system factorises as $(y_i-x_i)(y_i+x_i-S_i)=0$. Its dynamics and its statistics are unfavourable, however. On the normalised operators used for ranking the realizations collapse to the prior, the self-consistent solution exists only on expansive operators and repels there, the law acts with the sign of $S_i-x_i$ rather than the reachability of the vertex, and heterogeneous priors turn the ratio into a measure of $1/x_i$. A pre-registered evaluation on \NTotal{} instances confirms every one of these mechanisms: no configuration that relies on the law beats the calibrated scalar rule of~\cite{konstantellos26}, not even with the true $y^*$. The hybrid architecture proposed alongside the law is nevertheless useful. Blending the calibrated diffusion with a few sweeps of propagation on the raw probability adjacency closes most of the gap to the scalar oracle at a cost of a few sparse products, and its gain comes from two operators that err differently. Finally, any claim of practical advantage for such heuristics must be measured against a batched Monte Carlo sampler, which is faster and more accurate on small graphs and is overtaken only beyond a family-dependent size.
+
+\section*{Reproducibility statement}
+
+The archive accompanying this paper contains the library, the panel builder, the experiment runners, the analysis and control scripts, the per-instance results, the frozen configuration file with its SHA-256 digest, and the scripts that generate every number, table and figure of the paper (\path{make_paper_assets.py} and \path{paper_figures.py}). Every random draw is seeded deterministically, so rerunning a stage reproduces the stored results; rebuilding all macros, tables and figures from the stored results takes one command. The real-network source files are those distributed with~\cite{shchur18}. The accompanying documentation gives the architecture of the code, complete proofs, a module-by-module walkthrough, the complexity of every component and a step-by-step reproduction guide.
+
+\begin{thebibliography}{99}\footnotesize
+\setlength{\itemsep}{1pt}
+\bibitem{kkt03} D.~Kempe, J.~Kleinberg, É.~Tardos. Maximizing the spread of influence through a social network. In \emph{Proc.\ 9th ACM SIGKDD}, 137--146, 2003.
+\bibitem{hubba08} C.-Y. Lin, C.-H. Chin, H.-H. Wu, S.-H. Chen, C.-W. Ho, M.-T. Ko. Hubba: hub objects analyzer --- a framework of interactome hubs identification for network biology. \emph{Nucleic Acids Research}, 36:W438--W443, 2008.
+\bibitem{cytohubba14} C.-H. Chin, S.-H. Chen, H.-H. Wu, C.-W. Ho, M.-T. Ko, C.-Y. Lin. cytoHubba: identifying hub objects and sub-networks from complex interactome. \emph{BMC Systems Biology}, 8(Suppl~4):S11, 2014.
+\bibitem{konstantellos26} I.~Konstantellos. Damping from the escape probability: a free calibration rule for diffusion-based reachability ranking in uncertain graphs. Computer Engineering and Informatics Department, University of Patras, 2026. \url{https://zenodo.org/records/23211440}.
+\bibitem{knz14} B.~Karrer, M.~E.~J. Newman, L.~Zdeborová. Percolation on sparse networks. \emph{Physical Review Letters}, 113:208702, 2014.
+\bibitem{provanball83} J.~S. Provan, M.~O. Ball. The complexity of counting cuts and of computing the probability that a graph is connected. \emph{SIAM Journal on Computing}, 12(4):777--788, 1983.
+\bibitem{potamias10} M.~Potamias, F.~Bonchi, A.~Gionis, G.~Kollios. $k$-nearest neighbors in uncertain graphs. \emph{Proceedings of the VLDB Endowment}, 3(1):997--1008, 2010.
+\bibitem{pagerank99} L.~Page, S.~Brin, R.~Motwani, T.~Winograd. The PageRank citation ranking: bringing order to the Web. Technical Report 1999-66, Stanford InfoLab, 1999.
+\bibitem{jeh03} G.~Jeh, J.~Widom. Scaling personalized web search. In \emph{Proc.\ 12th International World Wide Web Conference}, 271--279, 2003.
+\bibitem{haveliwala03} T.~H. Haveliwala. Topic-sensitive PageRank: a context-sensitive ranking algorithm for web search. \emph{IEEE Transactions on Knowledge and Data Engineering}, 15(4):784--796, 2003.
+\bibitem{gleich15} D.~F. Gleich. PageRank beyond the Web. \emph{SIAM Review}, 57(3):321--363, 2015.
+\bibitem{borgs14} C.~Borgs, M.~Brautbar, J.~Chayes, B.~Lucier. Maximizing social influence in nearly optimal time. In \emph{Proc.\ 25th ACM-SIAM Symposium on Discrete Algorithms}, 946--957, 2014.
+\bibitem{tim14} Y.~Tang, X.~Xiao, Y.~Shi. Influence maximization: near-optimal time complexity meets practical efficiency. In \emph{Proc.\ ACM SIGMOD}, 75--86, 2014.
+\bibitem{newman23} M.~E.~J. Newman. Message passing methods on complex networks. \emph{Proceedings of the Royal Society A}, 479:20220774, 2023.
+\bibitem{boldi05} P.~Boldi, M.~Santini, S.~Vigna. PageRank as a function of the damping factor. In \emph{Proc.\ 14th International World Wide Web Conference}, 557--566, 2005.
+\bibitem{bressan10} M.~Bressan, E.~Peserico. Choose the damping, choose the ranking? \emph{Journal of Discrete Algorithms}, 8(2):199--213, 2010.
+\bibitem{constantine10} P.~G. Constantine, D.~F. Gleich. Random alpha PageRank. \emph{Internet Mathematics}, 6(2):189--236, 2010.
+\bibitem{avrachenkov18} K.~Avrachenkov, A.~Kadavankandy, N.~Litvak. Mean field analysis of personalized PageRank with implications for local graph clustering. \emph{Journal of Statistical Physics}, 173:895--916, 2018.
+\bibitem{avrachenkov14} K.~Avrachenkov, R.~van der Hofstad, M.~Sokol. Personalized PageRank with node-dependent restart. In \emph{Algorithms and Models for the Web Graph (WAW 2014)}, Lecture Notes in Computer Science 8882, 23--33, Springer, 2014.
+\bibitem{wu12} X.-M. Wu, Z.~Li, A.~M.-C. So, J.~Wright, S.-F. Chang. Learning with partially absorbing random walks. In \emph{Advances in Neural Information Processing Systems 25}, 2012.
+\bibitem{jung19} J.~Jung, W.~Jin, H.~Park, U.~Kang. Supervised and extended restart in random walks for ranking and link prediction in networks. \emph{PLOS ONE}, 14(3):e0213857, 2019.
+\bibitem{li19gpr} P.~Li, E.~Chien, O.~Milenkovic. Optimizing generalized PageRank methods for seed-expansion community detection. In \emph{Advances in Neural Information Processing Systems 32}, 2019.
+\bibitem{gprgnn21} E.~Chien, J.~Peng, P.~Li, O.~Milenkovic. Adaptive universal generalized PageRank graph neural network. In \emph{Proc.\ 9th International Conference on Learning Representations}, 2021.
+\bibitem{berberidis19} D.~Berberidis, A.~N. Nikolakopoulos, G.~B. Giannakis. Adaptive diffusions for scalable learning over graphs. \emph{IEEE Transactions on Signal Processing}, 67(5):1307--1321, 2019.
+\bibitem{katz53} L.~Katz. A new status index derived from sociometric analysis. \emph{Psychometrika}, 18(1):39--43, 1953.
+\bibitem{dwork01} C.~Dwork, R.~Kumar, M.~Naor, D.~Sivakumar. Rank aggregation methods for the Web. In \emph{Proc.\ 10th International World Wide Web Conference}, 613--622, 2001.
+\bibitem{krogh95} A.~Krogh, J.~Vedelsby. Neural network ensembles, cross validation, and active learning. In \emph{Advances in Neural Information Processing Systems 7}, 231--238, 1995.
+\bibitem{hornjohnson13} R.~A. Horn, C.~R. Johnson. \emph{Matrix Analysis}, 2nd edition. Cambridge University Press, 2013.
+\bibitem{lehmer71} D.~H. Lehmer. On the compounding of certain means. \emph{Journal of Mathematical Analysis and Applications}, 36(1):183--200, 1971.
+\bibitem{erdos59} P.~Erdős, A.~Rényi. On random graphs~I. \emph{Publicationes Mathematicae Debrecen}, 6:290--297, 1959.
+\bibitem{barabasi99} A.-L. Barabási, R.~Albert. Emergence of scaling in random networks. \emph{Science}, 286(5439):509--512, 1999.
+\bibitem{watts98} D.~J. Watts, S.~H. Strogatz. Collective dynamics of `small-world' networks. \emph{Nature}, 393:440--442, 1998.
+\bibitem{holland83} P.~W. Holland, K.~B. Laskey, S.~Leinhardt. Stochastic blockmodels: first steps. \emph{Social Networks}, 5(2):109--137, 1983.
+\bibitem{borgatti00} S.~P. Borgatti, M.~G. Everett. Models of core/periphery structures. \emph{Social Networks}, 21(4):375--395, 2000.
+\bibitem{zachary77} W.~W. Zachary. An information flow model for conflict and fission in small groups. \emph{Journal of Anthropological Research}, 33(4):452--473, 1977.
+\bibitem{knuth93} D.~E. Knuth. \emph{The Stanford GraphBase: A Platform for Combinatorial Computing}. Addison-Wesley, 1993.
+\bibitem{davis41} A.~Davis, B.~B. Gardner, M.~R. Gardner. \emph{Deep South: A Social Anthropological Study of Caste and Class}. University of Chicago Press, 1941.
+\bibitem{shchur18} O.~Shchur, M.~Mumme, A.~Bojchevski, S.~Günnemann. Pitfalls of graph neural network evaluation. Relational Representation Learning Workshop, NeurIPS 2018. arXiv:1811.05868.
+\bibitem{efron93} B.~Efron, R.~J. Tibshirani. \emph{An Introduction to the Bootstrap}. Chapman \& Hall, 1993.
+\bibitem{wilcoxon45} F.~Wilcoxon. Individual comparisons by ranking methods. \emph{Biometrics Bulletin}, 1(6):80--83, 1945.
+\bibitem{holm79} S.~Holm. A simple sequentially rejective multiple test procedure. \emph{Scandinavian Journal of Statistics}, 6(2):65--70, 1979.
+\bibitem{kendall38} M.~G. Kendall. A new measure of rank correlation. \emph{Biometrika}, 30(1--2):81--93, 1938.
+\bibitem{jarvelin02} K.~Järvelin, J.~Kekäläinen. Cumulated gain-based evaluation of IR techniques. \emph{ACM Transactions on Information Systems}, 20(4):422--446, 2002.
+\bibitem{harris20} C.~R. Harris et al. Array programming with NumPy. \emph{Nature}, 585:357--362, 2020.
+\bibitem{virtanen20} P.~Virtanen et al. SciPy 1.0: fundamental algorithms for scientific computing in Python. \emph{Nature Methods}, 17:261--272, 2020.
+\bibitem{hagberg08} A.~A. Hagberg, D.~A. Schult, P.~J. Swart. Exploring network structure, dynamics, and function using NetworkX. In \emph{Proc.\ 7th Python in Science Conference}, 11--15, 2008.
+\end{thebibliography}
+
+\appendix
+\section{Additional tables}\label{app:tables}
+
+Table~\ref{tab:configs} lists the frozen configurations in the notation of the code, and Table~\ref{tab:dynamics} the branch fractions behind Figure~\ref{fig:dynamics}a.
+
+\TabConfigs
+
+\TabDynamics
+
+
+\end{document}

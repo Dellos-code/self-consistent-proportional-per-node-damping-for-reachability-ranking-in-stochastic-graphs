@@ -1,0 +1,6 @@
+theorem1_max_residual                                   3.212e-12
+mc_vs_exact_max_z                                       2.623e+00
+knz0_minus_pesc                                         1.110e-16
+grid_alpha1_residual                                    1.994e-12
+collapse_A_uniform_max_rel_excess_after_1_step          1.388e-15
+ALL FOUNDATION CHECKS PASSED

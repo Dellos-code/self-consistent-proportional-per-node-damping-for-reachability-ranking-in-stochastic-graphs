@@ -1,0 +1,38 @@
+[dev] 20/180  elapsed 0s
+[dev] 40/180  elapsed 1s
+[dev] 60/180  elapsed 1s
+[dev] 80/180  elapsed 1s
+[dev] 100/180  elapsed 2s
+[dev] 120/180  elapsed 2s
+[dev] 140/180  elapsed 2s
+[dev] 160/180  elapsed 2s
+[dev] 180/180  elapsed 3s
+[dev] done: 180 instances in 3s
+[test] 20/180  elapsed 0s
+[test] 40/180  elapsed 1s
+[test] 60/180  elapsed 1s
+[test] 80/180  elapsed 1s
+[test] 100/180  elapsed 2s
+[test] 120/180  elapsed 2s
+[test] 140/180  elapsed 2s
+[test] 160/180  elapsed 2s
+[test] 180/180  elapsed 3s
+[test] done: 180 instances in 3s
+[prior] 20/150  elapsed 0s
+[prior] 40/150  elapsed 1s
+[prior] 60/150  elapsed 1s
+[prior] 80/150  elapsed 2s
+[prior] 100/150  elapsed 2s
+[prior] 120/150  elapsed 3s
+[prior] 140/150  elapsed 3s
+[prior] done: 150 instances in 4s
+[real] 20/88  elapsed 0s
+[real] 40/88  elapsed 1s
+[real] 60/88  elapsed 4s
+[real] 80/88  elapsed 8s
+[real] done: 88 instances in 9s
+[scale] 20/90  elapsed 3s
+[scale] 40/90  elapsed 6s
+[scale] 60/90  elapsed 9s
+[scale] 80/90  elapsed 13s
+[scale] done: 90 instances in 17s

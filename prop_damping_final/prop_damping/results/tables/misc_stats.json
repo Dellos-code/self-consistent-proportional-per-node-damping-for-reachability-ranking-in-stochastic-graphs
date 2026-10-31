@@ -1,0 +1,11 @@
+{
+ "sign_spearman": 0.6124396498566094,
+ "sign_spearman_p": 1.940561327559097e-38,
+ "sign_n": 360,
+ "prior_spearman_AP_eta1": -0.30875331347467555,
+ "prior_spearman_AP_eta1_p": 0.00012096581933115586,
+ "prior_spearman_PBnom": -0.1890484820151824,
+ "prior_spearman_PBnom_p": 0.02050778517986916,
+ "prior_spearman_true_ap1": -0.23806844561196894,
+ "prior_spearman_true_ap1_p": 0.0033501325629291872
+}

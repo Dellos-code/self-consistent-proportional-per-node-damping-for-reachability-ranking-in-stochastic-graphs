@@ -1,0 +1,10 @@
+P1_A_uniform_after40_max_rel_excess                        0.0
+P2_B_absorbing_and_quadratic_bound_hold                    True
+P3_lam=1.2: rho(J_A), rho(J_B), departure A, B             (np.float64(1.2), np.float64(1.16), '8.00e-01', '8.00e-01')
+P3_lam=1.5: rho(J_A), rho(J_B), departure A, B             (np.float64(1.5), np.float64(1.25), '5.00e-01', '5.00e-01')
+P3_lam=1.9: rho(J_A), rho(J_B), departure A, B             (np.float64(1.9), np.float64(1.09), '1.00e-01', '9.95e-02')
+P4_C_EW_three_starts_same_fixed_point_maxdiff              8.334107896673126e-17
+P4_C_EW_fixed_point_fraction_below_prior                   0.5
+P5_sparse_ER_fraction_S_below_x                            1.0
+P5_sign_rule_agreement_(of_20)                             20
+ALL DYNAMICS CHECKS PASSED

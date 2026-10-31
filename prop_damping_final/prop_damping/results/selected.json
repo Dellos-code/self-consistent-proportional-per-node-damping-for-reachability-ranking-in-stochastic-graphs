@@ -1,0 +1,182 @@
+{
+ "A_best": {
+  "type": "sa",
+  "kind": "A",
+  "op": "P",
+  "scale": "ex",
+  "gamma": 16.0,
+  "T": 2
+ },
+ "B_best": {
+  "type": "sa",
+  "kind": "B",
+  "op": "EP",
+  "scale": "ex",
+  "gamma": 16.0,
+  "T": 2
+ },
+ "C_best": {
+  "type": "sa",
+  "kind": "C",
+  "op": "EP",
+  "scale": "ex",
+  "gamma": 16.0,
+  "T": 2
+ },
+ "C_dir1": {
+  "type": "sa",
+  "kind": "C",
+  "op": "P",
+  "scale": "raw",
+  "gamma": 1.0,
+  "T": 3
+ },
+ "B_unif": {
+  "type": "sa",
+  "kind": "B",
+  "op": "WT",
+  "scale": "ex",
+  "gamma": 16.0,
+  "T": 50
+ },
+ "AP_eta0.25": {
+  "type": "ap",
+  "eta": 0.25,
+  "T": 1000000
+ },
+ "AP_eta1": {
+  "type": "ap",
+  "eta": 1.0,
+  "T": 1000000
+ },
+ "PB_rule_best": {
+  "type": "pb",
+  "base": "rule",
+  "eta": -0.25,
+  "mode": "fix",
+  "T": 1,
+  "beta": 0.25,
+  "blend": "s"
+ },
+ "PB_rule_nominal": {
+  "type": "pb",
+  "base": "rule",
+  "eta": 1.0,
+  "mode": "fix",
+  "T": 1,
+  "beta": 0.5,
+  "blend": "s"
+ },
+ "PB_rule_eta1": {
+  "type": "pb",
+  "base": "rule",
+  "eta": 1.0,
+  "mode": "sc",
+  "T": 1000000,
+  "beta": 0.25,
+  "blend": "r"
+ },
+ "PB_mp2_best": {
+  "type": "pb",
+  "base": "mp2",
+  "eta": 0.25,
+  "mode": "sc",
+  "T": 5,
+  "beta": 0.75,
+  "blend": "r"
+ },
+ "PB_mp2_eta0": {
+  "type": "pb",
+  "base": "mp2",
+  "eta": 0.0,
+  "mode": "sc",
+  "T": 5,
+  "beta": 0.75,
+  "blend": "r"
+ },
+ "PB_mp2_eta1": {
+  "type": "pb",
+  "base": "mp2",
+  "eta": 1.0,
+  "mode": "sc",
+  "T": 5,
+  "beta": 0.75,
+  "blend": "r"
+ },
+ "PBX_rule_best": {
+  "type": "pbx",
+  "base": "rule",
+  "kind": "C",
+  "op": "P",
+  "scale": "raw",
+  "gamma": 4.0,
+  "T": 5,
+  "beta": 0.5,
+  "blend": "s"
+ },
+ "PBX_rule_unif": {
+  "type": "pbx",
+  "base": "rule",
+  "kind": "A",
+  "op": "P",
+  "scale": "raw",
+  "gamma": 1.0,
+  "T": 1,
+  "beta": 0.5,
+  "blend": "s"
+ },
+ "PBX_rule_dir1": {
+  "type": "pbx",
+  "base": "rule",
+  "kind": "C",
+  "op": "P",
+  "scale": "raw",
+  "gamma": 1.0,
+  "T": 5,
+  "beta": 0.5,
+  "blend": "r"
+ },
+ "PBX_rule_nominalB": {
+  "type": "pbx",
+  "base": "rule",
+  "kind": "B",
+  "op": "EW",
+  "scale": "ex",
+  "gamma": 1.0,
+  "T": 1,
+  "beta": 0.5,
+  "blend": "s"
+ },
+ "CTRL_Cmean": {
+  "type": "ctrl",
+  "law": "Cmean",
+  "gamma": 4.0,
+  "T": 5,
+  "beta": 0.5,
+  "blend": "s"
+ },
+ "CTRL_Cperm": {
+  "type": "ctrl",
+  "law": "Cperm",
+  "gamma": 4.0,
+  "T": 5,
+  "beta": 0.5,
+  "blend": "s"
+ },
+ "CTRL_lin0.5": {
+  "type": "ctrl",
+  "law": "lin0.5",
+  "gamma": 4.0,
+  "T": 5,
+  "beta": 0.5,
+  "blend": "s"
+ },
+ "CTRL_lin0.9": {
+  "type": "ctrl",
+  "law": "lin0.9",
+  "gamma": 1.0,
+  "T": 5,
+  "beta": 0.5,
+  "blend": "r"
+ }
+}

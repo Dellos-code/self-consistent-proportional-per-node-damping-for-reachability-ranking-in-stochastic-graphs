@@ -1,0 +1,1441 @@
+id,n,m,family,prange,method,ms,iters,panel
+0,100,250,er,R1,"operators (P_esc, W, EW, P)",1.3339249999262393,1,test
+0,100,250,er,R1,rule_EW (calibrated scalar),0.9273819999862098,71,test
+0,100,250,er,R1,"KNZ MP, 2 iterations",0.08083200009423308,2,test
+0,100,250,er,R1,"KNZ MP, converged",0.28940499998952873,18,test
+0,100,250,er,R1,"AP(eta=1) standalone, to fixed point",1.9779310000558326,23,test
+0,100,250,er,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.017806999949243618,1,test
+0,100,250,er,R1,"Realization C on raw P, K=5 (excl. base)",0.4183099999863771,5,test
+0,100,250,er,R1,"linear raw-P propagation, K=5 (excl. base)",0.23031900002479233,5,test
+0,100,250,er,R1,"Realization C standalone, T=3",0.22343400007684977,3,test
+0,100,250,er,R1,"scalar oracle sweep (40 alphas, batched)",28.96478799993929,0,test
+0,100,250,er,R1,"Monte Carlo, 50 worlds",0.6864109999469292,50,test
+0,100,250,er,R1,"Monte Carlo, 200 worlds",1.3798549999819443,200,test
+0,100,250,er,R1,"Monte Carlo, 1000 worlds",3.527393000013035,1000,test
+0,100,250,er,R1,E2E calibrated rule,1.3620709999031533,0,test
+0,100,250,er,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),1.9536360000529385,0,test
+0,100,250,er,R1,E2E rule + C-law raw P (PBX_rule_best),1.7279439999811075,0,test
+4,100,250,er,R2,"operators (P_esc, W, EW, P)",0.7313700000395329,1,test
+4,100,250,er,R2,rule_EW (calibrated scalar),0.7706730000336393,99,test
+4,100,250,er,R2,"KNZ MP, 2 iterations",0.05635599995912344,2,test
+4,100,250,er,R2,"KNZ MP, converged",0.5411169998978949,54,test
+4,100,250,er,R2,"AP(eta=1) standalone, to fixed point",3.2760569999936706,56,test
+4,100,250,er,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.011954000001423992,1,test
+4,100,250,er,R2,"Realization C on raw P, K=5 (excl. base)",0.34684999991441146,5,test
+4,100,250,er,R2,"linear raw-P propagation, K=5 (excl. base)",0.1206590000037977,5,test
+4,100,250,er,R2,"Realization C standalone, T=3",0.11804600001141807,3,test
+4,100,250,er,R2,"scalar oracle sweep (40 alphas, batched)",8.278014999973493,0,test
+4,100,250,er,R2,"Monte Carlo, 50 worlds",0.4224379999868688,50,test
+4,100,250,er,R2,"Monte Carlo, 200 worlds",1.2419820000104664,200,test
+4,100,250,er,R2,"Monte Carlo, 1000 worlds",4.75040000003446,1000,test
+4,100,250,er,R2,E2E calibrated rule,1.5713929999492393,0,test
+4,100,250,er,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.1329799999421084,0,test
+4,100,250,er,R2,E2E rule + C-law raw P (PBX_rule_best),1.909328000010646,0,test
+8,100,250,er,R3,"operators (P_esc, W, EW, P)",0.813433999951485,1,test
+8,100,250,er,R3,rule_EW (calibrated scalar),1.2543950000463155,158,test
+8,100,250,er,R3,"KNZ MP, 2 iterations",0.04836599998725433,2,test
+8,100,250,er,R3,"KNZ MP, converged",0.570856999956959,64,test
+8,100,250,er,R3,"AP(eta=1) standalone, to fixed point",9.917717000007542,129,test
+8,100,250,er,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.013978999959363136,1,test
+8,100,250,er,R3,"Realization C on raw P, K=5 (excl. base)",0.3229000000146698,5,test
+8,100,250,er,R3,"linear raw-P propagation, K=5 (excl. base)",0.21090500001719192,5,test
+8,100,250,er,R3,"Realization C standalone, T=3",0.17318100003649306,3,test
+8,100,250,er,R3,"scalar oracle sweep (40 alphas, batched)",10.039118000008784,0,test
+8,100,250,er,R3,"Monte Carlo, 50 worlds",0.8543049999616414,50,test
+8,100,250,er,R3,"Monte Carlo, 200 worlds",2.1408950000250115,200,test
+8,100,250,er,R3,"Monte Carlo, 1000 worlds",8.825018000038654,1000,test
+8,100,250,er,R3,E2E calibrated rule,3.11810499999865,0,test
+8,100,250,er,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.6690090000774944,0,test
+8,100,250,er,R3,E2E rule + C-law raw P (PBX_rule_best),1.9917100000839127,0,test
+12,100,250,er,R4,"operators (P_esc, W, EW, P)",0.6580870000334471,1,test
+12,100,250,er,R4,rule_EW (calibrated scalar),0.957798000058574,158,test
+12,100,250,er,R4,"KNZ MP, 2 iterations",0.06997899993166357,2,test
+12,100,250,er,R4,"KNZ MP, converged",0.15178600006038323,20,test
+12,100,250,er,R4,"AP(eta=1) standalone, to fixed point",4.979137000077571,137,test
+12,100,250,er,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.008542000045963505,1,test
+12,100,250,er,R4,"Realization C on raw P, K=5 (excl. base)",0.18794200002503203,5,test
+12,100,250,er,R4,"linear raw-P propagation, K=5 (excl. base)",0.09674900002210052,5,test
+12,100,250,er,R4,"Realization C standalone, T=3",0.08562100003928208,3,test
+12,100,250,er,R4,"scalar oracle sweep (40 alphas, batched)",4.639818999976342,0,test
+12,100,250,er,R4,"Monte Carlo, 50 worlds",0.633922000019993,50,test
+12,100,250,er,R4,"Monte Carlo, 200 worlds",1.791388000015104,200,test
+12,100,250,er,R4,"Monte Carlo, 1000 worlds",8.145037999952365,1000,test
+12,100,250,er,R4,E2E calibrated rule,1.5370319999874482,0,test
+12,100,250,er,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.0300099999985832,0,test
+12,100,250,er,R4,E2E rule + C-law raw P (PBX_rule_best),2.2988629999645127,0,test
+16,100,250,er,R5,"operators (P_esc, W, EW, P)",0.6819259999701899,1,test
+16,100,250,er,R5,rule_EW (calibrated scalar),1.1623590000908735,160,test
+16,100,250,er,R5,"KNZ MP, 2 iterations",0.046553000061066996,2,test
+16,100,250,er,R5,"KNZ MP, converged",0.13549899995268788,10,test
+16,100,250,er,R5,"AP(eta=1) standalone, to fixed point",6.735978000051546,141,test
+16,100,250,er,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.009475000069869566,1,test
+16,100,250,er,R5,"Realization C on raw P, K=5 (excl. base)",0.17497800001819996,5,test
+16,100,250,er,R5,"linear raw-P propagation, K=5 (excl. base)",0.10901199993895716,5,test
+16,100,250,er,R5,"Realization C standalone, T=3",0.13600900001620175,3,test
+16,100,250,er,R5,"scalar oracle sweep (40 alphas, batched)",6.020999000043048,0,test
+16,100,250,er,R5,"Monte Carlo, 50 worlds",0.8548609999934342,50,test
+16,100,250,er,R5,"Monte Carlo, 200 worlds",2.458215999922686,200,test
+16,100,250,er,R5,"Monte Carlo, 1000 worlds",14.004718000023786,1000,test
+16,100,250,er,R5,E2E calibrated rule,3.291653999895061,0,test
+16,100,250,er,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.984823999985565,0,test
+16,100,250,er,R5,E2E rule + C-law raw P (PBX_rule_best),3.6319369999091577,0,test
+20,100,196,ba,R1,"operators (P_esc, W, EW, P)",1.193455000020549,1,test
+20,100,196,ba,R1,rule_EW (calibrated scalar),0.9509329998991234,72,test
+20,100,196,ba,R1,"KNZ MP, 2 iterations",0.09019100002660707,2,test
+20,100,196,ba,R1,"KNZ MP, converged",0.3905339999619173,19,test
+20,100,196,ba,R1,"AP(eta=1) standalone, to fixed point",1.4348219999646972,30,test
+20,100,196,ba,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.011360000030435913,1,test
+20,100,196,ba,R1,"Realization C on raw P, K=5 (excl. base)",0.22508699998979864,5,test
+20,100,196,ba,R1,"linear raw-P propagation, K=5 (excl. base)",0.11109499996564409,5,test
+20,100,196,ba,R1,"Realization C standalone, T=3",0.12518400001226837,3,test
+20,100,196,ba,R1,"scalar oracle sweep (40 alphas, batched)",10.251909000089654,0,test
+20,100,196,ba,R1,"Monte Carlo, 50 worlds",0.3467489999593454,50,test
+20,100,196,ba,R1,"Monte Carlo, 200 worlds",0.689757000031932,200,test
+20,100,196,ba,R1,"Monte Carlo, 1000 worlds",3.0634380000265082,1000,test
+20,100,196,ba,R1,E2E calibrated rule,1.204516999905536,0,test
+20,100,196,ba,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),1.6949399999930392,0,test
+20,100,196,ba,R1,E2E rule + C-law raw P (PBX_rule_best),1.501411000049302,0,test
+24,100,196,ba,R2,"operators (P_esc, W, EW, P)",0.6828539999332861,1,test
+24,100,196,ba,R2,rule_EW (calibrated scalar),0.7666469999776382,94,test
+24,100,196,ba,R2,"KNZ MP, 2 iterations",0.05257700001948251,2,test
+24,100,196,ba,R2,"KNZ MP, converged",0.515349000011156,60,test
+24,100,196,ba,R2,"AP(eta=1) standalone, to fixed point",2.8856449999921097,54,test
+24,100,196,ba,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.009974000022339169,1,test
+24,100,196,ba,R2,"Realization C on raw P, K=5 (excl. base)",0.20026300001063646,5,test
+24,100,196,ba,R2,"linear raw-P propagation, K=5 (excl. base)",0.1113069999973959,5,test
+24,100,196,ba,R2,"Realization C standalone, T=3",0.11776899998494628,3,test
+24,100,196,ba,R2,"scalar oracle sweep (40 alphas, batched)",9.340520000023389,0,test
+24,100,196,ba,R2,"Monte Carlo, 50 worlds",0.43527700006507075,50,test
+24,100,196,ba,R2,"Monte Carlo, 200 worlds",0.9432409999590163,200,test
+24,100,196,ba,R2,"Monte Carlo, 1000 worlds",4.131627999981902,1000,test
+24,100,196,ba,R2,E2E calibrated rule,1.4116820000253938,0,test
+24,100,196,ba,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),1.974979000010535,0,test
+24,100,196,ba,R2,E2E rule + C-law raw P (PBX_rule_best),1.761478999924293,0,test
+28,100,196,ba,R3,"operators (P_esc, W, EW, P)",0.6816890000891362,1,test
+28,100,196,ba,R3,rule_EW (calibrated scalar),1.0032899999714573,128,test
+28,100,196,ba,R3,"KNZ MP, 2 iterations",0.06246200007353764,2,test
+28,100,196,ba,R3,"KNZ MP, converged",0.7061420000127328,56,test
+28,100,196,ba,R3,"AP(eta=1) standalone, to fixed point",7.81065099999978,97,test
+28,100,196,ba,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.013276000004225352,1,test
+28,100,196,ba,R3,"Realization C on raw P, K=5 (excl. base)",0.3217159999167052,5,test
+28,100,196,ba,R3,"linear raw-P propagation, K=5 (excl. base)",0.1865550000275107,5,test
+28,100,196,ba,R3,"Realization C standalone, T=3",0.1619519999849217,3,test
+28,100,196,ba,R3,"scalar oracle sweep (40 alphas, batched)",9.167542999989564,0,test
+28,100,196,ba,R3,"Monte Carlo, 50 worlds",0.48383300008936203,50,test
+28,100,196,ba,R3,"Monte Carlo, 200 worlds",1.3825760000827358,200,test
+28,100,196,ba,R3,"Monte Carlo, 1000 worlds",5.951246999984505,1000,test
+28,100,196,ba,R3,E2E calibrated rule,1.7727370000102383,0,test
+28,100,196,ba,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.1576399999503337,0,test
+28,100,196,ba,R3,E2E rule + C-law raw P (PBX_rule_best),2.005561000032685,0,test
+32,100,196,ba,R4,"operators (P_esc, W, EW, P)",0.7235199999513497,1,test
+32,100,196,ba,R4,rule_EW (calibrated scalar),1.3412739999694168,189,test
+32,100,196,ba,R4,"KNZ MP, 2 iterations",0.0504270000192264,2,test
+32,100,196,ba,R4,"KNZ MP, converged",0.2031220000162648,23,test
+32,100,196,ba,R4,"AP(eta=1) standalone, to fixed point",8.760907000009865,162,test
+32,100,196,ba,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.010482999982741603,1,test
+32,100,196,ba,R4,"Realization C on raw P, K=5 (excl. base)",0.22379699998964497,5,test
+32,100,196,ba,R4,"linear raw-P propagation, K=5 (excl. base)",0.10999400001310278,5,test
+32,100,196,ba,R4,"Realization C standalone, T=3",0.1564599999710481,3,test
+32,100,196,ba,R4,"scalar oracle sweep (40 alphas, batched)",6.7881140000736195,0,test
+32,100,196,ba,R4,"Monte Carlo, 50 worlds",0.641226999960054,50,test
+32,100,196,ba,R4,"Monte Carlo, 200 worlds",1.7518789999257933,200,test
+32,100,196,ba,R4,"Monte Carlo, 1000 worlds",8.59792199992171,1000,test
+32,100,196,ba,R4,E2E calibrated rule,2.0676510000612325,0,test
+32,100,196,ba,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.505962000100226,0,test
+32,100,196,ba,R4,E2E rule + C-law raw P (PBX_rule_best),2.5336760000982395,0,test
+36,100,196,ba,R5,"operators (P_esc, W, EW, P)",0.6648210001003463,1,test
+36,100,196,ba,R5,rule_EW (calibrated scalar),1.2921809999397738,180,test
+36,100,196,ba,R5,"KNZ MP, 2 iterations",0.05034599996633915,2,test
+36,100,196,ba,R5,"KNZ MP, converged",0.16673699997227232,12,test
+36,100,196,ba,R5,"AP(eta=1) standalone, to fixed point",6.067816000040693,157,test
+36,100,196,ba,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.010278999980073422,1,test
+36,100,196,ba,R5,"Realization C on raw P, K=5 (excl. base)",0.17100000002301385,5,test
+36,100,196,ba,R5,"linear raw-P propagation, K=5 (excl. base)",0.12701499997547216,5,test
+36,100,196,ba,R5,"Realization C standalone, T=3",0.11321800002406235,3,test
+36,100,196,ba,R5,"scalar oracle sweep (40 alphas, batched)",6.614677000015945,0,test
+36,100,196,ba,R5,"Monte Carlo, 50 worlds",0.6303710000565843,50,test
+36,100,196,ba,R5,"Monte Carlo, 200 worlds",1.8501650000644076,200,test
+36,100,196,ba,R5,"Monte Carlo, 1000 worlds",8.809530000007726,1000,test
+36,100,196,ba,R5,E2E calibrated rule,2.924590000020544,0,test
+36,100,196,ba,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.5871489999644837,0,test
+36,100,196,ba,R5,E2E rule + C-law raw P (PBX_rule_best),2.332412999976441,0,test
+40,100,300,ws,R1,"operators (P_esc, W, EW, P)",0.8609110000179498,1,test
+40,100,300,ws,R1,rule_EW (calibrated scalar),0.5730900001026384,77,test
+40,100,300,ws,R1,"KNZ MP, 2 iterations",0.04942199996094132,2,test
+40,100,300,ws,R1,"KNZ MP, converged",0.20350299996607646,19,test
+40,100,300,ws,R1,"AP(eta=1) standalone, to fixed point",1.2286190000168062,25,test
+40,100,300,ws,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.010787000064738095,1,test
+40,100,300,ws,R1,"Realization C on raw P, K=5 (excl. base)",0.23205800005143828,5,test
+40,100,300,ws,R1,"linear raw-P propagation, K=5 (excl. base)",0.1251669999646765,5,test
+40,100,300,ws,R1,"Realization C standalone, T=3",0.14314299994566682,3,test
+40,100,300,ws,R1,"scalar oracle sweep (40 alphas, batched)",69.55840699993132,0,test
+40,100,300,ws,R1,"Monte Carlo, 50 worlds",0.48191200005476276,50,test
+40,100,300,ws,R1,"Monte Carlo, 200 worlds",0.9912650000387657,200,test
+40,100,300,ws,R1,"Monte Carlo, 1000 worlds",3.962002999969627,1000,test
+40,100,300,ws,R1,E2E calibrated rule,1.6270019999637952,0,test
+40,100,300,ws,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),1.9281119999732255,0,test
+40,100,300,ws,R1,E2E rule + C-law raw P (PBX_rule_best),1.7071799999257564,0,test
+44,100,300,ws,R2,"operators (P_esc, W, EW, P)",0.5978249999998297,1,test
+44,100,300,ws,R2,rule_EW (calibrated scalar),0.9071590000075958,159,test
+44,100,300,ws,R2,"KNZ MP, 2 iterations",0.045960000079503516,2,test
+44,100,300,ws,R2,"KNZ MP, converged",0.5064730000867712,58,test
+44,100,300,ws,R2,"AP(eta=1) standalone, to fixed point",3.6417720000372356,89,test
+44,100,300,ws,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.007579000111945788,1,test
+44,100,300,ws,R2,"Realization C on raw P, K=5 (excl. base)",0.1342990000239297,5,test
+44,100,300,ws,R2,"linear raw-P propagation, K=5 (excl. base)",0.08739899999454792,5,test
+44,100,300,ws,R2,"Realization C standalone, T=3",0.10267300001487456,3,test
+44,100,300,ws,R2,"scalar oracle sweep (40 alphas, batched)",39.68519600005038,0,test
+44,100,300,ws,R2,"Monte Carlo, 50 worlds",0.5073800000445772,50,test
+44,100,300,ws,R2,"Monte Carlo, 200 worlds",1.3406820000909647,200,test
+44,100,300,ws,R2,"Monte Carlo, 1000 worlds",7.813447999978962,1000,test
+44,100,300,ws,R2,E2E calibrated rule,2.114818999984891,0,test
+44,100,300,ws,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.6583999999729713,0,test
+44,100,300,ws,R2,E2E rule + C-law raw P (PBX_rule_best),2.2728939999296927,0,test
+48,100,300,ws,R3,"operators (P_esc, W, EW, P)",0.7845379999480429,1,test
+48,100,300,ws,R3,rule_EW (calibrated scalar),4.349471999944399,603,test
+48,100,300,ws,R3,"KNZ MP, 2 iterations",0.05122000004575966,2,test
+48,100,300,ws,R3,"KNZ MP, converged",0.5816399999503119,55,test
+48,100,300,ws,R3,"AP(eta=1) standalone, to fixed point",28.595725000059247,490,test
+48,100,300,ws,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.01026800009640283,1,test
+48,100,300,ws,R3,"Realization C on raw P, K=5 (excl. base)",0.1788289999922199,5,test
+48,100,300,ws,R3,"linear raw-P propagation, K=5 (excl. base)",0.14336999993247446,5,test
+48,100,300,ws,R3,"Realization C standalone, T=3",0.11438500007443508,3,test
+48,100,300,ws,R3,"scalar oracle sweep (40 alphas, batched)",28.48128900006941,0,test
+48,100,300,ws,R3,"Monte Carlo, 50 worlds",0.6110320000516367,50,test
+48,100,300,ws,R3,"Monte Carlo, 200 worlds",1.7797819999714193,200,test
+48,100,300,ws,R3,"Monte Carlo, 1000 worlds",8.132216000035442,1000,test
+48,100,300,ws,R3,E2E calibrated rule,5.031386999917231,0,test
+48,100,300,ws,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),5.4907869999851755,0,test
+48,100,300,ws,R3,E2E rule + C-law raw P (PBX_rule_best),5.288788000029854,0,test
+52,100,300,ws,R4,"operators (P_esc, W, EW, P)",0.702418000059879,1,test
+52,100,300,ws,R4,rule_EW (calibrated scalar),4.678603999991537,671,test
+52,100,300,ws,R4,"KNZ MP, 2 iterations",0.06347900000491791,2,test
+52,100,300,ws,R4,"KNZ MP, converged",0.22987400006968528,14,test
+52,100,300,ws,R4,"AP(eta=1) standalone, to fixed point",22.573136000005434,586,test
+52,100,300,ws,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.010438000003887282,1,test
+52,100,300,ws,R4,"Realization C on raw P, K=5 (excl. base)",0.16888200002540543,5,test
+52,100,300,ws,R4,"linear raw-P propagation, K=5 (excl. base)",0.1395229999161529,5,test
+52,100,300,ws,R4,"Realization C standalone, T=3",0.11552200010100933,3,test
+52,100,300,ws,R4,"scalar oracle sweep (40 alphas, batched)",24.851990000001933,0,test
+52,100,300,ws,R4,"Monte Carlo, 50 worlds",0.8031919999211823,50,test
+52,100,300,ws,R4,"Monte Carlo, 200 worlds",2.4989259999301794,200,test
+52,100,300,ws,R4,"Monte Carlo, 1000 worlds",11.589507000053345,1000,test
+52,100,300,ws,R4,E2E calibrated rule,6.081774999984191,0,test
+52,100,300,ws,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),6.582567000009476,0,test
+52,100,300,ws,R4,E2E rule + C-law raw P (PBX_rule_best),6.239510000000337,0,test
+56,100,300,ws,R5,"operators (P_esc, W, EW, P)",0.686117999975977,1,test
+56,100,300,ws,R5,rule_EW (calibrated scalar),3.550369999970826,464,test
+56,100,300,ws,R5,"KNZ MP, 2 iterations",0.10493499996755418,2,test
+56,100,300,ws,R5,"KNZ MP, converged",0.14395699997749034,6,test
+56,100,300,ws,R5,"AP(eta=1) standalone, to fixed point",13.600964000033855,390,test
+56,100,300,ws,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.010207000059381244,1,test
+56,100,300,ws,R5,"Realization C on raw P, K=5 (excl. base)",0.21132300003046112,5,test
+56,100,300,ws,R5,"linear raw-P propagation, K=5 (excl. base)",0.13079400002879993,5,test
+56,100,300,ws,R5,"Realization C standalone, T=3",0.1411349999216327,3,test
+56,100,300,ws,R5,"scalar oracle sweep (40 alphas, batched)",17.746692999935476,0,test
+56,100,300,ws,R5,"Monte Carlo, 50 worlds",0.8059829999638168,50,test
+56,100,300,ws,R5,"Monte Carlo, 200 worlds",2.624734999926659,200,test
+56,100,300,ws,R5,"Monte Carlo, 1000 worlds",12.749892000101681,1000,test
+56,100,300,ws,R5,E2E calibrated rule,4.825654000001123,0,test
+56,100,300,ws,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),4.89516499999354,0,test
+56,100,300,ws,R5,E2E rule + C-law raw P (PBX_rule_best),4.4633359999579625,0,test
+60,100,180,grid,R1,"operators (P_esc, W, EW, P)",0.74217199994564,1,test
+60,100,180,grid,R1,rule_EW (calibrated scalar),0.48947400000542984,68,test
+60,100,180,grid,R1,"KNZ MP, 2 iterations",0.042087999986506475,2,test
+60,100,180,grid,R1,"KNZ MP, converged",0.1412389999586594,14,test
+60,100,180,grid,R1,"AP(eta=1) standalone, to fixed point",0.8492259999002272,18,test
+60,100,180,grid,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.01729399991745595,1,test
+60,100,180,grid,R1,"Realization C on raw P, K=5 (excl. base)",0.1775599999973565,5,test
+60,100,180,grid,R1,"linear raw-P propagation, K=5 (excl. base)",0.12803999993593607,5,test
+60,100,180,grid,R1,"Realization C standalone, T=3",0.12119200005145103,3,test
+60,100,180,grid,R1,"scalar oracle sweep (40 alphas, batched)",42.0960170000626,0,test
+60,100,180,grid,R1,"Monte Carlo, 50 worlds",0.3230040000516965,50,test
+60,100,180,grid,R1,"Monte Carlo, 200 worlds",0.7325529999206992,200,test
+60,100,180,grid,R1,"Monte Carlo, 1000 worlds",2.8114099999356768,1000,test
+60,100,180,grid,R1,E2E calibrated rule,1.2600240000892882,0,test
+60,100,180,grid,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),1.7116709999527302,0,test
+60,100,180,grid,R1,E2E rule + C-law raw P (PBX_rule_best),1.6424469999947178,0,test
+64,100,180,grid,R2,"operators (P_esc, W, EW, P)",0.8075839999719392,1,test
+64,100,180,grid,R2,rule_EW (calibrated scalar),0.8752070000355161,112,test
+64,100,180,grid,R2,"KNZ MP, 2 iterations",0.05233000001680921,2,test
+64,100,180,grid,R2,"KNZ MP, converged",0.3412629999957062,27,test
+64,100,180,grid,R2,"AP(eta=1) standalone, to fixed point",2.701215999991291,50,test
+64,100,180,grid,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.010419999966870819,1,test
+64,100,180,grid,R2,"Realization C on raw P, K=5 (excl. base)",0.19596699996782263,5,test
+64,100,180,grid,R2,"linear raw-P propagation, K=5 (excl. base)",0.1341910000292046,5,test
+64,100,180,grid,R2,"Realization C standalone, T=3",0.12044100003549829,3,test
+64,100,180,grid,R2,"scalar oracle sweep (40 alphas, batched)",74.29960899992238,0,test
+64,100,180,grid,R2,"Monte Carlo, 50 worlds",0.38607999999840104,50,test
+64,100,180,grid,R2,"Monte Carlo, 200 worlds",0.8772209999960978,200,test
+64,100,180,grid,R2,"Monte Carlo, 1000 worlds",4.0316309999752775,1000,test
+64,100,180,grid,R2,E2E calibrated rule,1.6575979999515766,0,test
+64,100,180,grid,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.780432000008659,0,test
+64,100,180,grid,R2,E2E rule + C-law raw P (PBX_rule_best),2.0519710000144187,0,test
+68,100,180,grid,R3,"operators (P_esc, W, EW, P)",0.7403790000353183,1,test
+68,100,180,grid,R3,rule_EW (calibrated scalar),2.1437110000306348,295,test
+68,100,180,grid,R3,"KNZ MP, 2 iterations",0.04475700006878469,2,test
+68,100,180,grid,R3,"KNZ MP, converged",1.078333999998904,124,test
+68,100,180,grid,R3,"AP(eta=1) standalone, to fixed point",12.885176000054344,214,test
+68,100,180,grid,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.010779000035654462,1,test
+68,100,180,grid,R3,"Realization C on raw P, K=5 (excl. base)",0.21494999998594722,5,test
+68,100,180,grid,R3,"linear raw-P propagation, K=5 (excl. base)",0.1167880000139121,5,test
+68,100,180,grid,R3,"Realization C standalone, T=3",0.1433360000646644,3,test
+68,100,180,grid,R3,"scalar oracle sweep (40 alphas, batched)",38.89905899995938,0,test
+68,100,180,grid,R3,"Monte Carlo, 50 worlds",0.4776800000172443,50,test
+68,100,180,grid,R3,"Monte Carlo, 200 worlds",1.1564089999183125,200,test
+68,100,180,grid,R3,"Monte Carlo, 1000 worlds",4.484569999931409,1000,test
+68,100,180,grid,R3,E2E calibrated rule,2.1885479999355084,0,test
+68,100,180,grid,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.7367789999743763,0,test
+68,100,180,grid,R3,E2E rule + C-law raw P (PBX_rule_best),2.425096000024496,0,test
+72,100,180,grid,R4,"operators (P_esc, W, EW, P)",0.9433989999934056,1,test
+72,100,180,grid,R4,rule_EW (calibrated scalar),10.963854000010542,1293,test
+72,100,180,grid,R4,"KNZ MP, 2 iterations",0.07512399997722241,2,test
+72,100,180,grid,R4,"KNZ MP, converged",0.5420599999297337,54,test
+72,100,180,grid,R4,"AP(eta=1) standalone, to fixed point",48.09215700004188,1109,test
+72,100,180,grid,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.012279999964448507,1,test
+72,100,180,grid,R4,"Realization C on raw P, K=5 (excl. base)",0.3123559999949066,5,test
+72,100,180,grid,R4,"linear raw-P propagation, K=5 (excl. base)",0.10805799990976084,5,test
+72,100,180,grid,R4,"Realization C standalone, T=3",0.14800299993567023,3,test
+72,100,180,grid,R4,"scalar oracle sweep (40 alphas, batched)",60.98636699994131,0,test
+72,100,180,grid,R4,"Monte Carlo, 50 worlds",0.6744280000248182,50,test
+72,100,180,grid,R4,"Monte Carlo, 200 worlds",2.0374560000391284,200,test
+72,100,180,grid,R4,"Monte Carlo, 1000 worlds",8.979117999956543,1000,test
+72,100,180,grid,R4,E2E calibrated rule,15.574227999991308,0,test
+72,100,180,grid,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),16.380688000026566,0,test
+72,100,180,grid,R4,E2E rule + C-law raw P (PBX_rule_best),13.44349799990141,0,test
+76,100,180,grid,R5,"operators (P_esc, W, EW, P)",1.2291400000776775,1,test
+76,100,180,grid,R5,rule_EW (calibrated scalar),12.78830699993705,1406,test
+76,100,180,grid,R5,"KNZ MP, 2 iterations",0.0513129999717421,2,test
+76,100,180,grid,R5,"KNZ MP, converged",0.20079199998690456,18,test
+76,100,180,grid,R5,"AP(eta=1) standalone, to fixed point",70.79209700009415,1242,test
+76,100,180,grid,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.15474700001050223,1,test
+76,100,180,grid,R5,"Realization C on raw P, K=5 (excl. base)",2.7432750000571104,5,test
+76,100,180,grid,R5,"linear raw-P propagation, K=5 (excl. base)",0.15348900001299626,5,test
+76,100,180,grid,R5,"Realization C standalone, T=3",0.16776699999354605,3,test
+76,100,180,grid,R5,"scalar oracle sweep (40 alphas, batched)",53.433448999953725,0,test
+76,100,180,grid,R5,"Monte Carlo, 50 worlds",0.5971019999151395,50,test
+76,100,180,grid,R5,"Monte Carlo, 200 worlds",1.6851330000235976,200,test
+76,100,180,grid,R5,"Monte Carlo, 1000 worlds",8.124422999912895,1000,test
+76,100,180,grid,R5,E2E calibrated rule,11.351686000011796,0,test
+76,100,180,grid,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),11.091345000068031,0,test
+76,100,180,grid,R5,E2E rule + C-law raw P (PBX_rule_best),11.00240199991731,0,test
+80,100,175,rect,R1,"operators (P_esc, W, EW, P)",0.6882310000264624,1,test
+80,100,175,rect,R1,rule_EW (calibrated scalar),0.4865060000156518,67,test
+80,100,175,rect,R1,"KNZ MP, 2 iterations",0.05169100006696681,2,test
+80,100,175,rect,R1,"KNZ MP, converged",0.17374000003655965,14,test
+80,100,175,rect,R1,"AP(eta=1) standalone, to fixed point",0.8706349999556551,18,test
+80,100,175,rect,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.010463000080562779,1,test
+80,100,175,rect,R1,"Realization C on raw P, K=5 (excl. base)",0.1675429999750122,5,test
+80,100,175,rect,R1,"linear raw-P propagation, K=5 (excl. base)",0.12757599995438795,5,test
+80,100,175,rect,R1,"Realization C standalone, T=3",0.11447700001099292,3,test
+80,100,175,rect,R1,"scalar oracle sweep (40 alphas, batched)",124.97593199998391,0,test
+80,100,175,rect,R1,"Monte Carlo, 50 worlds",0.3129740000531456,50,test
+80,100,175,rect,R1,"Monte Carlo, 200 worlds",0.7019189999937225,200,test
+80,100,175,rect,R1,"Monte Carlo, 1000 worlds",2.9023399999914545,1000,test
+80,100,175,rect,R1,E2E calibrated rule,1.2206809999497636,0,test
+80,100,175,rect,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),1.8311789999643224,0,test
+80,100,175,rect,R1,E2E rule + C-law raw P (PBX_rule_best),1.4117660000465548,0,test
+84,100,175,rect,R2,"operators (P_esc, W, EW, P)",0.8069890000115265,1,test
+84,100,175,rect,R2,rule_EW (calibrated scalar),0.8001009999816233,112,test
+84,100,175,rect,R2,"KNZ MP, 2 iterations",0.05601899999874149,2,test
+84,100,175,rect,R2,"KNZ MP, converged",0.23585200005982188,26,test
+84,100,175,rect,R2,"AP(eta=1) standalone, to fixed point",2.286725999965711,48,test
+84,100,175,rect,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.009930000032909447,1,test
+84,100,175,rect,R2,"Realization C on raw P, K=5 (excl. base)",0.21767499993075035,5,test
+84,100,175,rect,R2,"linear raw-P propagation, K=5 (excl. base)",0.10885200003940554,5,test
+84,100,175,rect,R2,"Realization C standalone, T=3",0.12890400000742375,3,test
+84,100,175,rect,R2,"scalar oracle sweep (40 alphas, batched)",51.94700200001989,0,test
+84,100,175,rect,R2,"Monte Carlo, 50 worlds",0.7655350000277394,50,test
+84,100,175,rect,R2,"Monte Carlo, 200 worlds",1.6759789999696295,200,test
+84,100,175,rect,R2,"Monte Carlo, 1000 worlds",5.896159000030821,1000,test
+84,100,175,rect,R2,E2E calibrated rule,3.2440559999713514,0,test
+84,100,175,rect,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),4.326978999984021,0,test
+84,100,175,rect,R2,E2E rule + C-law raw P (PBX_rule_best),3.7130370000113544,0,test
+88,100,175,rect,R3,"operators (P_esc, W, EW, P)",1.5427430000727327,1,test
+88,100,175,rect,R3,rule_EW (calibrated scalar),3.898257999935595,322,test
+88,100,175,rect,R3,"KNZ MP, 2 iterations",0.0638669999943886,2,test
+88,100,175,rect,R3,"KNZ MP, converged",1.2598619999835137,99,test
+88,100,175,rect,R3,"AP(eta=1) standalone, to fixed point",23.157902999969338,218,test
+88,100,175,rect,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.016108000068015826,1,test
+88,100,175,rect,R3,"Realization C on raw P, K=5 (excl. base)",0.44414800004233257,5,test
+88,100,175,rect,R3,"linear raw-P propagation, K=5 (excl. base)",0.3492979999464296,5,test
+88,100,175,rect,R3,"Realization C standalone, T=3",0.2694810000321013,3,test
+88,100,175,rect,R3,"scalar oracle sweep (40 alphas, batched)",197.08380400004444,0,test
+88,100,175,rect,R3,"Monte Carlo, 50 worlds",0.4871050000474497,50,test
+88,100,175,rect,R3,"Monte Carlo, 200 worlds",1.2739019999798984,200,test
+88,100,175,rect,R3,"Monte Carlo, 1000 worlds",5.904762000000119,1000,test
+88,100,175,rect,R3,E2E calibrated rule,3.267871000048217,0,test
+88,100,175,rect,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.8647799999580457,0,test
+88,100,175,rect,R3,E2E rule + C-law raw P (PBX_rule_best),3.730699000016102,0,test
+92,100,175,rect,R4,"operators (P_esc, W, EW, P)",0.6471799999872019,1,test
+92,100,175,rect,R4,rule_EW (calibrated scalar),19.73308900005577,2472,test
+92,100,175,rect,R4,"KNZ MP, 2 iterations",0.10080300000936404,2,test
+92,100,175,rect,R4,"KNZ MP, converged",0.4981509999879563,64,test
+92,100,175,rect,R4,"AP(eta=1) standalone, to fixed point",132.18135200008874,2140,test
+92,100,175,rect,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.014484999951491773,1,test
+92,100,175,rect,R4,"Realization C on raw P, K=5 (excl. base)",0.36793300000681484,5,test
+92,100,175,rect,R4,"linear raw-P propagation, K=5 (excl. base)",0.16716200002520054,5,test
+92,100,175,rect,R4,"Realization C standalone, T=3",0.1641930000459979,3,test
+92,100,175,rect,R4,"scalar oracle sweep (40 alphas, batched)",122.69946000003529,0,test
+92,100,175,rect,R4,"Monte Carlo, 50 worlds",0.847054000018943,50,test
+92,100,175,rect,R4,"Monte Carlo, 200 worlds",2.3963760000924594,200,test
+92,100,175,rect,R4,"Monte Carlo, 1000 worlds",7.528519999937089,1000,test
+92,100,175,rect,R4,E2E calibrated rule,19.977426000082232,0,test
+92,100,175,rect,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),20.78321599992705,0,test
+92,100,175,rect,R4,E2E rule + C-law raw P (PBX_rule_best),18.645190000029288,0,test
+96,100,175,rect,R5,"operators (P_esc, W, EW, P)",0.880878999964807,1,test
+96,100,175,rect,R5,rule_EW (calibrated scalar),44.281744000045364,5237,test
+96,100,175,rect,R5,"KNZ MP, 2 iterations",0.06352800005515746,2,test
+96,100,175,rect,R5,"KNZ MP, converged",0.23270300005151512,18,test
+96,100,175,rect,R5,"AP(eta=1) standalone, to fixed point",202.93045199991866,4584,test
+96,100,175,rect,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.010153999937756453,1,test
+96,100,175,rect,R5,"Realization C on raw P, K=5 (excl. base)",0.185471999998299,5,test
+96,100,175,rect,R5,"linear raw-P propagation, K=5 (excl. base)",0.1342099999419588,5,test
+96,100,175,rect,R5,"Realization C standalone, T=3",0.1338529999657112,3,test
+96,100,175,rect,R5,"scalar oracle sweep (40 alphas, batched)",175.2689879999707,0,test
+96,100,175,rect,R5,"Monte Carlo, 50 worlds",0.6566739999698257,50,test
+96,100,175,rect,R5,"Monte Carlo, 200 worlds",1.4794109999911598,200,test
+96,100,175,rect,R5,"Monte Carlo, 1000 worlds",6.23383900006047,1000,test
+96,100,175,rect,R5,E2E calibrated rule,53.36863299999095,0,test
+96,100,175,rect,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),54.198701000018445,0,test
+96,100,175,rect,R5,E2E rule + C-law raw P (PBX_rule_best),53.14707599995927,0,test
+100,100,299,sbm,R1,"operators (P_esc, W, EW, P)",1.082898999925419,1,test
+100,100,299,sbm,R1,rule_EW (calibrated scalar),0.824748000013642,76,test
+100,100,299,sbm,R1,"KNZ MP, 2 iterations",0.07248999997955252,2,test
+100,100,299,sbm,R1,"KNZ MP, converged",0.30234999996991974,19,test
+100,100,299,sbm,R1,"AP(eta=1) standalone, to fixed point",1.8445329999394744,26,test
+100,100,299,sbm,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.013060000014775142,1,test
+100,100,299,sbm,R1,"Realization C on raw P, K=5 (excl. base)",0.2862419999019039,5,test
+100,100,299,sbm,R1,"linear raw-P propagation, K=5 (excl. base)",0.1734080000233007,5,test
+100,100,299,sbm,R1,"Realization C standalone, T=3",0.14877299997806404,3,test
+100,100,299,sbm,R1,"scalar oracle sweep (40 alphas, batched)",45.793689999982234,0,test
+100,100,299,sbm,R1,"Monte Carlo, 50 worlds",0.5271450000918776,50,test
+100,100,299,sbm,R1,"Monte Carlo, 200 worlds",1.4175449999811462,200,test
+100,100,299,sbm,R1,"Monte Carlo, 1000 worlds",5.621693000080086,1000,test
+100,100,299,sbm,R1,E2E calibrated rule,1.7839659999481228,0,test
+100,100,299,sbm,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.4319760000253154,0,test
+100,100,299,sbm,R1,E2E rule + C-law raw P (PBX_rule_best),2.1248140000125204,0,test
+104,100,313,sbm,R2,"operators (P_esc, W, EW, P)",0.9168960000351944,1,test
+104,100,313,sbm,R2,rule_EW (calibrated scalar),1.5330510000239883,147,test
+104,100,313,sbm,R2,"KNZ MP, 2 iterations",0.07197700006145169,2,test
+104,100,313,sbm,R2,"KNZ MP, converged",1.2663200000133656,81,test
+104,100,313,sbm,R2,"AP(eta=1) standalone, to fixed point",6.8075820000785825,88,test
+104,100,313,sbm,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.01724500009459007,1,test
+104,100,313,sbm,R2,"Realization C on raw P, K=5 (excl. base)",0.27476099990053626,5,test
+104,100,313,sbm,R2,"linear raw-P propagation, K=5 (excl. base)",0.18787900000916125,5,test
+104,100,313,sbm,R2,"Realization C standalone, T=3",0.1716209999358398,3,test
+104,100,313,sbm,R2,"scalar oracle sweep (40 alphas, batched)",29.91882500009524,0,test
+104,100,313,sbm,R2,"Monte Carlo, 50 worlds",0.6513419999691905,50,test
+104,100,313,sbm,R2,"Monte Carlo, 200 worlds",1.8119470000783622,200,test
+104,100,313,sbm,R2,"Monte Carlo, 1000 worlds",5.4755400000203736,1000,test
+104,100,313,sbm,R2,E2E calibrated rule,1.8438370000239956,0,test
+104,100,313,sbm,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.320639000004121,0,test
+104,100,313,sbm,R2,E2E rule + C-law raw P (PBX_rule_best),2.077122000059717,0,test
+108,100,304,sbm,R3,"operators (P_esc, W, EW, P)",0.6438080000634727,1,test
+108,100,304,sbm,R3,rule_EW (calibrated scalar),2.543290999938108,353,test
+108,100,304,sbm,R3,"KNZ MP, 2 iterations",0.05624699997497373,2,test
+108,100,304,sbm,R3,"KNZ MP, converged",0.45776100000693987,41,test
+108,100,304,sbm,R3,"AP(eta=1) standalone, to fixed point",15.895863999958237,296,test
+108,100,304,sbm,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.010631000009198033,1,test
+108,100,304,sbm,R3,"Realization C on raw P, K=5 (excl. base)",0.17532300000766554,5,test
+108,100,304,sbm,R3,"linear raw-P propagation, K=5 (excl. base)",0.10938200000509823,5,test
+108,100,304,sbm,R3,"Realization C standalone, T=3",0.12501800006248232,3,test
+108,100,304,sbm,R3,"scalar oracle sweep (40 alphas, batched)",17.953473000034137,0,test
+108,100,304,sbm,R3,"Monte Carlo, 50 worlds",0.5767119999973147,50,test
+108,100,304,sbm,R3,"Monte Carlo, 200 worlds",1.8253729999742063,200,test
+108,100,304,sbm,R3,"Monte Carlo, 1000 worlds",8.236948999979177,1000,test
+108,100,304,sbm,R3,E2E calibrated rule,3.568149999978232,0,test
+108,100,304,sbm,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.871422000088387,0,test
+108,100,304,sbm,R3,E2E rule + C-law raw P (PBX_rule_best),3.567531000044255,0,test
+112,100,292,sbm,R4,"operators (P_esc, W, EW, P)",0.9790569999950094,1,test
+112,100,292,sbm,R4,rule_EW (calibrated scalar),2.4152440000762,345,test
+112,100,292,sbm,R4,"KNZ MP, 2 iterations",0.05086700002721045,2,test
+112,100,292,sbm,R4,"KNZ MP, converged",0.17339900000479247,16,test
+112,100,292,sbm,R4,"AP(eta=1) standalone, to fixed point",14.056695000022046,305,test
+112,100,292,sbm,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.011334000078022655,1,test
+112,100,292,sbm,R4,"Realization C on raw P, K=5 (excl. base)",0.1676710000992898,5,test
+112,100,292,sbm,R4,"linear raw-P propagation, K=5 (excl. base)",0.12653999999656662,5,test
+112,100,292,sbm,R4,"Realization C standalone, T=3",0.1145479999422605,3,test
+112,100,292,sbm,R4,"scalar oracle sweep (40 alphas, batched)",12.951937000025282,0,test
+112,100,292,sbm,R4,"Monte Carlo, 50 worlds",0.7745970000314628,50,test
+112,100,292,sbm,R4,"Monte Carlo, 200 worlds",2.4856490000502163,200,test
+112,100,292,sbm,R4,"Monte Carlo, 1000 worlds",11.422239000012269,1000,test
+112,100,292,sbm,R4,E2E calibrated rule,3.3022090000258686,0,test
+112,100,292,sbm,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.7498869999126327,0,test
+112,100,292,sbm,R4,E2E rule + C-law raw P (PBX_rule_best),3.5553719999370514,0,test
+116,100,304,sbm,R5,"operators (P_esc, W, EW, P)",0.7308559999046338,1,test
+116,100,304,sbm,R5,rule_EW (calibrated scalar),2.452762999951119,342,test
+116,100,304,sbm,R5,"KNZ MP, 2 iterations",0.06290199996783485,2,test
+116,100,304,sbm,R5,"KNZ MP, converged",0.1424870000619194,8,test
+116,100,304,sbm,R5,"AP(eta=1) standalone, to fixed point",11.722340000005715,301,test
+116,100,304,sbm,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.009545000011712546,1,test
+116,100,304,sbm,R5,"Realization C on raw P, K=5 (excl. base)",0.2069299999902796,5,test
+116,100,304,sbm,R5,"linear raw-P propagation, K=5 (excl. base)",0.10800900008689496,5,test
+116,100,304,sbm,R5,"Realization C standalone, T=3",0.1352860000451983,3,test
+116,100,304,sbm,R5,"scalar oracle sweep (40 alphas, batched)",12.932539999951587,0,test
+116,100,304,sbm,R5,"Monte Carlo, 50 worlds",0.8169750000206477,50,test
+116,100,304,sbm,R5,"Monte Carlo, 200 worlds",2.6399660000606673,200,test
+116,100,304,sbm,R5,"Monte Carlo, 1000 worlds",12.319725999986986,1000,test
+116,100,304,sbm,R5,E2E calibrated rule,3.2410869999921488,0,test
+116,100,304,sbm,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.7928369999917777,0,test
+116,100,304,sbm,R5,E2E rule + C-law raw P (PBX_rule_best),3.5284649999312023,0,test
+120,100,195,cp,R1,"operators (P_esc, W, EW, P)",0.7486739999649217,1,test
+120,100,195,cp,R1,rule_EW (calibrated scalar),0.5274270000654724,71,test
+120,100,195,cp,R1,"KNZ MP, 2 iterations",0.044504000015876954,2,test
+120,100,195,cp,R1,"KNZ MP, converged",0.19201500003873662,21,test
+120,100,195,cp,R1,"AP(eta=1) standalone, to fixed point",1.3564230000611133,28,test
+120,100,195,cp,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.010831999929905578,1,test
+120,100,195,cp,R1,"Realization C on raw P, K=5 (excl. base)",0.21130699997229385,5,test
+120,100,195,cp,R1,"linear raw-P propagation, K=5 (excl. base)",0.10270900008890749,5,test
+120,100,195,cp,R1,"Realization C standalone, T=3",0.12544199989861227,3,test
+120,100,195,cp,R1,"scalar oracle sweep (40 alphas, batched)",9.256212999957825,0,test
+120,100,195,cp,R1,"Monte Carlo, 50 worlds",0.35345799994956906,50,test
+120,100,195,cp,R1,"Monte Carlo, 200 worlds",0.7148309999820412,200,test
+120,100,195,cp,R1,"Monte Carlo, 1000 worlds",3.00548699999581,1000,test
+120,100,195,cp,R1,E2E calibrated rule,1.2411899999733578,0,test
+120,100,195,cp,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),1.7172619999428207,0,test
+120,100,195,cp,R1,E2E rule + C-law raw P (PBX_rule_best),1.5049529999942024,0,test
+124,100,199,cp,R2,"operators (P_esc, W, EW, P)",0.728243000025941,1,test
+124,100,199,cp,R2,rule_EW (calibrated scalar),0.8327040000040142,83,test
+124,100,199,cp,R2,"KNZ MP, 2 iterations",0.06302099995991739,2,test
+124,100,199,cp,R2,"KNZ MP, converged",1.4753109999219305,120,test
+124,100,199,cp,R2,"AP(eta=1) standalone, to fixed point",4.124718999946708,50,test
+124,100,199,cp,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.02653400008512108,1,test
+124,100,199,cp,R2,"Realization C on raw P, K=5 (excl. base)",0.25089200005368184,5,test
+124,100,199,cp,R2,"linear raw-P propagation, K=5 (excl. base)",0.1689849999593207,5,test
+124,100,199,cp,R2,"Realization C standalone, T=3",0.18972299994857167,3,test
+124,100,199,cp,R2,"scalar oracle sweep (40 alphas, batched)",7.373080999968806,0,test
+124,100,199,cp,R2,"Monte Carlo, 50 worlds",0.5266550000442294,50,test
+124,100,199,cp,R2,"Monte Carlo, 200 worlds",1.2765379999564175,200,test
+124,100,199,cp,R2,"Monte Carlo, 1000 worlds",4.990162000012788,1000,test
+124,100,199,cp,R2,E2E calibrated rule,1.379102999976567,0,test
+124,100,199,cp,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),1.8251230000032592,0,test
+124,100,199,cp,R2,E2E rule + C-law raw P (PBX_rule_best),1.5765800000053787,0,test
+128,100,214,cp,R3,"operators (P_esc, W, EW, P)",0.632580000001326,1,test
+128,100,214,cp,R3,rule_EW (calibrated scalar),0.7380499999953827,99,test
+128,100,214,cp,R3,"KNZ MP, 2 iterations",0.07298000002720073,2,test
+128,100,214,cp,R3,"KNZ MP, converged",0.2272949999451157,26,test
+128,100,214,cp,R3,"AP(eta=1) standalone, to fixed point",4.107043999965754,75,test
+128,100,214,cp,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.010662000022421125,1,test
+128,100,214,cp,R3,"Realization C on raw P, K=5 (excl. base)",0.22188699995240313,5,test
+128,100,214,cp,R3,"linear raw-P propagation, K=5 (excl. base)",0.119640999969306,5,test
+128,100,214,cp,R3,"Realization C standalone, T=3",0.11334400005580392,3,test
+128,100,214,cp,R3,"scalar oracle sweep (40 alphas, batched)",5.210472999920057,0,test
+128,100,214,cp,R3,"Monte Carlo, 50 worlds",0.45090899993738276,50,test
+128,100,214,cp,R3,"Monte Carlo, 200 worlds",1.3123689999474664,200,test
+128,100,214,cp,R3,"Monte Carlo, 1000 worlds",5.96964500005015,1000,test
+128,100,214,cp,R3,E2E calibrated rule,1.5025059999516088,0,test
+128,100,214,cp,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),1.9470749999754844,0,test
+128,100,214,cp,R3,E2E rule + C-law raw P (PBX_rule_best),1.7744630000606776,0,test
+132,100,214,cp,R4,"operators (P_esc, W, EW, P)",0.6653539999206259,1,test
+132,100,214,cp,R4,rule_EW (calibrated scalar),0.8586790000890687,119,test
+132,100,214,cp,R4,"KNZ MP, 2 iterations",0.04417700006342784,2,test
+132,100,214,cp,R4,"KNZ MP, converged",0.13284100009514077,13,test
+132,100,214,cp,R4,"AP(eta=1) standalone, to fixed point",5.384709999930237,101,test
+132,100,214,cp,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.009732999956213462,1,test
+132,100,214,cp,R4,"Realization C on raw P, K=5 (excl. base)",0.18421799995849142,5,test
+132,100,214,cp,R4,"linear raw-P propagation, K=5 (excl. base)",0.14026499991359742,5,test
+132,100,214,cp,R4,"Realization C standalone, T=3",0.12330700008078566,3,test
+132,100,214,cp,R4,"scalar oracle sweep (40 alphas, batched)",4.793870999947103,0,test
+132,100,214,cp,R4,"Monte Carlo, 50 worlds",0.5884749999722771,50,test
+132,100,214,cp,R4,"Monte Carlo, 200 worlds",1.7259739998962687,200,test
+132,100,214,cp,R4,"Monte Carlo, 1000 worlds",7.985265000002073,1000,test
+132,100,214,cp,R4,E2E calibrated rule,1.5936099999862563,0,test
+132,100,214,cp,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.090175000034833,0,test
+132,100,214,cp,R4,E2E rule + C-law raw P (PBX_rule_best),1.9004509999831498,0,test
+136,100,210,cp,R5,"operators (P_esc, W, EW, P)",0.7816160000402306,1,test
+136,100,210,cp,R5,rule_EW (calibrated scalar),0.9621110000352928,134,test
+136,100,210,cp,R5,"KNZ MP, 2 iterations",0.07803099992997886,2,test
+136,100,210,cp,R5,"KNZ MP, converged",0.11173799998687173,8,test
+136,100,210,cp,R5,"AP(eta=1) standalone, to fixed point",5.398734999971566,117,test
+136,100,210,cp,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.009756999929777521,1,test
+136,100,210,cp,R5,"Realization C on raw P, K=5 (excl. base)",0.16869000000951928,5,test
+136,100,210,cp,R5,"linear raw-P propagation, K=5 (excl. base)",0.1379980000137948,5,test
+136,100,210,cp,R5,"Realization C standalone, T=3",0.1095080000368398,3,test
+136,100,210,cp,R5,"scalar oracle sweep (40 alphas, batched)",4.88245500002904,0,test
+136,100,210,cp,R5,"Monte Carlo, 50 worlds",0.5800239999871337,50,test
+136,100,210,cp,R5,"Monte Carlo, 200 worlds",1.7940420000286394,200,test
+136,100,210,cp,R5,"Monte Carlo, 1000 worlds",8.499164999989262,1000,test
+136,100,210,cp,R5,E2E calibrated rule,1.8020800000613235,0,test
+136,100,210,cp,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.2362189999967086,0,test
+136,100,210,cp,R5,E2E rule + C-law raw P (PBX_rule_best),1.9770229999949152,0,test
+140,100,99,tree,R1,"operators (P_esc, W, EW, P)",0.6368890000203464,1,test
+140,100,99,tree,R1,rule_EW (calibrated scalar),0.5026779999752762,64,test
+140,100,99,tree,R1,"KNZ MP, 2 iterations",0.04050099994401535,2,test
+140,100,99,tree,R1,"KNZ MP, converged",0.08844800004226272,11,test
+140,100,99,tree,R1,"AP(eta=1) standalone, to fixed point",0.9007779999592458,19,test
+140,100,99,tree,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.010513000006540096,1,test
+140,100,99,tree,R1,"Realization C on raw P, K=5 (excl. base)",0.258400999996411,5,test
+140,100,99,tree,R1,"linear raw-P propagation, K=5 (excl. base)",0.11620600002970605,5,test
+140,100,99,tree,R1,"Realization C standalone, T=3",0.11921699990580237,3,test
+140,100,99,tree,R1,"scalar oracle sweep (40 alphas, batched)",340.2145239999754,0,test
+140,100,99,tree,R1,"Monte Carlo, 50 worlds",0.33048299997062713,50,test
+140,100,99,tree,R1,"Monte Carlo, 200 worlds",0.6247049999501542,200,test
+140,100,99,tree,R1,"Monte Carlo, 1000 worlds",2.3740310000448517,1000,test
+140,100,99,tree,R1,E2E calibrated rule,1.1552099999789789,0,test
+140,100,99,tree,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),1.728846999981215,0,test
+140,100,99,tree,R1,E2E rule + C-law raw P (PBX_rule_best),1.4943600000378865,0,test
+144,100,99,tree,R2,"operators (P_esc, W, EW, P)",0.7040240000151243,1,test
+144,100,99,tree,R2,rule_EW (calibrated scalar),0.6013419999817415,86,test
+144,100,99,tree,R2,"KNZ MP, 2 iterations",0.04369800001313706,2,test
+144,100,99,tree,R2,"KNZ MP, converged",0.16044899996359163,16,test
+144,100,99,tree,R2,"AP(eta=1) standalone, to fixed point",1.482041999906869,32,test
+144,100,99,tree,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.010653999993337493,1,test
+144,100,99,tree,R2,"Realization C on raw P, K=5 (excl. base)",0.22393099993678334,5,test
+144,100,99,tree,R2,"linear raw-P propagation, K=5 (excl. base)",0.11020399995231855,5,test
+144,100,99,tree,R2,"Realization C standalone, T=3",0.12629599996216712,3,test
+144,100,99,tree,R2,"scalar oracle sweep (40 alphas, batched)",112.74710200007121,0,test
+144,100,99,tree,R2,"Monte Carlo, 50 worlds",0.3387540000403533,50,test
+144,100,99,tree,R2,"Monte Carlo, 200 worlds",0.7178220000696456,200,test
+144,100,99,tree,R2,"Monte Carlo, 1000 worlds",2.879548999999315,1000,test
+144,100,99,tree,R2,E2E calibrated rule,1.5756559999999808,0,test
+144,100,99,tree,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),1.8973240000832448,0,test
+144,100,99,tree,R2,E2E rule + C-law raw P (PBX_rule_best),1.6374739999491794,0,test
+148,100,99,tree,R3,"operators (P_esc, W, EW, P)",0.7304719999865483,1,test
+148,100,99,tree,R3,rule_EW (calibrated scalar),1.2808510000468232,182,test
+148,100,99,tree,R3,"KNZ MP, 2 iterations",0.06345400004192925,2,test
+148,100,99,tree,R3,"KNZ MP, converged",0.16710499994587735,24,test
+148,100,99,tree,R3,"AP(eta=1) standalone, to fixed point",6.999660000019503,132,test
+148,100,99,tree,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.010077000069941278,1,test
+148,100,99,tree,R3,"Realization C on raw P, K=5 (excl. base)",0.17205200003900245,5,test
+148,100,99,tree,R3,"linear raw-P propagation, K=5 (excl. base)",0.12543200000436627,5,test
+148,100,99,tree,R3,"Realization C standalone, T=3",0.12297200009925291,3,test
+148,100,99,tree,R3,"scalar oracle sweep (40 alphas, batched)",83.5061579999774,0,test
+148,100,99,tree,R3,"Monte Carlo, 50 worlds",0.47589700000116864,50,test
+148,100,99,tree,R3,"Monte Carlo, 200 worlds",1.0149490000230799,200,test
+148,100,99,tree,R3,"Monte Carlo, 1000 worlds",4.078847000073438,1000,test
+148,100,99,tree,R3,E2E calibrated rule,2.0684889999529332,0,test
+148,100,99,tree,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.4927169999955368,0,test
+148,100,99,tree,R3,E2E rule + C-law raw P (PBX_rule_best),2.25303599995641,0,test
+152,100,99,tree,R4,"operators (P_esc, W, EW, P)",0.7074709999415063,1,test
+152,100,99,tree,R4,rule_EW (calibrated scalar),3.982719999953588,588,test
+152,100,99,tree,R4,"KNZ MP, 2 iterations",0.05718600004911423,2,test
+152,100,99,tree,R4,"KNZ MP, converged",0.25451800001974334,32,test
+152,100,99,tree,R4,"AP(eta=1) standalone, to fixed point",36.407054000051176,686,test
+152,100,99,tree,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.010583000062069914,1,test
+152,100,99,tree,R4,"Realization C on raw P, K=5 (excl. base)",0.2248540000664434,5,test
+152,100,99,tree,R4,"linear raw-P propagation, K=5 (excl. base)",0.10628100005760643,5,test
+152,100,99,tree,R4,"Realization C standalone, T=3",0.11909500005913287,3,test
+152,100,99,tree,R4,"scalar oracle sweep (40 alphas, batched)",123.81904899996243,0,test
+152,100,99,tree,R4,"Monte Carlo, 50 worlds",0.432342000067365,50,test
+152,100,99,tree,R4,"Monte Carlo, 200 worlds",1.1817810000138707,200,test
+152,100,99,tree,R4,"Monte Carlo, 1000 worlds",5.101610999986406,1000,test
+152,100,99,tree,R4,E2E calibrated rule,6.814541999915491,0,test
+152,100,99,tree,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),8.803791000104866,0,test
+152,100,99,tree,R4,E2E rule + C-law raw P (PBX_rule_best),8.42064800008302,0,test
+156,100,99,tree,R5,"operators (P_esc, W, EW, P)",0.8778960000199731,1,test
+156,100,99,tree,R5,rule_EW (calibrated scalar),50.97917199998392,4583,test
+156,100,99,tree,R5,"KNZ MP, 2 iterations",0.12877700009994442,2,test
+156,100,99,tree,R5,"KNZ MP, converged",0.30460100003892876,24,test
+156,100,99,tree,R5,"AP(eta=1) standalone, to fixed point",272.6647920000005,3995,test
+156,100,99,tree,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.009774999966793985,1,test
+156,100,99,tree,R5,"Realization C on raw P, K=5 (excl. base)",0.20985300000120333,5,test
+156,100,99,tree,R5,"linear raw-P propagation, K=5 (excl. base)",0.12812700003905775,5,test
+156,100,99,tree,R5,"Realization C standalone, T=3",0.12065599992183706,3,test
+156,100,99,tree,R5,"scalar oracle sweep (40 alphas, batched)",150.52721100005328,0,test
+156,100,99,tree,R5,"Monte Carlo, 50 worlds",0.46623799994449655,50,test
+156,100,99,tree,R5,"Monte Carlo, 200 worlds",1.146569999946223,200,test
+156,100,99,tree,R5,"Monte Carlo, 1000 worlds",4.975094000087665,1000,test
+156,100,99,tree,R5,E2E calibrated rule,32.1981990000495,0,test
+156,100,99,tree,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),32.27527299998201,0,test
+156,100,99,tree,R5,E2E rule + C-law raw P (PBX_rule_best),32.26287000006778,0,test
+160,100,911,barbell,R1,"operators (P_esc, W, EW, P)",0.7825570000932203,1,test
+160,100,911,barbell,R1,rule_EW (calibrated scalar),1.144640999996227,146,test
+160,100,911,barbell,R1,"KNZ MP, 2 iterations",0.1210450000144192,2,test
+160,100,911,barbell,R1,"KNZ MP, converged",9.607316000028732,499,test
+160,100,911,barbell,R1,"AP(eta=1) standalone, to fixed point",5.695641999977852,106,test
+160,100,911,barbell,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.012478999906306854,1,test
+160,100,911,barbell,R1,"Realization C on raw P, K=5 (excl. base)",0.17594300004475372,5,test
+160,100,911,barbell,R1,"linear raw-P propagation, K=5 (excl. base)",0.12415000003329624,5,test
+160,100,911,barbell,R1,"Realization C standalone, T=3",0.12576099993566459,3,test
+160,100,911,barbell,R1,"scalar oracle sweep (40 alphas, batched)",1104.6949139999924,0,test
+160,100,911,barbell,R1,"Monte Carlo, 50 worlds",0.6541129999959594,50,test
+160,100,911,barbell,R1,"Monte Carlo, 200 worlds",2.0796260000679467,200,test
+160,100,911,barbell,R1,"Monte Carlo, 1000 worlds",9.80110600005446,1000,test
+160,100,911,barbell,R1,E2E calibrated rule,2.688006000084897,0,test
+160,100,911,barbell,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.2580800000232557,0,test
+160,100,911,barbell,R1,E2E rule + C-law raw P (PBX_rule_best),3.009609999935492,0,test
+164,100,911,barbell,R2,"operators (P_esc, W, EW, P)",1.0548760000119728,1,test
+164,100,911,barbell,R2,rule_EW (calibrated scalar),4.408899000054589,446,test
+164,100,911,barbell,R2,"KNZ MP, 2 iterations",0.13752099994235323,2,test
+164,100,911,barbell,R2,"KNZ MP, converged",0.41727899997567874,15,test
+164,100,911,barbell,R2,"AP(eta=1) standalone, to fixed point",81.32227700002659,1446,test
+164,100,911,barbell,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.011969000070166658,1,test
+164,100,911,barbell,R2,"Realization C on raw P, K=5 (excl. base)",0.18433200000345096,5,test
+164,100,911,barbell,R2,"linear raw-P propagation, K=5 (excl. base)",0.1747040000736888,5,test
+164,100,911,barbell,R2,"Realization C standalone, T=3",0.12942000000748521,3,test
+164,100,911,barbell,R2,"scalar oracle sweep (40 alphas, batched)",1116.3476369999898,0,test
+164,100,911,barbell,R2,"Monte Carlo, 50 worlds",0.7640000000037617,50,test
+164,100,911,barbell,R2,"Monte Carlo, 200 worlds",2.535566000005929,200,test
+164,100,911,barbell,R2,"Monte Carlo, 1000 worlds",11.558709999917482,1000,test
+164,100,911,barbell,R2,E2E calibrated rule,4.420042999981888,0,test
+164,100,911,barbell,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),4.803810999987945,0,test
+164,100,911,barbell,R2,E2E rule + C-law raw P (PBX_rule_best),4.647653000006358,0,test
+168,100,911,barbell,R3,"operators (P_esc, W, EW, P)",0.8060109998950793,1,test
+168,100,911,barbell,R3,rule_EW (calibrated scalar),11.580780000031154,921,test
+168,100,911,barbell,R3,"KNZ MP, 2 iterations",0.11089700001321035,2,test
+168,100,911,barbell,R3,"KNZ MP, converged",0.623998000037318,24,test
+168,100,911,barbell,R3,"AP(eta=1) standalone, to fixed point",293.3372349999672,4869,test
+168,100,911,barbell,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.010559999964243616,1,test
+168,100,911,barbell,R3,"Realization C on raw P, K=5 (excl. base)",0.17579699999714649,5,test
+168,100,911,barbell,R3,"linear raw-P propagation, K=5 (excl. base)",0.13757199997144198,5,test
+168,100,911,barbell,R3,"Realization C standalone, T=3",0.11571200002435944,3,test
+168,100,911,barbell,R3,"scalar oracle sweep (40 alphas, batched)",1019.9449489999779,0,test
+168,100,911,barbell,R3,"Monte Carlo, 50 worlds",1.0405169999785358,50,test
+168,100,911,barbell,R3,"Monte Carlo, 200 worlds",3.546341000060238,200,test
+168,100,911,barbell,R3,"Monte Carlo, 1000 worlds",16.750218999959543,1000,test
+168,100,911,barbell,R3,E2E calibrated rule,8.616920999998001,0,test
+168,100,911,barbell,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),8.741392000047199,0,test
+168,100,911,barbell,R3,E2E rule + C-law raw P (PBX_rule_best),8.338527000091744,0,test
+172,100,911,barbell,R4,"operators (P_esc, W, EW, P)",0.7625559999269171,1,test
+172,100,911,barbell,R4,rule_EW (calibrated scalar),154.49541100008446,20000,test
+172,100,911,barbell,R4,"KNZ MP, 2 iterations",0.08661499998652289,2,test
+172,100,911,barbell,R4,"KNZ MP, converged",0.8762940000224262,41,test
+172,100,911,barbell,R4,"AP(eta=1) standalone, to fixed point",501.16683299995657,5000,test
+172,100,911,barbell,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.012050000009367068,1,test
+172,100,911,barbell,R4,"Realization C on raw P, K=5 (excl. base)",0.21904499999436666,5,test
+172,100,911,barbell,R4,"linear raw-P propagation, K=5 (excl. base)",0.16857600007824658,5,test
+172,100,911,barbell,R4,"Realization C standalone, T=3",0.12457100001483923,3,test
+172,100,911,barbell,R4,"scalar oracle sweep (40 alphas, batched)",1007.0662809999931,0,test
+172,100,911,barbell,R4,"Monte Carlo, 50 worlds",1.3973100000157501,50,test
+172,100,911,barbell,R4,"Monte Carlo, 200 worlds",5.147059000023546,200,test
+172,100,911,barbell,R4,"Monte Carlo, 1000 worlds",26.448095999967336,1000,test
+172,100,911,barbell,R4,E2E calibrated rule,219.65290000002824,0,test
+172,100,911,barbell,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),175.3955629999382,0,test
+172,100,911,barbell,R4,E2E rule + C-law raw P (PBX_rule_best),158.93625499995778,0,test
+176,100,911,barbell,R5,"operators (P_esc, W, EW, P)",0.9103020000793549,1,test
+176,100,911,barbell,R5,rule_EW (calibrated scalar),126.3536540000132,20000,test
+176,100,911,barbell,R5,"KNZ MP, 2 iterations",0.10144200007289328,2,test
+176,100,911,barbell,R5,"KNZ MP, converged",0.9076750000076572,41,test
+176,100,911,barbell,R5,"AP(eta=1) standalone, to fixed point",361.4492499999642,5000,test
+176,100,911,barbell,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.01419000000169035,1,test
+176,100,911,barbell,R5,"Realization C on raw P, K=5 (excl. base)",0.24500699998952769,5,test
+176,100,911,barbell,R5,"linear raw-P propagation, K=5 (excl. base)",0.16170800006420905,5,test
+176,100,911,barbell,R5,"Realization C standalone, T=3",0.15246699990711932,3,test
+176,100,911,barbell,R5,"scalar oracle sweep (40 alphas, batched)",1101.1058299999377,0,test
+176,100,911,barbell,R5,"Monte Carlo, 50 worlds",1.559418000056212,50,test
+176,100,911,barbell,R5,"Monte Carlo, 200 worlds",5.311067999969055,200,test
+176,100,911,barbell,R5,"Monte Carlo, 1000 worlds",25.220577000027333,1000,test
+176,100,911,barbell,R5,E2E calibrated rule,152.3915450000004,0,test
+176,100,911,barbell,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),167.9449849999628,0,test
+176,100,911,barbell,R5,E2E rule + C-law raw P (PBX_rule_best),169.29344000004676,0,test
+0,900,2250,er,R1,"operators (P_esc, W, EW, P)",3.23167499993815,1,scale
+0,900,2250,er,R1,rule_EW (calibrated scalar),1.62859700003537,72,scale
+0,900,2250,er,R1,"KNZ MP, 2 iterations",0.2501459999848521,2,scale
+0,900,2250,er,R1,"KNZ MP, converged",1.411493999967206,18,scale
+0,900,2250,er,R1,"AP(eta=1) standalone, to fixed point",4.00238999998237,24,scale
+0,900,2250,er,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.04481300004499644,1,scale
+0,900,2250,er,R1,"Realization C on raw P, K=5 (excl. base)",0.638359999925342,5,scale
+0,900,2250,er,R1,"linear raw-P propagation, K=5 (excl. base)",0.14874900000449998,5,scale
+0,900,2250,er,R1,"Realization C standalone, T=3",0.1777720000291083,3,scale
+0,900,2250,er,R1,"scalar oracle sweep (40 alphas, batched)",225.8084410000265,0,scale
+0,900,2250,er,R1,"Monte Carlo, 50 worlds",2.0107409999354786,50,scale
+0,900,2250,er,R1,"Monte Carlo, 200 worlds",6.4568950000420955,200,scale
+0,900,2250,er,R1,"Monte Carlo, 1000 worlds",37.2491399999717,1000,scale
+0,900,2250,er,R1,E2E calibrated rule,2.097693999985495,0,scale
+0,900,2250,er,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.1562850000455,0,scale
+0,900,2250,er,R1,E2E rule + C-law raw P (PBX_rule_best),2.424830999984806,0,scale
+2,900,2250,er,R2,"operators (P_esc, W, EW, P)",1.260999000010088,1,scale
+2,900,2250,er,R2,rule_EW (calibrated scalar),1.5081010000130846,107,scale
+2,900,2250,er,R2,"KNZ MP, 2 iterations",0.16224200010128698,2,scale
+2,900,2250,er,R2,"KNZ MP, converged",2.9620930000646695,53,scale
+2,900,2250,er,R2,"AP(eta=1) standalone, to fixed point",7.759798999927625,63,scale
+2,900,2250,er,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.017387000070812064,1,scale
+2,900,2250,er,R2,"Realization C on raw P, K=5 (excl. base)",0.3187940000088929,5,scale
+2,900,2250,er,R2,"linear raw-P propagation, K=5 (excl. base)",0.21837400004187657,5,scale
+2,900,2250,er,R2,"Realization C standalone, T=3",0.23524300002009113,3,scale
+2,900,2250,er,R2,"scalar oracle sweep (40 alphas, batched)",86.67337999997926,0,scale
+2,900,2250,er,R2,"Monte Carlo, 50 worlds",2.466972999968675,50,scale
+2,900,2250,er,R2,"Monte Carlo, 200 worlds",8.260120999921128,200,scale
+2,900,2250,er,R2,"Monte Carlo, 1000 worlds",42.29990100009218,1000,scale
+2,900,2250,er,R2,E2E calibrated rule,2.8177770000183955,0,scale
+2,900,2250,er,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.2239160000244738,0,scale
+2,900,2250,er,R2,E2E rule + C-law raw P (PBX_rule_best),3.0743229999643518,0,scale
+4,900,2250,er,R3,"operators (P_esc, W, EW, P)",1.0373810000601225,1,scale
+4,900,2250,er,R3,rule_EW (calibrated scalar),1.9546749999790336,157,scale
+4,900,2250,er,R3,"KNZ MP, 2 iterations",0.1855770000247503,2,scale
+4,900,2250,er,R3,"KNZ MP, converged",2.7468440000575356,62,scale
+4,900,2250,er,R3,"AP(eta=1) standalone, to fixed point",13.132648000009794,127,scale
+4,900,2250,er,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.018027000010079064,1,scale
+4,900,2250,er,R3,"Realization C on raw P, K=5 (excl. base)",0.27981200003068807,5,scale
+4,900,2250,er,R3,"linear raw-P propagation, K=5 (excl. base)",0.16210599994792574,5,scale
+4,900,2250,er,R3,"Realization C standalone, T=3",0.19543500002328074,3,scale
+4,900,2250,er,R3,"scalar oracle sweep (40 alphas, batched)",61.77072399998451,0,scale
+4,900,2250,er,R3,"Monte Carlo, 50 worlds",3.6430089999157644,50,scale
+4,900,2250,er,R3,"Monte Carlo, 200 worlds",13.21415600000364,200,scale
+4,900,2250,er,R3,"Monte Carlo, 1000 worlds",52.6425539999309,1000,scale
+4,900,2250,er,R3,E2E calibrated rule,3.6377989999891724,0,scale
+4,900,2250,er,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.4899549999636292,0,scale
+4,900,2250,er,R3,E2E rule + C-law raw P (PBX_rule_best),2.9648019999513053,0,scale
+6,900,2250,er,R4,"operators (P_esc, W, EW, P)",0.8259640000005675,1,scale
+6,900,2250,er,R4,rule_EW (calibrated scalar),1.7363580000164802,180,scale
+6,900,2250,er,R4,"KNZ MP, 2 iterations",0.1401330000589951,2,scale
+6,900,2250,er,R4,"KNZ MP, converged",0.7508599999255239,19,scale
+6,900,2250,er,R4,"AP(eta=1) standalone, to fixed point",19.82901100006984,157,scale
+6,900,2250,er,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.013861000070392038,1,scale
+6,900,2250,er,R4,"Realization C on raw P, K=5 (excl. base)",0.20315800009029772,5,scale
+6,900,2250,er,R4,"linear raw-P propagation, K=5 (excl. base)",0.12810900000204128,5,scale
+6,900,2250,er,R4,"Realization C standalone, T=3",0.13555199996062584,3,scale
+6,900,2250,er,R4,"scalar oracle sweep (40 alphas, batched)",50.5401799999845,0,scale
+6,900,2250,er,R4,"Monte Carlo, 50 worlds",6.218863999947644,50,scale
+6,900,2250,er,R4,"Monte Carlo, 200 worlds",18.58100499998727,200,scale
+6,900,2250,er,R4,"Monte Carlo, 1000 worlds",91.60054300002685,1000,scale
+6,900,2250,er,R4,E2E calibrated rule,3.3619069999986095,0,scale
+6,900,2250,er,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),4.223991999992904,0,scale
+6,900,2250,er,R4,E2E rule + C-law raw P (PBX_rule_best),3.761190999966857,0,scale
+8,900,2250,er,R5,"operators (P_esc, W, EW, P)",1.0840090000101554,1,scale
+8,900,2250,er,R5,rule_EW (calibrated scalar),2.3194740000462843,193,scale
+8,900,2250,er,R5,"KNZ MP, 2 iterations",0.1675799999247829,2,scale
+8,900,2250,er,R5,"KNZ MP, converged",0.607341999966593,12,scale
+8,900,2250,er,R5,"AP(eta=1) standalone, to fixed point",28.178076000017427,169,scale
+8,900,2250,er,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.01835099999425438,1,scale
+8,900,2250,er,R5,"Realization C on raw P, K=5 (excl. base)",0.2888239999947473,5,scale
+8,900,2250,er,R5,"linear raw-P propagation, K=5 (excl. base)",0.16061400003763993,5,scale
+8,900,2250,er,R5,"Realization C standalone, T=3",0.16498599995884433,3,scale
+8,900,2250,er,R5,"scalar oracle sweep (40 alphas, batched)",57.353074000047854,0,scale
+8,900,2250,er,R5,"Monte Carlo, 50 worlds",5.213526000034108,50,scale
+8,900,2250,er,R5,"Monte Carlo, 200 worlds",20.109749999960513,200,scale
+8,900,2250,er,R5,"Monte Carlo, 1000 worlds",122.90400599999884,1000,scale
+8,900,2250,er,R5,E2E calibrated rule,6.63795899993147,0,scale
+8,900,2250,er,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),7.4695109999538545,0,scale
+8,900,2250,er,R5,E2E rule + C-law raw P (PBX_rule_best),7.002409999927295,0,scale
+10,900,1796,ba,R1,"operators (P_esc, W, EW, P)",2.0559739999725934,1,scale
+10,900,1796,ba,R1,rule_EW (calibrated scalar),1.6477820000773136,77,scale
+10,900,1796,ba,R1,"KNZ MP, 2 iterations",0.24728599998979917,2,scale
+10,900,1796,ba,R1,"KNZ MP, converged",1.50530999997045,23,scale
+10,900,1796,ba,R1,"AP(eta=1) standalone, to fixed point",6.048164999924666,36,scale
+10,900,1796,ba,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.037653999925169046,1,scale
+10,900,1796,ba,R1,"Realization C on raw P, K=5 (excl. base)",0.4996900000833193,5,scale
+10,900,1796,ba,R1,"linear raw-P propagation, K=5 (excl. base)",0.5267489999596364,5,scale
+10,900,1796,ba,R1,"Realization C standalone, T=3",0.3363499999977648,3,scale
+10,900,1796,ba,R1,"scalar oracle sweep (40 alphas, batched)",240.18742900000234,0,scale
+10,900,1796,ba,R1,"Monte Carlo, 50 worlds",1.5701449999596662,50,scale
+10,900,1796,ba,R1,"Monte Carlo, 200 worlds",5.08841000009852,200,scale
+10,900,1796,ba,R1,"Monte Carlo, 1000 worlds",31.083841999929973,1000,scale
+10,900,1796,ba,R1,E2E calibrated rule,2.034445999925083,0,scale
+10,900,1796,ba,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.851196999927197,0,scale
+10,900,1796,ba,R1,E2E rule + C-law raw P (PBX_rule_best),2.4134899999808113,0,scale
+12,900,1796,ba,R2,"operators (P_esc, W, EW, P)",0.9230090000755808,1,scale
+12,900,1796,ba,R2,rule_EW (calibrated scalar),1.1609250000219618,97,scale
+12,900,1796,ba,R2,"KNZ MP, 2 iterations",0.13072500007638155,2,scale
+12,900,1796,ba,R2,"KNZ MP, converged",5.854413999941244,137,scale
+12,900,1796,ba,R2,"AP(eta=1) standalone, to fixed point",7.696742999996786,60,scale
+12,900,1796,ba,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.0173710000126448,1,scale
+12,900,1796,ba,R2,"Realization C on raw P, K=5 (excl. base)",0.24127199992562964,5,scale
+12,900,1796,ba,R2,"linear raw-P propagation, K=5 (excl. base)",0.17003600009957154,5,scale
+12,900,1796,ba,R2,"Realization C standalone, T=3",0.3277470000284666,3,scale
+12,900,1796,ba,R2,"scalar oracle sweep (40 alphas, batched)",82.1982659999776,0,scale
+12,900,1796,ba,R2,"Monte Carlo, 50 worlds",1.8921780000482613,50,scale
+12,900,1796,ba,R2,"Monte Carlo, 200 worlds",5.89045599997462,200,scale
+12,900,1796,ba,R2,"Monte Carlo, 1000 worlds",30.610353000042778,1000,scale
+12,900,1796,ba,R2,E2E calibrated rule,2.8873630000134654,0,scale
+12,900,1796,ba,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.041825000082099,0,scale
+12,900,1796,ba,R2,E2E rule + C-law raw P (PBX_rule_best),3.088895000018965,0,scale
+14,900,1796,ba,R3,"operators (P_esc, W, EW, P)",0.9770479999815507,1,scale
+14,900,1796,ba,R3,rule_EW (calibrated scalar),1.8024029999423874,143,scale
+14,900,1796,ba,R3,"KNZ MP, 2 iterations",0.13424300004771794,2,scale
+14,900,1796,ba,R3,"KNZ MP, converged",1.6804159999992407,45,scale
+14,900,1796,ba,R3,"AP(eta=1) standalone, to fixed point",11.892107999983637,110,scale
+14,900,1796,ba,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.017512999988866795,1,scale
+14,900,1796,ba,R3,"Realization C on raw P, K=5 (excl. base)",0.2572219999592562,5,scale
+14,900,1796,ba,R3,"linear raw-P propagation, K=5 (excl. base)",0.19430400004694093,5,scale
+14,900,1796,ba,R3,"Realization C standalone, T=3",0.17071899992515682,3,scale
+14,900,1796,ba,R3,"scalar oracle sweep (40 alphas, batched)",71.60974900000383,0,scale
+14,900,1796,ba,R3,"Monte Carlo, 50 worlds",3.099971999972695,50,scale
+14,900,1796,ba,R3,"Monte Carlo, 200 worlds",11.071211999933439,200,scale
+14,900,1796,ba,R3,"Monte Carlo, 1000 worlds",56.13842900004329,1000,scale
+14,900,1796,ba,R3,E2E calibrated rule,3.93898499999068,0,scale
+14,900,1796,ba,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),4.574067000021387,0,scale
+14,900,1796,ba,R3,E2E rule + C-law raw P (PBX_rule_best),4.08443400010583,0,scale
+16,900,1796,ba,R4,"operators (P_esc, W, EW, P)",0.9594679999054279,1,scale
+16,900,1796,ba,R4,rule_EW (calibrated scalar),4.81961900004535,228,scale
+16,900,1796,ba,R4,"KNZ MP, 2 iterations",0.16105300005619938,2,scale
+16,900,1796,ba,R4,"KNZ MP, converged",1.3821830000324553,25,scale
+16,900,1796,ba,R4,"AP(eta=1) standalone, to fixed point",20.231448000004093,195,scale
+16,900,1796,ba,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.025318999973933387,1,scale
+16,900,1796,ba,R4,"Realization C on raw P, K=5 (excl. base)",0.2641739999944548,5,scale
+16,900,1796,ba,R4,"linear raw-P propagation, K=5 (excl. base)",0.18451599999025348,5,scale
+16,900,1796,ba,R4,"Realization C standalone, T=3",0.18360599995048688,3,scale
+16,900,1796,ba,R4,"scalar oracle sweep (40 alphas, batched)",68.97127500008082,0,scale
+16,900,1796,ba,R4,"Monte Carlo, 50 worlds",4.107000999965749,50,scale
+16,900,1796,ba,R4,"Monte Carlo, 200 worlds",14.385458999981893,200,scale
+16,900,1796,ba,R4,"Monte Carlo, 1000 worlds",77.0022430000381,1000,scale
+16,900,1796,ba,R4,E2E calibrated rule,3.2247700000880286,0,scale
+16,900,1796,ba,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.687861999992492,0,scale
+16,900,1796,ba,R4,E2E rule + C-law raw P (PBX_rule_best),3.334825000024466,0,scale
+18,900,1796,ba,R5,"operators (P_esc, W, EW, P)",0.727410999957101,1,scale
+18,900,1796,ba,R5,rule_EW (calibrated scalar),2.2216079998997884,223,scale
+18,900,1796,ba,R5,"KNZ MP, 2 iterations",0.15566499996566563,2,scale
+18,900,1796,ba,R5,"KNZ MP, converged",0.5424010000751878,16,scale
+18,900,1796,ba,R5,"AP(eta=1) standalone, to fixed point",10.961931999986518,195,scale
+18,900,1796,ba,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.013366999951358594,1,scale
+18,900,1796,ba,R5,"Realization C on raw P, K=5 (excl. base)",0.18366899996635766,5,scale
+18,900,1796,ba,R5,"linear raw-P propagation, K=5 (excl. base)",0.11310699994737661,5,scale
+18,900,1796,ba,R5,"Realization C standalone, T=3",0.12425800002802134,3,scale
+18,900,1796,ba,R5,"scalar oracle sweep (40 alphas, batched)",45.479457000055845,0,scale
+18,900,1796,ba,R5,"Monte Carlo, 50 worlds",3.328180000039538,50,scale
+18,900,1796,ba,R5,"Monte Carlo, 200 worlds",12.978126999996675,200,scale
+18,900,1796,ba,R5,"Monte Carlo, 1000 worlds",68.38848499990036,1000,scale
+18,900,1796,ba,R5,E2E calibrated rule,3.988540000023022,0,scale
+18,900,1796,ba,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),4.930478000005678,0,scale
+18,900,1796,ba,R5,E2E rule + C-law raw P (PBX_rule_best),4.344225000068036,0,scale
+20,900,2700,ws,R1,"operators (P_esc, W, EW, P)",1.0214469999709763,1,scale
+20,900,2700,ws,R1,rule_EW (calibrated scalar),0.9925169999860373,74,scale
+20,900,2700,ws,R1,"KNZ MP, 2 iterations",0.241953999989164,2,scale
+20,900,2700,ws,R1,"KNZ MP, converged",1.0576160000255186,18,scale
+20,900,2700,ws,R1,"AP(eta=1) standalone, to fixed point",2.240733000007822,24,scale
+20,900,2700,ws,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.01887600001282408,1,scale
+20,900,2700,ws,R1,"Realization C on raw P, K=5 (excl. base)",0.23926299991217093,5,scale
+20,900,2700,ws,R1,"linear raw-P propagation, K=5 (excl. base)",0.1914179999857879,5,scale
+20,900,2700,ws,R1,"Realization C standalone, T=3",0.16073999995569466,3,scale
+20,900,2700,ws,R1,"scalar oracle sweep (40 alphas, batched)",5581.757616000004,0,scale
+20,900,2700,ws,R1,"Monte Carlo, 50 worlds",2.8384529999812003,50,scale
+20,900,2700,ws,R1,"Monte Carlo, 200 worlds",9.59952499999872,200,scale
+20,900,2700,ws,R1,"Monte Carlo, 1000 worlds",32.06162300000415,1000,scale
+20,900,2700,ws,R1,E2E calibrated rule,2.3838880000539575,0,scale
+20,900,2700,ws,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.8014170000005834,0,scale
+20,900,2700,ws,R1,E2E rule + C-law raw P (PBX_rule_best),3.5185240000146223,0,scale
+22,900,2700,ws,R2,"operators (P_esc, W, EW, P)",1.5515999999706764,1,scale
+22,900,2700,ws,R2,rule_EW (calibrated scalar),2.7320180000742766,154,scale
+22,900,2700,ws,R2,"KNZ MP, 2 iterations",0.23839599998609629,2,scale
+22,900,2700,ws,R2,"KNZ MP, converged",2.9152759999533373,58,scale
+22,900,2700,ws,R2,"AP(eta=1) standalone, to fixed point",8.739219999938541,86,scale
+22,900,2700,ws,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.018861999933506013,1,scale
+22,900,2700,ws,R2,"Realization C on raw P, K=5 (excl. base)",0.2779780000992105,5,scale
+22,900,2700,ws,R2,"linear raw-P propagation, K=5 (excl. base)",0.1844249999294334,5,scale
+22,900,2700,ws,R2,"Realization C standalone, T=3",0.15580399997361383,3,scale
+22,900,2700,ws,R2,"scalar oracle sweep (40 alphas, batched)",680.0364509999781,0,scale
+22,900,2700,ws,R2,"Monte Carlo, 50 worlds",3.0346089999966352,50,scale
+22,900,2700,ws,R2,"Monte Carlo, 200 worlds",12.32683899991116,200,scale
+22,900,2700,ws,R2,"Monte Carlo, 1000 worlds",46.563182999989294,1000,scale
+22,900,2700,ws,R2,E2E calibrated rule,3.5165399999641522,0,scale
+22,900,2700,ws,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),4.680288000031396,0,scale
+22,900,2700,ws,R2,E2E rule + C-law raw P (PBX_rule_best),4.09831199999644,0,scale
+24,900,2700,ws,R3,"operators (P_esc, W, EW, P)",1.3021460000572915,1,scale
+24,900,2700,ws,R3,rule_EW (calibrated scalar),12.26023799995346,926,scale
+24,900,2700,ws,R3,"KNZ MP, 2 iterations",0.204256999950303,2,scale
+24,900,2700,ws,R3,"KNZ MP, converged",3.2373710000683786,59,scale
+24,900,2700,ws,R3,"AP(eta=1) standalone, to fixed point",95.14746600007129,778,scale
+24,900,2700,ws,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.018685999975787126,1,scale
+24,900,2700,ws,R3,"Realization C on raw P, K=5 (excl. base)",0.2712140000085128,5,scale
+24,900,2700,ws,R3,"linear raw-P propagation, K=5 (excl. base)",0.18919299998287897,5,scale
+24,900,2700,ws,R3,"Realization C standalone, T=3",0.17037499992511584,3,scale
+24,900,2700,ws,R3,"scalar oracle sweep (40 alphas, batched)",409.12237199995616,0,scale
+24,900,2700,ws,R3,"Monte Carlo, 50 worlds",3.7082790000795285,50,scale
+24,900,2700,ws,R3,"Monte Carlo, 200 worlds",13.520094999989851,200,scale
+24,900,2700,ws,R3,"Monte Carlo, 1000 worlds",69.64066199998342,1000,scale
+24,900,2700,ws,R3,E2E calibrated rule,13.446864000002279,0,scale
+24,900,2700,ws,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),13.98752499994771,0,scale
+24,900,2700,ws,R3,E2E rule + C-law raw P (PBX_rule_best),18.623183000045174,0,scale
+26,900,2700,ws,R4,"operators (P_esc, W, EW, P)",1.7072910000024422,1,scale
+26,900,2700,ws,R4,rule_EW (calibrated scalar),21.70383700001821,1110,scale
+26,900,2700,ws,R4,"KNZ MP, 2 iterations",0.21717899994655454,2,scale
+26,900,2700,ws,R4,"KNZ MP, converged",1.1429029999590057,16,scale
+26,900,2700,ws,R4,"AP(eta=1) standalone, to fixed point",96.55924599996979,963,scale
+26,900,2700,ws,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.018923999959952198,1,scale
+26,900,2700,ws,R4,"Realization C on raw P, K=5 (excl. base)",0.2673040000900073,5,scale
+26,900,2700,ws,R4,"linear raw-P propagation, K=5 (excl. base)",0.201154000023962,5,scale
+26,900,2700,ws,R4,"Realization C standalone, T=3",0.16027499998472194,3,scale
+26,900,2700,ws,R4,"scalar oracle sweep (40 alphas, batched)",324.6694770000431,0,scale
+26,900,2700,ws,R4,"Monte Carlo, 50 worlds",5.219282999973984,50,scale
+26,900,2700,ws,R4,"Monte Carlo, 200 worlds",19.797663000076682,200,scale
+26,900,2700,ws,R4,"Monte Carlo, 1000 worlds",104.94909900000948,1000,scale
+26,900,2700,ws,R4,E2E calibrated rule,15.545196000061878,0,scale
+26,900,2700,ws,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),16.28360799998063,0,scale
+26,900,2700,ws,R4,E2E rule + C-law raw P (PBX_rule_best),15.967200999966735,0,scale
+28,900,2700,ws,R5,"operators (P_esc, W, EW, P)",0.9900669999751699,1,scale
+28,900,2700,ws,R5,rule_EW (calibrated scalar),10.002981999946314,769,scale
+28,900,2700,ws,R5,"KNZ MP, 2 iterations",0.21573399999397225,2,scale
+28,900,2700,ws,R5,"KNZ MP, converged",0.3624710000167397,6,scale
+28,900,2700,ws,R5,"AP(eta=1) standalone, to fixed point",46.99594500004878,646,scale
+28,900,2700,ws,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.017168999988825817,1,scale
+28,900,2700,ws,R5,"Realization C on raw P, K=5 (excl. base)",0.28656799997861526,5,scale
+28,900,2700,ws,R5,"linear raw-P propagation, K=5 (excl. base)",0.15456099993116368,5,scale
+28,900,2700,ws,R5,"Realization C standalone, T=3",0.17062400002032518,3,scale
+28,900,2700,ws,R5,"scalar oracle sweep (40 alphas, batched)",209.2522429999235,0,scale
+28,900,2700,ws,R5,"Monte Carlo, 50 worlds",5.195670999910362,50,scale
+28,900,2700,ws,R5,"Monte Carlo, 200 worlds",20.34839300006297,200,scale
+28,900,2700,ws,R5,"Monte Carlo, 1000 worlds",106.9692019999593,1000,scale
+28,900,2700,ws,R5,E2E calibrated rule,8.634024999992107,0,scale
+28,900,2700,ws,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),9.335695999993732,0,scale
+28,900,2700,ws,R5,E2E rule + C-law raw P (PBX_rule_best),9.087882000017089,0,scale
+30,900,1740,grid,R1,"operators (P_esc, W, EW, P)",0.757998000040061,1,scale
+30,900,1740,grid,R1,rule_EW (calibrated scalar),0.6473790000427471,67,scale
+30,900,1740,grid,R1,"KNZ MP, 2 iterations",0.12355299998034752,2,scale
+30,900,1740,grid,R1,"KNZ MP, converged",0.4175209999175422,14,scale
+30,900,1740,grid,R1,"AP(eta=1) standalone, to fixed point",1.2377639999385792,18,scale
+30,900,1740,grid,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.01331399994342064,1,scale
+30,900,1740,grid,R1,"Realization C on raw P, K=5 (excl. base)",0.17781999997623643,5,scale
+30,900,1740,grid,R1,"linear raw-P propagation, K=5 (excl. base)",0.13618500008760748,5,scale
+30,900,1740,grid,R1,"Realization C standalone, T=3",0.11306900000818132,3,scale
+30,900,1740,grid,R1,"scalar oracle sweep (40 alphas, batched)",2854.0707070000053,0,scale
+30,900,1740,grid,R1,"Monte Carlo, 50 worlds",1.6921029999821258,50,scale
+30,900,1740,grid,R1,"Monte Carlo, 200 worlds",5.256701000007524,200,scale
+30,900,1740,grid,R1,"Monte Carlo, 1000 worlds",24.30267099998673,1000,scale
+30,900,1740,grid,R1,E2E calibrated rule,2.0369119999941177,0,scale
+30,900,1740,grid,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.7002169999832404,0,scale
+30,900,1740,grid,R1,E2E rule + C-law raw P (PBX_rule_best),2.2138990000257763,0,scale
+32,900,1740,grid,R2,"operators (P_esc, W, EW, P)",1.0441059999948266,1,scale
+32,900,1740,grid,R2,rule_EW (calibrated scalar),1.3802280000163591,115,scale
+32,900,1740,grid,R2,"KNZ MP, 2 iterations",0.13749400000051537,2,scale
+32,900,1740,grid,R2,"KNZ MP, converged",1.0406190000367133,29,scale
+32,900,1740,grid,R2,"AP(eta=1) standalone, to fixed point",4.504650000058064,51,scale
+32,900,1740,grid,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.01587799999924755,1,scale
+32,900,1740,grid,R2,"Realization C on raw P, K=5 (excl. base)",0.25237200009087246,5,scale
+32,900,1740,grid,R2,"linear raw-P propagation, K=5 (excl. base)",0.15483200002108788,5,scale
+32,900,1740,grid,R2,"Realization C standalone, T=3",0.15671799997107883,3,scale
+32,900,1740,grid,R2,"scalar oracle sweep (40 alphas, batched)",1312.4436980000382,0,scale
+32,900,1740,grid,R2,"Monte Carlo, 50 worlds",2.2847660000024916,50,scale
+32,900,1740,grid,R2,"Monte Carlo, 200 worlds",7.647062999922127,200,scale
+32,900,1740,grid,R2,"Monte Carlo, 1000 worlds",35.92680700000983,1000,scale
+32,900,1740,grid,R2,E2E calibrated rule,2.4535480000622556,0,scale
+32,900,1740,grid,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.1679950000125245,0,scale
+32,900,1740,grid,R2,E2E rule + C-law raw P (PBX_rule_best),2.9026169999042395,0,scale
+34,900,1740,grid,R3,"operators (P_esc, W, EW, P)",1.3178829999560548,1,scale
+34,900,1740,grid,R3,rule_EW (calibrated scalar),5.2254109999694265,410,scale
+34,900,1740,grid,R3,"KNZ MP, 2 iterations",0.13522399990506528,2,scale
+34,900,1740,grid,R3,"KNZ MP, converged",6.044745999929546,176,scale
+34,900,1740,grid,R3,"AP(eta=1) standalone, to fixed point",34.8559330000171,328,scale
+34,900,1740,grid,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.015846999986024457,1,scale
+34,900,1740,grid,R3,"Realization C on raw P, K=5 (excl. base)",0.26761799995256297,5,scale
+34,900,1740,grid,R3,"linear raw-P propagation, K=5 (excl. base)",0.1932179999357686,5,scale
+34,900,1740,grid,R3,"Realization C standalone, T=3",0.1615989999663725,3,scale
+34,900,1740,grid,R3,"scalar oracle sweep (40 alphas, batched)",3838.043422999931,0,scale
+34,900,1740,grid,R3,"Monte Carlo, 50 worlds",2.697487999967052,50,scale
+34,900,1740,grid,R3,"Monte Carlo, 200 worlds",10.291599000083806,200,scale
+34,900,1740,grid,R3,"Monte Carlo, 1000 worlds",49.210794000032365,1000,scale
+34,900,1740,grid,R3,E2E calibrated rule,7.3054980000506475,0,scale
+34,900,1740,grid,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),8.159706000014921,0,scale
+34,900,1740,grid,R3,E2E rule + C-law raw P (PBX_rule_best),7.721619999983886,0,scale
+36,900,1740,grid,R4,"operators (P_esc, W, EW, P)",1.0406999999759137,1,scale
+36,900,1740,grid,R4,rule_EW (calibrated scalar),152.31331500001488,10906,scale
+36,900,1740,grid,R4,"KNZ MP, 2 iterations",0.1369799999793031,2,scale
+36,900,1740,grid,R4,"KNZ MP, converged",1.8751310000197918,54,scale
+36,900,1740,grid,R4,"AP(eta=1) standalone, to fixed point",534.7912700000279,5000,scale
+36,900,1740,grid,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.018278000084137602,1,scale
+36,900,1740,grid,R4,"Realization C on raw P, K=5 (excl. base)",0.2457979999235249,5,scale
+36,900,1740,grid,R4,"linear raw-P propagation, K=5 (excl. base)",0.22482399992895807,5,scale
+36,900,1740,grid,R4,"Realization C standalone, T=3",0.15477200008717773,3,scale
+36,900,1740,grid,R4,"scalar oracle sweep (40 alphas, batched)",3137.8623900000093,0,scale
+36,900,1740,grid,R4,"Monte Carlo, 50 worlds",3.73271500006922,50,scale
+36,900,1740,grid,R4,"Monte Carlo, 200 worlds",13.569272999916393,200,scale
+36,900,1740,grid,R4,"Monte Carlo, 1000 worlds",68.68403300006776,1000,scale
+36,900,1740,grid,R4,E2E calibrated rule,146.41986499998438,0,scale
+36,900,1740,grid,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),163.5266450000472,0,scale
+36,900,1740,grid,R4,E2E rule + C-law raw P (PBX_rule_best),123.13440299999456,0,scale
+38,900,1740,grid,R5,"operators (P_esc, W, EW, P)",0.6934020000244345,1,scale
+38,900,1740,grid,R5,rule_EW (calibrated scalar),112.78101899995363,11945,scale
+38,900,1740,grid,R5,"KNZ MP, 2 iterations",0.10425199991459522,2,scale
+38,900,1740,grid,R5,"KNZ MP, converged",0.5630309999560268,19,scale
+38,900,1740,grid,R5,"AP(eta=1) standalone, to fixed point",423.0588489999718,5000,scale
+38,900,1740,grid,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.021902000071349903,1,scale
+38,900,1740,grid,R5,"Realization C on raw P, K=5 (excl. base)",0.3451970000014626,5,scale
+38,900,1740,grid,R5,"linear raw-P propagation, K=5 (excl. base)",0.15517500003170426,5,scale
+38,900,1740,grid,R5,"Realization C standalone, T=3",0.1549840000052427,3,scale
+38,900,1740,grid,R5,"scalar oracle sweep (40 alphas, batched)",3686.4046900000176,0,scale
+38,900,1740,grid,R5,"Monte Carlo, 50 worlds",3.0846639999708714,50,scale
+38,900,1740,grid,R5,"Monte Carlo, 200 worlds",12.38200400007372,200,scale
+38,900,1740,grid,R5,"Monte Carlo, 1000 worlds",57.632169999919824,1000,scale
+38,900,1740,grid,R5,E2E calibrated rule,143.6596369999279,0,scale
+38,900,1740,grid,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),144.1988939999419,0,scale
+38,900,1740,grid,R5,E2E rule + C-law raw P (PBX_rule_best),110.82123300002422,0,scale
+40,900,1725,rect,R1,"operators (P_esc, W, EW, P)",0.6571930000518478,1,scale
+40,900,1725,rect,R1,rule_EW (calibrated scalar),0.6631420000076105,67,scale
+40,900,1725,rect,R1,"KNZ MP, 2 iterations",0.1250520000439792,2,scale
+40,900,1725,rect,R1,"KNZ MP, converged",0.440851999996994,14,scale
+40,900,1725,rect,R1,"AP(eta=1) standalone, to fixed point",1.2044200000218552,18,scale
+40,900,1725,rect,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.013195999940762704,1,scale
+40,900,1725,rect,R1,"Realization C on raw P, K=5 (excl. base)",0.1823100000137856,5,scale
+40,900,1725,rect,R1,"linear raw-P propagation, K=5 (excl. base)",0.1364529999818842,5,scale
+40,900,1725,rect,R1,"Realization C standalone, T=3",0.11850400005641859,3,scale
+40,900,1725,rect,R1,"scalar oracle sweep (40 alphas, batched)",2459.8093979999476,0,scale
+40,900,1725,rect,R1,"Monte Carlo, 50 worlds",1.6826879999598532,50,scale
+40,900,1725,rect,R1,"Monte Carlo, 200 worlds",5.162885999993705,200,scale
+40,900,1725,rect,R1,"Monte Carlo, 1000 worlds",25.980255000035868,1000,scale
+40,900,1725,rect,R1,E2E calibrated rule,1.9496840000101656,0,scale
+40,900,1725,rect,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.0225190000692237,0,scale
+40,900,1725,rect,R1,E2E rule + C-law raw P (PBX_rule_best),2.41167400008635,0,scale
+42,900,1725,rect,R2,"operators (P_esc, W, EW, P)",1.2199709999549668,1,scale
+42,900,1725,rect,R2,rule_EW (calibrated scalar),1.7357960000481398,117,scale
+42,900,1725,rect,R2,"KNZ MP, 2 iterations",0.14463200000136567,2,scale
+42,900,1725,rect,R2,"KNZ MP, converged",1.1846480000485826,29,scale
+42,900,1725,rect,R2,"AP(eta=1) standalone, to fixed point",5.518186000017522,52,scale
+42,900,1725,rect,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.0261709999449522,1,scale
+42,900,1725,rect,R2,"Realization C on raw P, K=5 (excl. base)",0.4663659999550873,5,scale
+42,900,1725,rect,R2,"linear raw-P propagation, K=5 (excl. base)",0.2935080000270318,5,scale
+42,900,1725,rect,R2,"Realization C standalone, T=3",0.278725000043778,3,scale
+42,900,1725,rect,R2,"scalar oracle sweep (40 alphas, batched)",1922.5965680000172,0,scale
+42,900,1725,rect,R2,"Monte Carlo, 50 worlds",2.6917989999901692,50,scale
+42,900,1725,rect,R2,"Monte Carlo, 200 worlds",12.549329999956171,200,scale
+42,900,1725,rect,R2,"Monte Carlo, 1000 worlds",33.98738200007756,1000,scale
+42,900,1725,rect,R2,E2E calibrated rule,2.332789999968554,0,scale
+42,900,1725,rect,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.144492000046739,0,scale
+42,900,1725,rect,R2,E2E rule + C-law raw P (PBX_rule_best),2.72408200009977,0,scale
+44,900,1725,rect,R3,"operators (P_esc, W, EW, P)",0.846546999923703,1,scale
+44,900,1725,rect,R3,rule_EW (calibrated scalar),5.412695000018175,470,scale
+44,900,1725,rect,R3,"KNZ MP, 2 iterations",0.15331600002355117,2,scale
+44,900,1725,rect,R3,"KNZ MP, converged",6.545921999986604,191,scale
+44,900,1725,rect,R3,"AP(eta=1) standalone, to fixed point",46.744686000010915,474,scale
+44,900,1725,rect,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.016509000033693155,1,scale
+44,900,1725,rect,R3,"Realization C on raw P, K=5 (excl. base)",0.23427300004641438,5,scale
+44,900,1725,rect,R3,"linear raw-P propagation, K=5 (excl. base)",0.1526629999943907,5,scale
+44,900,1725,rect,R3,"Realization C standalone, T=3",0.15774499991039193,3,scale
+44,900,1725,rect,R3,"scalar oracle sweep (40 alphas, batched)",950.5903620000709,0,scale
+44,900,1725,rect,R3,"Monte Carlo, 50 worlds",2.757151999958296,50,scale
+44,900,1725,rect,R3,"Monte Carlo, 200 worlds",9.927887000003466,200,scale
+44,900,1725,rect,R3,"Monte Carlo, 1000 worlds",56.8679279999742,1000,scale
+44,900,1725,rect,R3,E2E calibrated rule,9.270100999970055,0,scale
+44,900,1725,rect,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),10.644353999964551,0,scale
+44,900,1725,rect,R3,E2E rule + C-law raw P (PBX_rule_best),10.472065000044495,0,scale
+46,900,1725,rect,R4,"operators (P_esc, W, EW, P)",1.3232619999143935,1,scale
+46,900,1725,rect,R4,rule_EW (calibrated scalar),196.7855340000142,12264,scale
+46,900,1725,rect,R4,"KNZ MP, 2 iterations",0.16200799996113346,2,scale
+46,900,1725,rect,R4,"KNZ MP, converged",1.8759189999855153,51,scale
+46,900,1725,rect,R4,"AP(eta=1) standalone, to fixed point",580.3007729999763,5000,scale
+46,900,1725,rect,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.025777000018933904,1,scale
+46,900,1725,rect,R4,"Realization C on raw P, K=5 (excl. base)",0.40181299993946595,5,scale
+46,900,1725,rect,R4,"linear raw-P propagation, K=5 (excl. base)",0.27608999994299666,5,scale
+46,900,1725,rect,R4,"Realization C standalone, T=3",0.2694109999765715,3,scale
+46,900,1725,rect,R4,"scalar oracle sweep (40 alphas, batched)",3625.733390999926,0,scale
+46,900,1725,rect,R4,"Monte Carlo, 50 worlds",5.031362999943667,50,scale
+46,900,1725,rect,R4,"Monte Carlo, 200 worlds",17.008036999982323,200,scale
+46,900,1725,rect,R4,"Monte Carlo, 1000 worlds",86.82766999993419,1000,scale
+46,900,1725,rect,R4,E2E calibrated rule,144.84174400001848,0,scale
+46,900,1725,rect,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),169.2323160000342,0,scale
+46,900,1725,rect,R4,E2E rule + C-law raw P (PBX_rule_best),189.0564440000162,0,scale
+48,900,1725,rect,R5,"operators (P_esc, W, EW, P)",0.9022199999435543,1,scale
+48,900,1725,rect,R5,rule_EW (calibrated scalar),249.63722999996207,20000,scale
+48,900,1725,rect,R5,"KNZ MP, 2 iterations",0.13341199996830255,2,scale
+48,900,1725,rect,R5,"KNZ MP, converged",0.6246250000003783,18,scale
+48,900,1725,rect,R5,"AP(eta=1) standalone, to fixed point",520.9329940000771,5000,scale
+48,900,1725,rect,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.024772000074335665,1,scale
+48,900,1725,rect,R5,"Realization C on raw P, K=5 (excl. base)",0.2625369999122995,5,scale
+48,900,1725,rect,R5,"linear raw-P propagation, K=5 (excl. base)",0.14607100001740037,5,scale
+48,900,1725,rect,R5,"Realization C standalone, T=3",0.17796500003441906,3,scale
+48,900,1725,rect,R5,"scalar oracle sweep (40 alphas, batched)",5981.232758000033,0,scale
+48,900,1725,rect,R5,"Monte Carlo, 50 worlds",4.009195999969961,50,scale
+48,900,1725,rect,R5,"Monte Carlo, 200 worlds",10.873469999978624,200,scale
+48,900,1725,rect,R5,"Monte Carlo, 1000 worlds",59.944768000036674,1000,scale
+48,900,1725,rect,R5,E2E calibrated rule,283.66963099995246,0,scale
+48,900,1725,rect,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),241.2213459999748,0,scale
+48,900,1725,rect,R5,E2E rule + C-law raw P (PBX_rule_best),243.22368399998595,0,scale
+50,900,2555,sbm,R1,"operators (P_esc, W, EW, P)",1.350742999989052,1,scale
+50,900,2555,sbm,R1,rule_EW (calibrated scalar),0.9707979999120653,73,scale
+50,900,2555,sbm,R1,"KNZ MP, 2 iterations",0.17104999994899117,2,scale
+50,900,2555,sbm,R1,"KNZ MP, converged",1.0017130000505858,19,scale
+50,900,2555,sbm,R1,"AP(eta=1) standalone, to fixed point",2.271889999974519,25,scale
+50,900,2555,sbm,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.01670099993589247,1,scale
+50,900,2555,sbm,R1,"Realization C on raw P, K=5 (excl. base)",0.2627390000498053,5,scale
+50,900,2555,sbm,R1,"linear raw-P propagation, K=5 (excl. base)",0.16777499990894285,5,scale
+50,900,2555,sbm,R1,"Realization C standalone, T=3",0.17325200008144748,3,scale
+50,900,2555,sbm,R1,"scalar oracle sweep (40 alphas, batched)",324.4677769999953,0,scale
+50,900,2555,sbm,R1,"Monte Carlo, 50 worlds",1.5086419999761347,50,scale
+50,900,2555,sbm,R1,"Monte Carlo, 200 worlds",4.845761000069615,200,scale
+50,900,2555,sbm,R1,"Monte Carlo, 1000 worlds",23.869567000019742,1000,scale
+50,900,2555,sbm,R1,E2E calibrated rule,1.6721060000008947,0,scale
+50,900,2555,sbm,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.218662000018412,0,scale
+50,900,2555,sbm,R1,E2E rule + C-law raw P (PBX_rule_best),2.062183000020923,0,scale
+52,900,2697,sbm,R2,"operators (P_esc, W, EW, P)",0.865543000031721,1,scale
+52,900,2697,sbm,R2,rule_EW (calibrated scalar),1.4025859999264867,142,scale
+52,900,2697,sbm,R2,"KNZ MP, 2 iterations",0.14980099990680174,2,scale
+52,900,2697,sbm,R2,"KNZ MP, converged",3.2069309999087636,84,scale
+52,900,2697,sbm,R2,"AP(eta=1) standalone, to fixed point",6.804867999903763,89,scale
+52,900,2697,sbm,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.013591999959317036,1,scale
+52,900,2697,sbm,R2,"Realization C on raw P, K=5 (excl. base)",0.20531500001652603,5,scale
+52,900,2697,sbm,R2,"linear raw-P propagation, K=5 (excl. base)",0.13211199996021605,5,scale
+52,900,2697,sbm,R2,"Realization C standalone, T=3",0.11469699995814153,3,scale
+52,900,2697,sbm,R2,"scalar oracle sweep (40 alphas, batched)",170.49409800006288,0,scale
+52,900,2697,sbm,R2,"Monte Carlo, 50 worlds",2.7887390000387313,50,scale
+52,900,2697,sbm,R2,"Monte Carlo, 200 worlds",9.775941999919269,200,scale
+52,900,2697,sbm,R2,"Monte Carlo, 1000 worlds",47.735757999930684,1000,scale
+52,900,2697,sbm,R2,E2E calibrated rule,3.299858000104905,0,scale
+52,900,2697,sbm,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),4.049455999961538,0,scale
+52,900,2697,sbm,R2,E2E rule + C-law raw P (PBX_rule_best),3.8691479999215517,0,scale
+54,900,2663,sbm,R3,"operators (P_esc, W, EW, P)",1.2536140000065643,1,scale
+54,900,2663,sbm,R3,rule_EW (calibrated scalar),3.1390550000196527,241,scale
+54,900,2663,sbm,R3,"KNZ MP, 2 iterations",0.18462699995325238,2,scale
+54,900,2663,sbm,R3,"KNZ MP, converged",2.3120179999978063,40,scale
+54,900,2663,sbm,R3,"AP(eta=1) standalone, to fixed point",34.56561099994815,200,scale
+54,900,2663,sbm,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.04708799997388269,1,scale
+54,900,2663,sbm,R3,"Realization C on raw P, K=5 (excl. base)",0.520553999990625,5,scale
+54,900,2663,sbm,R3,"linear raw-P propagation, K=5 (excl. base)",0.3131880000637466,5,scale
+54,900,2663,sbm,R3,"Realization C standalone, T=3",0.272408999990148,3,scale
+54,900,2663,sbm,R3,"scalar oracle sweep (40 alphas, batched)",122.31613500000549,0,scale
+54,900,2663,sbm,R3,"Monte Carlo, 50 worlds",4.212616000017988,50,scale
+54,900,2663,sbm,R3,"Monte Carlo, 200 worlds",14.650594000045203,200,scale
+54,900,2663,sbm,R3,"Monte Carlo, 1000 worlds",70.94261200006713,1000,scale
+54,900,2663,sbm,R3,E2E calibrated rule,7.765549999930954,0,scale
+54,900,2663,sbm,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),9.129815000051167,0,scale
+54,900,2663,sbm,R3,E2E rule + C-law raw P (PBX_rule_best),8.336180000014792,0,scale
+56,900,2774,sbm,R4,"operators (P_esc, W, EW, P)",2.346587000033651,1,scale
+56,900,2774,sbm,R4,rule_EW (calibrated scalar),6.316931000014847,285,scale
+56,900,2774,sbm,R4,"KNZ MP, 2 iterations",0.372981000055006,2,scale
+56,900,2774,sbm,R4,"KNZ MP, converged",1.4936439999928552,15,scale
+56,900,2774,sbm,R4,"AP(eta=1) standalone, to fixed point",67.0451690000391,248,scale
+56,900,2774,sbm,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.03710399994361069,1,scale
+56,900,2774,sbm,R4,"Realization C on raw P, K=5 (excl. base)",0.6494529999372389,5,scale
+56,900,2774,sbm,R4,"linear raw-P propagation, K=5 (excl. base)",0.4220549999445211,5,scale
+56,900,2774,sbm,R4,"Realization C standalone, T=3",0.3729589999466043,3,scale
+56,900,2774,sbm,R4,"scalar oracle sweep (40 alphas, batched)",90.05572399996709,0,scale
+56,900,2774,sbm,R4,"Monte Carlo, 50 worlds",5.518311999935577,50,scale
+56,900,2774,sbm,R4,"Monte Carlo, 200 worlds",20.86894400008532,200,scale
+56,900,2774,sbm,R4,"Monte Carlo, 1000 worlds",116.04492899994057,1000,scale
+56,900,2774,sbm,R4,E2E calibrated rule,5.0368480000315685,0,scale
+56,900,2774,sbm,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),5.95142500003476,0,scale
+56,900,2774,sbm,R4,E2E rule + C-law raw P (PBX_rule_best),7.519533000049705,0,scale
+58,900,2777,sbm,R5,"operators (P_esc, W, EW, P)",1.1745120000341558,1,scale
+58,900,2777,sbm,R5,rule_EW (calibrated scalar),4.044822999958342,320,scale
+58,900,2777,sbm,R5,"KNZ MP, 2 iterations",0.18133300000044983,2,scale
+58,900,2777,sbm,R5,"KNZ MP, converged",0.5258179999145796,9,scale
+58,900,2777,sbm,R5,"AP(eta=1) standalone, to fixed point",41.05646500011062,280,scale
+58,900,2777,sbm,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.01846200007094012,1,scale
+58,900,2777,sbm,R5,"Realization C on raw P, K=5 (excl. base)",0.25673700008610467,5,scale
+58,900,2777,sbm,R5,"linear raw-P propagation, K=5 (excl. base)",0.21157400010451965,5,scale
+58,900,2777,sbm,R5,"Realization C standalone, T=3",0.159238000037476,3,scale
+58,900,2777,sbm,R5,"scalar oracle sweep (40 alphas, batched)",101.40424399992298,0,scale
+58,900,2777,sbm,R5,"Monte Carlo, 50 worlds",6.338992999985749,50,scale
+58,900,2777,sbm,R5,"Monte Carlo, 200 worlds",24.40589100001489,200,scale
+58,900,2777,sbm,R5,"Monte Carlo, 1000 worlds",130.17186000001857,1000,scale
+58,900,2777,sbm,R5,E2E calibrated rule,4.49683300007564,0,scale
+58,900,2777,sbm,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),6.270576000019901,0,scale
+58,900,2777,sbm,R5,E2E rule + C-law raw P (PBX_rule_best),10.77338699997199,0,scale
+60,900,5914,cp,R1,"operators (P_esc, W, EW, P)",3.6066540000092573,1,scale
+60,900,5914,cp,R1,rule_EW (calibrated scalar),2.3919770000020435,88,scale
+60,900,5914,cp,R1,"KNZ MP, 2 iterations",0.6498480000800555,2,scale
+60,900,5914,cp,R1,"KNZ MP, converged",6.055582000044524,24,scale
+60,900,5914,cp,R1,"AP(eta=1) standalone, to fixed point",16.175123000039093,76,scale
+60,900,5914,cp,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.03208900000117865,1,scale
+60,900,5914,cp,R1,"Realization C on raw P, K=5 (excl. base)",0.8814259999780916,5,scale
+60,900,5914,cp,R1,"linear raw-P propagation, K=5 (excl. base)",0.46555500000522443,5,scale
+60,900,5914,cp,R1,"Realization C standalone, T=3",0.5427950000012061,3,scale
+60,900,5914,cp,R1,"scalar oracle sweep (40 alphas, batched)",35.202333000029284,0,scale
+60,900,5914,cp,R1,"Monte Carlo, 50 worlds",3.1983580000769507,50,scale
+60,900,5914,cp,R1,"Monte Carlo, 200 worlds",11.952660000019932,200,scale
+60,900,5914,cp,R1,"Monte Carlo, 1000 worlds",84.60194600002069,1000,scale
+60,900,5914,cp,R1,E2E calibrated rule,3.2563510000045426,0,scale
+60,900,5914,cp,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),4.074677999938103,0,scale
+60,900,5914,cp,R1,E2E rule + C-law raw P (PBX_rule_best),3.6562270000786157,0,scale
+62,900,5940,cp,R2,"operators (P_esc, W, EW, P)",1.7777220000425586,1,scale
+62,900,5940,cp,R2,rule_EW (calibrated scalar),1.1739960000340943,71,scale
+62,900,5940,cp,R2,"KNZ MP, 2 iterations",0.34322399994834996,2,scale
+62,900,5940,cp,R2,"KNZ MP, converged",1.4456320000135747,12,scale
+62,900,5940,cp,R2,"AP(eta=1) standalone, to fixed point",6.725574999904893,63,scale
+62,900,5940,cp,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.019698000073731237,1,scale
+62,900,5940,cp,R2,"Realization C on raw P, K=5 (excl. base)",0.3898989999697733,5,scale
+62,900,5940,cp,R2,"linear raw-P propagation, K=5 (excl. base)",0.2403290000074776,5,scale
+62,900,5940,cp,R2,"Realization C standalone, T=3",0.17414399997051078,3,scale
+62,900,5940,cp,R2,"scalar oracle sweep (40 alphas, batched)",28.02309800006242,0,scale
+62,900,5940,cp,R2,"Monte Carlo, 50 worlds",4.272966000030465,50,scale
+62,900,5940,cp,R2,"Monte Carlo, 200 worlds",14.569936000043526,200,scale
+62,900,5940,cp,R2,"Monte Carlo, 1000 worlds",75.61728799998946,1000,scale
+62,900,5940,cp,R2,E2E calibrated rule,2.9894040000044697,0,scale
+62,900,5940,cp,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.6558210000521285,0,scale
+62,900,5940,cp,R2,E2E rule + C-law raw P (PBX_rule_best),3.5298069999498694,0,scale
+64,900,5873,cp,R3,"operators (P_esc, W, EW, P)",1.7235719999462162,1,scale
+64,900,5873,cp,R3,rule_EW (calibrated scalar),1.2598280000020168,74,scale
+64,900,5873,cp,R3,"KNZ MP, 2 iterations",0.35348000005797076,2,scale
+64,900,5873,cp,R3,"KNZ MP, converged",1.750291999996989,15,scale
+64,900,5873,cp,R3,"AP(eta=1) standalone, to fixed point",6.618541000079858,62,scale
+64,900,5873,cp,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.0206099999786602,1,scale
+64,900,5873,cp,R3,"Realization C on raw P, K=5 (excl. base)",0.3250320000915963,5,scale
+64,900,5873,cp,R3,"linear raw-P propagation, K=5 (excl. base)",0.21516699996482203,5,scale
+64,900,5873,cp,R3,"Realization C standalone, T=3",0.1802709999765284,3,scale
+64,900,5873,cp,R3,"scalar oracle sweep (40 alphas, batched)",32.227709000039795,0,scale
+64,900,5873,cp,R3,"Monte Carlo, 50 worlds",5.670184999985395,50,scale
+64,900,5873,cp,R3,"Monte Carlo, 200 worlds",21.922638999967603,200,scale
+64,900,5873,cp,R3,"Monte Carlo, 1000 worlds",115.54726800000026,1000,scale
+64,900,5873,cp,R3,E2E calibrated rule,2.3085830000582064,0,scale
+64,900,5873,cp,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.012904999991406,0,scale
+64,900,5873,cp,R3,E2E rule + C-law raw P (PBX_rule_best),2.5998419999950784,0,scale
+66,900,5891,cp,R4,"operators (P_esc, W, EW, P)",1.2606589999677453,1,scale
+66,900,5891,cp,R4,rule_EW (calibrated scalar),1.1560140000028696,93,scale
+66,900,5891,cp,R4,"KNZ MP, 2 iterations",0.29382900004293333,2,scale
+66,900,5891,cp,R4,"KNZ MP, converged",0.8835419999968508,9,scale
+66,900,5891,cp,R4,"AP(eta=1) standalone, to fixed point",6.942179000020587,81,scale
+66,900,5891,cp,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.02388900009009376,1,scale
+66,900,5891,cp,R4,"Realization C on raw P, K=5 (excl. base)",0.30003899996700056,5,scale
+66,900,5891,cp,R4,"linear raw-P propagation, K=5 (excl. base)",0.17813300007674115,5,scale
+66,900,5891,cp,R4,"Realization C standalone, T=3",0.2001330000211965,3,scale
+66,900,5891,cp,R4,"scalar oracle sweep (40 alphas, batched)",37.70444600002065,0,scale
+66,900,5891,cp,R4,"Monte Carlo, 50 worlds",8.564153999941482,50,scale
+66,900,5891,cp,R4,"Monte Carlo, 200 worlds",33.616005999988374,200,scale
+66,900,5891,cp,R4,"Monte Carlo, 1000 worlds",166.31593599993266,1000,scale
+66,900,5891,cp,R4,E2E calibrated rule,3.2666049999079405,0,scale
+66,900,5891,cp,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.900556999951732,0,scale
+66,900,5891,cp,R4,E2E rule + C-law raw P (PBX_rule_best),3.685411999981625,0,scale
+68,900,5885,cp,R5,"operators (P_esc, W, EW, P)",1.7899040000202149,1,scale
+68,900,5885,cp,R5,rule_EW (calibrated scalar),1.5836160000617383,98,scale
+68,900,5885,cp,R5,"KNZ MP, 2 iterations",0.4043390000560976,2,scale
+68,900,5885,cp,R5,"KNZ MP, converged",1.4278239999612197,10,scale
+68,900,5885,cp,R5,"AP(eta=1) standalone, to fixed point",7.781623000028048,85,scale
+68,900,5885,cp,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.020030999962727947,1,scale
+68,900,5885,cp,R5,"Realization C on raw P, K=5 (excl. base)",0.28001300006508245,5,scale
+68,900,5885,cp,R5,"linear raw-P propagation, K=5 (excl. base)",0.18312500003503374,5,scale
+68,900,5885,cp,R5,"Realization C standalone, T=3",0.16730899994854553,3,scale
+68,900,5885,cp,R5,"scalar oracle sweep (40 alphas, batched)",37.27635200004897,0,scale
+68,900,5885,cp,R5,"Monte Carlo, 50 worlds",8.866671999953724,50,scale
+68,900,5885,cp,R5,"Monte Carlo, 200 worlds",35.231468000006316,200,scale
+68,900,5885,cp,R5,"Monte Carlo, 1000 worlds",211.99356500005706,1000,scale
+68,900,5885,cp,R5,E2E calibrated rule,3.8280549999853974,0,scale
+68,900,5885,cp,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),4.447541999979876,0,scale
+68,900,5885,cp,R5,E2E rule + C-law raw P (PBX_rule_best),3.6987670000598882,0,scale
+70,900,899,tree,R1,"operators (P_esc, W, EW, P)",0.9522169999627295,1,scale
+70,900,899,tree,R1,rule_EW (calibrated scalar),0.7423029999245045,64,scale
+70,900,899,tree,R1,"KNZ MP, 2 iterations",0.11270099992088944,2,scale
+70,900,899,tree,R1,"KNZ MP, converged",0.3104849999999715,11,scale
+70,900,899,tree,R1,"AP(eta=1) standalone, to fixed point",1.6312190000462579,19,scale
+70,900,899,tree,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.016592000065429602,1,scale
+70,900,899,tree,R1,"Realization C on raw P, K=5 (excl. base)",0.26203700008409214,5,scale
+70,900,899,tree,R1,"linear raw-P propagation, K=5 (excl. base)",0.1433759999827089,5,scale
+70,900,899,tree,R1,"Realization C standalone, T=3",0.15335599994159566,3,scale
+70,900,899,tree,R1,"scalar oracle sweep (40 alphas, batched)",944.1173200000321,0,scale
+70,900,899,tree,R1,"Monte Carlo, 50 worlds",2.1830230000432493,50,scale
+70,900,899,tree,R1,"Monte Carlo, 200 worlds",5.482605999986845,200,scale
+70,900,899,tree,R1,"Monte Carlo, 1000 worlds",18.43112899996413,1000,scale
+70,900,899,tree,R1,E2E calibrated rule,2.0073039999033426,0,scale
+70,900,899,tree,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.433376999988468,0,scale
+70,900,899,tree,R1,E2E rule + C-law raw P (PBX_rule_best),2.0838629999389013,0,scale
+72,900,899,tree,R2,"operators (P_esc, W, EW, P)",1.080260000094313,1,scale
+72,900,899,tree,R2,rule_EW (calibrated scalar),1.073905999987801,94,scale
+72,900,899,tree,R2,"KNZ MP, 2 iterations",0.10326200003873964,2,scale
+72,900,899,tree,R2,"KNZ MP, converged",0.4954690000431583,17,scale
+72,900,899,tree,R2,"AP(eta=1) standalone, to fixed point",3.6418390000108047,41,scale
+72,900,899,tree,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.02582900003744726,1,scale
+72,900,899,tree,R2,"Realization C on raw P, K=5 (excl. base)",0.2890360000264991,5,scale
+72,900,899,tree,R2,"linear raw-P propagation, K=5 (excl. base)",0.1647569999931875,5,scale
+72,900,899,tree,R2,"Realization C standalone, T=3",0.14767100003609812,3,scale
+72,900,899,tree,R2,"scalar oracle sweep (40 alphas, batched)",679.5097839999471,0,scale
+72,900,899,tree,R2,"Monte Carlo, 50 worlds",1.2748909999800162,50,scale
+72,900,899,tree,R2,"Monte Carlo, 200 worlds",4.115326000032837,200,scale
+72,900,899,tree,R2,"Monte Carlo, 1000 worlds",18.764595999982703,1000,scale
+72,900,899,tree,R2,E2E calibrated rule,2.1276160000525124,0,scale
+72,900,899,tree,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),2.3385350000353355,0,scale
+72,900,899,tree,R2,E2E rule + C-law raw P (PBX_rule_best),2.3134000000482047,0,scale
+74,900,899,tree,R3,"operators (P_esc, W, EW, P)",0.8544710000251143,1,scale
+74,900,899,tree,R3,rule_EW (calibrated scalar),2.0403080000050977,183,scale
+74,900,899,tree,R3,"KNZ MP, 2 iterations",0.12493200006247207,2,scale
+74,900,899,tree,R3,"KNZ MP, converged",0.5858009999428759,27,scale
+74,900,899,tree,R3,"AP(eta=1) standalone, to fixed point",14.614263999987998,137,scale
+74,900,899,tree,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.018299999965165625,1,scale
+74,900,899,tree,R3,"Realization C on raw P, K=5 (excl. base)",0.29550199997174786,5,scale
+74,900,899,tree,R3,"linear raw-P propagation, K=5 (excl. base)",0.16826000000946806,5,scale
+74,900,899,tree,R3,"Realization C standalone, T=3",0.16597900003034738,3,scale
+74,900,899,tree,R3,"scalar oracle sweep (40 alphas, batched)",3851.0256389999995,0,scale
+74,900,899,tree,R3,"Monte Carlo, 50 worlds",2.2709940000140705,50,scale
+74,900,899,tree,R3,"Monte Carlo, 200 worlds",7.175835999987612,200,scale
+74,900,899,tree,R3,"Monte Carlo, 1000 worlds",33.91470200006097,1000,scale
+74,900,899,tree,R3,E2E calibrated rule,3.1922470000154135,0,scale
+74,900,899,tree,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),3.9058110000951274,0,scale
+74,900,899,tree,R3,E2E rule + C-law raw P (PBX_rule_best),3.4698969999453766,0,scale
+76,900,899,tree,R4,"operators (P_esc, W, EW, P)",0.934101999973791,1,scale
+76,900,899,tree,R4,rule_EW (calibrated scalar),7.430406000025869,656,scale
+76,900,899,tree,R4,"KNZ MP, 2 iterations",0.13011099997584097,2,scale
+76,900,899,tree,R4,"KNZ MP, converged",1.1348459998998806,54,scale
+76,900,899,tree,R4,"AP(eta=1) standalone, to fixed point",305.9562270000242,2867,scale
+76,900,899,tree,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.012796999953934574,1,scale
+76,900,899,tree,R4,"Realization C on raw P, K=5 (excl. base)",0.18830099998012884,5,scale
+76,900,899,tree,R4,"linear raw-P propagation, K=5 (excl. base)",0.1370429999951739,5,scale
+76,900,899,tree,R4,"Realization C standalone, T=3",0.1167850000456383,3,scale
+76,900,899,tree,R4,"scalar oracle sweep (40 alphas, batched)",2182.826265000017,0,scale
+76,900,899,tree,R4,"Monte Carlo, 50 worlds",2.5945090000050186,50,scale
+76,900,899,tree,R4,"Monte Carlo, 200 worlds",11.600788000009743,200,scale
+76,900,899,tree,R4,"Monte Carlo, 1000 worlds",58.936630000061996,1000,scale
+76,900,899,tree,R4,E2E calibrated rule,13.979414999994333,0,scale
+76,900,899,tree,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),15.15223799992782,0,scale
+76,900,899,tree,R4,E2E rule + C-law raw P (PBX_rule_best),10.412847999987207,0,scale
+78,900,899,tree,R5,"operators (P_esc, W, EW, P)",0.9281259999625036,1,scale
+78,900,899,tree,R5,rule_EW (calibrated scalar),249.25277900001674,20000,scale
+78,900,899,tree,R5,"KNZ MP, 2 iterations",0.17174199990677153,2,scale
+78,900,899,tree,R5,"KNZ MP, converged",2.557925000019168,114,scale
+78,900,899,tree,R5,"AP(eta=1) standalone, to fixed point",876.9681229999833,5000,scale
+78,900,899,tree,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.022756000021217915,1,scale
+78,900,899,tree,R5,"Realization C on raw P, K=5 (excl. base)",0.42073299994171975,5,scale
+78,900,899,tree,R5,"linear raw-P propagation, K=5 (excl. base)",0.29647500002738525,5,scale
+78,900,899,tree,R5,"Realization C standalone, T=3",0.2673469999763256,3,scale
+78,900,899,tree,R5,"scalar oracle sweep (40 alphas, batched)",5874.729505000005,0,scale
+78,900,899,tree,R5,"Monte Carlo, 50 worlds",3.2405470000185232,50,scale
+78,900,899,tree,R5,"Monte Carlo, 200 worlds",11.404242000025988,200,scale
+78,900,899,tree,R5,"Monte Carlo, 1000 worlds",51.70514499991441,1000,scale
+78,900,899,tree,R5,E2E calibrated rule,237.71067199993468,0,scale
+78,900,899,tree,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),248.79843800010804,0,scale
+78,900,899,tree,R5,E2E rule + C-law raw P (PBX_rule_best),259.803394999949,0,scale
+80,900,8731,barbell,R1,"operators (P_esc, W, EW, P)",1.6689130000031582,1,scale
+80,900,8731,barbell,R1,rule_EW (calibrated scalar),3.1700079999836817,207,scale
+80,900,8731,barbell,R1,"KNZ MP, 2 iterations",0.41482000005999,2,scale
+80,900,8731,barbell,R1,"KNZ MP, converged",2.092048999998042,15,scale
+80,900,8731,barbell,R1,"AP(eta=1) standalone, to fixed point",92.79157400010263,1136,scale
+80,900,8731,barbell,R1,"Mode (b) nominal polish, K=1 (excl. base)",0.01758700000209501,1,scale
+80,900,8731,barbell,R1,"Realization C on raw P, K=5 (excl. base)",0.20016600001326879,5,scale
+80,900,8731,barbell,R1,"linear raw-P propagation, K=5 (excl. base)",0.14069000008021249,5,scale
+80,900,8731,barbell,R1,"Realization C standalone, T=3",0.13095799999973678,3,scale
+80,900,8731,barbell,R1,"scalar oracle sweep (40 alphas, batched)",8759.999339000045,0,scale
+80,900,8731,barbell,R1,"Monte Carlo, 50 worlds",3.9816549999613926,50,scale
+80,900,8731,barbell,R1,"Monte Carlo, 200 worlds",14.390489999982492,200,scale
+80,900,8731,barbell,R1,"Monte Carlo, 1000 worlds",73.68415799999184,1000,scale
+80,900,8731,barbell,R1,E2E calibrated rule,5.850044999988313,0,scale
+80,900,8731,barbell,R1,E2E rule + constant-alpha raw P (CTRL_lin0.9),6.5821859999459775,0,scale
+80,900,8731,barbell,R1,E2E rule + C-law raw P (PBX_rule_best),6.2501200000042445,0,scale
+82,900,8731,barbell,R2,"operators (P_esc, W, EW, P)",1.890711999976702,1,scale
+82,900,8731,barbell,R2,rule_EW (calibrated scalar),5.870833000017228,309,scale
+82,900,8731,barbell,R2,"KNZ MP, 2 iterations",0.5449760000146853,2,scale
+82,900,8731,barbell,R2,"KNZ MP, converged",2.9860610000014276,16,scale
+82,900,8731,barbell,R2,"AP(eta=1) standalone, to fixed point",147.065360000056,1204,scale
+82,900,8731,barbell,R2,"Mode (b) nominal polish, K=1 (excl. base)",0.022963999981584493,1,scale
+82,900,8731,barbell,R2,"Realization C on raw P, K=5 (excl. base)",0.2945669999689926,5,scale
+82,900,8731,barbell,R2,"linear raw-P propagation, K=5 (excl. base)",0.23087299996404909,5,scale
+82,900,8731,barbell,R2,"Realization C standalone, T=3",0.18039099995803554,3,scale
+82,900,8731,barbell,R2,"scalar oracle sweep (40 alphas, batched)",9075.642592999997,0,scale
+82,900,8731,barbell,R2,"Monte Carlo, 50 worlds",5.230080000046655,50,scale
+82,900,8731,barbell,R2,"Monte Carlo, 200 worlds",19.154259000060847,200,scale
+82,900,8731,barbell,R2,"Monte Carlo, 1000 worlds",103.71440899996287,1000,scale
+82,900,8731,barbell,R2,E2E calibrated rule,8.157205000088652,0,scale
+82,900,8731,barbell,R2,E2E rule + constant-alpha raw P (CTRL_lin0.9),13.055875000077322,0,scale
+82,900,8731,barbell,R2,E2E rule + C-law raw P (PBX_rule_best),11.617704999935086,0,scale
+84,900,8731,barbell,R3,"operators (P_esc, W, EW, P)",1.9897340000625263,1,scale
+84,900,8731,barbell,R3,rule_EW (calibrated scalar),11.649101999978484,619,scale
+84,900,8731,barbell,R3,"KNZ MP, 2 iterations",0.5711570000812571,2,scale
+84,900,8731,barbell,R3,"KNZ MP, converged",4.867006000040419,25,scale
+84,900,8731,barbell,R3,"AP(eta=1) standalone, to fixed point",326.23609600000236,2422,scale
+84,900,8731,barbell,R3,"Mode (b) nominal polish, K=1 (excl. base)",0.024170999950001715,1,scale
+84,900,8731,barbell,R3,"Realization C on raw P, K=5 (excl. base)",0.40512199996101117,5,scale
+84,900,8731,barbell,R3,"linear raw-P propagation, K=5 (excl. base)",0.22347099991293362,5,scale
+84,900,8731,barbell,R3,"Realization C standalone, T=3",0.18567699999039178,3,scale
+84,900,8731,barbell,R3,"scalar oracle sweep (40 alphas, batched)",9071.273829999995,0,scale
+84,900,8731,barbell,R3,"Monte Carlo, 50 worlds",7.453706999967835,50,scale
+84,900,8731,barbell,R3,"Monte Carlo, 200 worlds",32.23283299996638,200,scale
+84,900,8731,barbell,R3,"Monte Carlo, 1000 worlds",173.41248900004302,1000,scale
+84,900,8731,barbell,R3,E2E calibrated rule,13.16063199999462,0,scale
+84,900,8731,barbell,R3,E2E rule + constant-alpha raw P (CTRL_lin0.9),14.030134999984512,0,scale
+84,900,8731,barbell,R3,E2E rule + C-law raw P (PBX_rule_best),15.3788520000262,0,scale
+86,900,8731,barbell,R4,"operators (P_esc, W, EW, P)",2.565979999985757,1,scale
+86,900,8731,barbell,R4,rule_EW (calibrated scalar),115.2865199999269,4021,scale
+86,900,8731,barbell,R4,"KNZ MP, 2 iterations",1.0728120000749186,2,scale
+86,900,8731,barbell,R4,"KNZ MP, converged",17.06937400001607,52,scale
+86,900,8731,barbell,R4,"AP(eta=1) standalone, to fixed point",823.1383439999718,5000,scale
+86,900,8731,barbell,R4,"Mode (b) nominal polish, K=1 (excl. base)",0.02606600003218773,1,scale
+86,900,8731,barbell,R4,"Realization C on raw P, K=5 (excl. base)",0.27296700000079,5,scale
+86,900,8731,barbell,R4,"linear raw-P propagation, K=5 (excl. base)",0.2101910000646967,5,scale
+86,900,8731,barbell,R4,"Realization C standalone, T=3",0.20212900005844858,3,scale
+86,900,8731,barbell,R4,"scalar oracle sweep (40 alphas, batched)",9216.72514799991,0,scale
+86,900,8731,barbell,R4,"Monte Carlo, 50 worlds",11.501202000090416,50,scale
+86,900,8731,barbell,R4,"Monte Carlo, 200 worlds",42.883028999995076,200,scale
+86,900,8731,barbell,R4,"Monte Carlo, 1000 worlds",270.7625389999748,1000,scale
+86,900,8731,barbell,R4,E2E calibrated rule,87.06076800001483,0,scale
+86,900,8731,barbell,R4,E2E rule + constant-alpha raw P (CTRL_lin0.9),95.02588899999864,0,scale
+86,900,8731,barbell,R4,E2E rule + C-law raw P (PBX_rule_best),59.60194199997204,0,scale
+88,900,8731,barbell,R5,"operators (P_esc, W, EW, P)",1.6073729999561692,1,scale
+88,900,8731,barbell,R5,rule_EW (calibrated scalar),317.6373630000171,20000,scale
+88,900,8731,barbell,R5,"KNZ MP, 2 iterations",0.5677870000226903,2,scale
+88,900,8731,barbell,R5,"KNZ MP, converged",34.48071900004379,143,scale
+88,900,8731,barbell,R5,"AP(eta=1) standalone, to fixed point",753.081337000026,5000,scale
+88,900,8731,barbell,R5,"Mode (b) nominal polish, K=1 (excl. base)",0.024465999899803137,1,scale
+88,900,8731,barbell,R5,"Realization C on raw P, K=5 (excl. base)",0.29208599994490214,5,scale
+88,900,8731,barbell,R5,"linear raw-P propagation, K=5 (excl. base)",0.1994650000369802,5,scale
+88,900,8731,barbell,R5,"Realization C standalone, T=3",0.19517099997301557,3,scale
+88,900,8731,barbell,R5,"scalar oracle sweep (40 alphas, batched)",8237.244379000003,0,scale
+88,900,8731,barbell,R5,"Monte Carlo, 50 worlds",11.951494000072671,50,scale
+88,900,8731,barbell,R5,"Monte Carlo, 200 worlds",50.54599600009624,200,scale
+88,900,8731,barbell,R5,"Monte Carlo, 1000 worlds",271.3844249999511,1000,scale
+88,900,8731,barbell,R5,E2E calibrated rule,454.9412689999599,0,scale
+88,900,8731,barbell,R5,E2E rule + constant-alpha raw P (CTRL_lin0.9),378.8962559999618,0,scale
+88,900,8731,barbell,R5,E2E rule + C-law raw P (PBX_rule_best),404.73736600006305,0,scale

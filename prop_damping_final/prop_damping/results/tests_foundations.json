@@ -1,0 +1,7 @@
+{
+ "theorem1_max_residual": 3.212260490036809e-12,
+ "mc_vs_exact_max_z": 2.6232513871170338,
+ "knz0_minus_pesc": 1.1102230246251565e-16,
+ "grid_alpha1_residual": 1.994421121309653e-12,
+ "collapse_A_uniform_max_rel_excess_after_1_step": 1.3877787807814457e-15
+}
