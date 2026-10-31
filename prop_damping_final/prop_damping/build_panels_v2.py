@@ -5,6 +5,10 @@ Ground-truth generation is intentionally separate from ``build_panels.py``.
 from __future__ import annotations
 
 import json
+import hashlib
+import sys
+import time
+from multiprocessing import Pool
 from pathlib import Path
 
 import build_panels as v1
@@ -12,6 +16,26 @@ import prop_damping_lib as L
 
 ROOT = Path(__file__).resolve().parent
 DATA = ROOT / "data"
+
+
+def _digest(path: Path, key: str) -> str:
+    import numpy as np
+    with np.load(path, allow_pickle=False) as d:
+        return hashlib.sha256(np.asarray(d[key]).tobytes()).hexdigest()
+
+
+def duplicate_report(panels: list[str]) -> dict[str, list[str]]:
+    """Compare edge and prior hashes of new instances with all existing data."""
+    existing = [p for panel in ("dev", "test", "prior", "real", "scale")
+                for p in (DATA / panel).glob("[0-9][0-9][0-9][0-9].npz")]
+    old = {(_digest(p, "edges"), _digest(p, "p"), _digest(p, "x")) for p in existing}
+    duplicates = {}
+    for panel in panels:
+        for path in (DATA / panel).glob("[0-9][0-9][0-9][0-9].npz"):
+            pair = (_digest(path, "edges"), _digest(path, "p"), _digest(path, "x"))
+            if pair in old:
+                duplicates[str(path)] = ["edges_and_prior"]
+    return duplicates
 
 
 def spec_list(panel: str) -> list[dict]:
@@ -39,7 +63,10 @@ def spec_list(panel: str) -> list[dict]:
             for sc in schemes:
                 for prior in ("uniform", "dir1"):
                     specs.append(dict(kind="classic", g=g, scheme=sc, prior=prior, rep=1))
+        available = {p.stem for p in (ROOT / "data_real").glob("*.npz")}
         for g in ("cora", "citeseer", "amazon_electronics_photo", "ms_academic_cs"):
+            if g not in available:
+                continue
             for size, reps in ((500, (2, 3)), (1000, (4,))):
                 for rep in reps:
                     for sc in schemes:
@@ -64,9 +91,16 @@ def main(panels):
         out = DATA / panel
         out.mkdir(parents=True, exist_ok=True)
         (out / "specs.json").write_text(json.dumps(specs, indent=0))
-        print(f"{panel}: {len(specs)} specifications written")
+        jobs = [(panel, i, spec) for i, spec in enumerate(specs)]
+        t0 = time.time()
+        with Pool(2) as pool:
+            for done, (_, seconds) in enumerate(pool.imap_unordered(v1.build_one, jobs, chunksize=1), 1):
+                if done % 20 == 0:
+                    print(f"[{panel}] {done}/{len(jobs)} elapsed={time.time() - t0:.0f}s",
+                          flush=True)
+        print(f"{panel}: {len(specs)} ground-truth instances ready in "
+              f"{time.time() - t0:.0f}s", flush=True)
 
 
 if __name__ == "__main__":
-    import sys
     main(sys.argv[1:] or ["test2", "scale2", "prior2", "real2", "big"])

@@ -177,7 +177,10 @@ def phase_B_trajectory(T: sp.csr_matrix, x: np.ndarray, ops: dict,
     if isinstance(damping, (float, int)):
         contractive = float(damping) * rho < 1.0
     for k in range(1, max_steps + 1):
-        a = _alpha(x, ops, damping, y, T, eta)
+        query_y = state.finite()
+        if not np.isfinite(query_y).all():
+            query_y = state.unit
+        a = _alpha(x, ops, damping, query_y, T, eta)
         if normalisation == "L1":
             y = _normalise((1.0 - a) * x + np.asarray(a) * (T @ y))
             state = ScaledVector(y.copy(), 0.0)
@@ -393,7 +396,7 @@ def total_rank(T: sp.csr_matrix, x: np.ndarray, nodes: int = 16) -> np.ndarray:
     out = np.zeros_like(x)
     for z, wt in zip(q, w):
         a = (z + 1.0) / 2.0
-        y, _ = L.diffuse(T, x, a)
+        y, _ = L.diffuse(T, x, a, tol=1e-10, maxit=5000)
         out += 0.5 * wt * y
     return out
 
@@ -404,6 +407,6 @@ def rapr(T: sp.csr_matrix, x: np.ndarray, a: float, b: float, nodes: int = 16) -
     for z, wt in zip(q, w):
         alpha = (z + 1.0) / 2.0
         density = alpha ** (a - 1.0) * (1 - alpha) ** (b - 1.0)
-        y, _ = L.diffuse(T, x, alpha)
+        y, _ = L.diffuse(T, x, alpha, tol=1e-10, maxit=5000)
         out += 0.5 * wt * density * y
     return out
