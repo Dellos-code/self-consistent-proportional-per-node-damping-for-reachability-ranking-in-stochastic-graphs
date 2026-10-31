@@ -6,6 +6,9 @@ import scipy.sparse as sp
 
 import mixing_lib as M
 import prop_damping_lib as L
+from build_panels import load_instance
+from exp_mixing import evaluate
+from experiments import excess_embed
 
 
 def test_config_id_stable():
@@ -50,3 +53,19 @@ def test_operator_mixture_lambda_zero_matches_diffuse():
     got, _ = M.operator_mixture(T, T, x, 0.7, 0.0, c=0.9, steps=3)
     expected, _ = M.phase_A(T, x, {"Pbar": 0.0}, damping=0.7, steps=3)
     assert np.allclose(got, expected)
+
+
+def test_current_hybrid_matches_controls_on_dev_and_test():
+    cfg = {"name": "CTRL_lin0.9", "kind": "hybrid", "a": 0.9,
+           "steps": 5, "beta": 0.5, "gamma": 1.0}
+    for panel in ("dev", "test"):
+        paths = sorted(__import__("pathlib").Path("data", panel).glob("*.npz"))[:20]
+        for path in paths:
+            inst, y_a, y_b, _ = load_instance(path)
+            ops = inst.ops()
+            y0, _ = L.diffuse(ops["EW"], inst.x, L.rule_alpha(ops["Pbar"], "EW"))
+            y = excess_embed(y0, inst.x, 1.0)
+            for _ in range(5):
+                y = 0.1 * inst.x + 0.9 * (ops["P"] @ y)
+            expected = L.spearman(0.5 * L.ranks_of(y0) + 0.5 * L.ranks_of(y), L.ranks_of(y_a))
+            assert abs(evaluate(inst, y_a, y_b, cfg) - expected) <= 1e-12
