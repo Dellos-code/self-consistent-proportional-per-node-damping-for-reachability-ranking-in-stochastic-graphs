@@ -1,0 +1,4 @@
+{"config": {"damping": "rule_EW", "kind": "A", "name": "rule_EW", "operator": "EW", "steps": "FP"}, "config_id": "2327f72910c2284814d7a6490b6c2f78972ff149"}
+{"config": {"damping": "rule_WT", "kind": "A", "name": "rule_WT", "operator": "WT", "steps": "FP"}, "config_id": "d4734a17d8cd4e01d38426f6b1a0d1acfe82d2ed"}
+{"config": {"a": 0.9, "beta": 0.5, "kind": "hybrid", "name": "CTRL_lin0.9", "steps": 5}, "config_id": "6739cf5251e9c67f57a3d4b85b82bc997e9a9533"}
+{"config": {"kind": "irie", "name": "IRIE_exact"}, "config_id": "516c9a270d457406b7e4de1edaca4dfc5e37a488"}
