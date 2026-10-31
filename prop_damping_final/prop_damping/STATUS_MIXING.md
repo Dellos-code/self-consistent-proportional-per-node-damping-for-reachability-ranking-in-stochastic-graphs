@@ -64,3 +64,8 @@ Secondary confirmation means were W1/W3 = 0.9183/0.9162 on `prior2`,
 `big`. On the vendored 100-instance external holdout, W1/W3 scored
 0.9310/0.9289 versus 0.9142 for the pinned IRIE implementation and 0.8940
 for the external paper's calibrated escape-scaled rule.
+
+On the fixed test2 timing subset, W1/W3 median end-to-end times were 2.14/2.16
+ms (machine-specific). MC-10/20/50/100/200 achieved mean rho
+0.738/0.809/0.903/0.944/0.966 at median times 0.24/0.26/0.37/0.52/0.90
+ms; these measurements are stored in `runtime_test2.json`.
