@@ -243,7 +243,7 @@ def fuse(members: dict[str, np.ndarray] | list[np.ndarray], method: str = "rank_
         return R @ weights
     if method == "rrf":
         top = len(vals[0]) + 1 - R
-        return (1.0 / (k + top)) @ weights if False else (1.0 / (k + top)) @ weights
+        return (1.0 / (k + top)) @ weights
     if method == "geometric":
         S = np.column_stack([np.maximum(v, 1e-300) / np.sum(np.maximum(v, 1e-300)) for v in vals])
         return np.exp(np.log(S) @ weights)
@@ -322,6 +322,40 @@ def irie_wc(inst) -> np.ndarray:
             break
         y = yn
     return y
+
+
+def baseline_scores(inst, yB: np.ndarray | None = None, *,
+                    include_mc: bool = False, mc_k: tuple[int, ...] = (10, 20, 50, 100,
+                    200, 500, 1000)) -> dict[str, np.ndarray]:
+    """Return the common baseline family; oracle fits use ``yB`` only."""
+    x, ops = inst.x, inst.ops()
+    out: dict[str, np.ndarray] = {
+        "rule_EW": L.diffuse(ops["EW"], x, L.rule_alpha(ops["Pbar"], "EW"))[0],
+        "rule_WT": L.diffuse(ops["WT"], x, L.rule_alpha(ops["Pbar"], "WT"))[0],
+        "fixed085": L.diffuse(ops["EW"], x, 0.85)[0],
+        "Pesc": ops["Pesc"].copy(),
+        "MP1": L.knz_mp(inst, iters=1)[0],
+        "MP2": L.knz_mp(inst, iters=2)[0],
+        "MPinf": L.knz_mp(inst, iters=None)[0],
+        "IRIE_exact": irie_exact(inst),
+        "IRIE_wc": irie_wc(inst),
+    }
+    if yB is not None:
+        ys, _ = L.scalar_sweep(ops["EW"], x)
+        idx = int(np.argmax(L.corr_ranks(L.ranks_of(ys), L.ranks_of(yB))))
+        out["oracle:scalar"] = ys[:, idx]
+        yw, _ = L.scalar_sweep(ops["WT"], x)
+        idx = int(np.argmax(L.corr_ranks(L.ranks_of(yw), L.ranks_of(yB))))
+        out["oracle:scalar_WT"] = yw[:, idx]
+    for t in (1, 2, 5, 10):
+        out[f"heat_kernel:{t}"] = heat_kernel(ops["W"], x, float(t))
+    out["TotalRank"] = total_rank(ops["EW"], x)
+    for a, b in ((0.5, 0.5), (1.0, 1.0), (2.0, 1.0)):
+        out[f"RAPr:{a:g},{b:g}"] = rapr(ops["EW"], x, a, b)
+    if include_mc:
+        for k in mc_k:
+            out[f"MC_{k}"] = L.mc_reach(inst, k, L.stable_seed(inst.name, "MC", k))
+    return out
 
 
 def heat_kernel(T: sp.csr_matrix, x: np.ndarray, t: float, tol: float = 1e-12) -> np.ndarray:

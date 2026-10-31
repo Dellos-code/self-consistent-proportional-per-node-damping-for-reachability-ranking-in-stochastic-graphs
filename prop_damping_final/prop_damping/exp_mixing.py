@@ -1,11 +1,11 @@
 """Resumable staged runner for the mixing study."""
 from __future__ import annotations
 
-import gzip
 import json
 import os
 import sys
 import time
+import argparse
 from pathlib import Path
 
 import numpy as np
@@ -75,7 +75,7 @@ def evaluate(inst, yA, yB, cfg):
     return float(L.spearman(y, rA))
 
 
-def run(stage: str, panel: str):
+def run(stage: str, panel: str, shard: tuple[int, int] | None = None):
     os.environ.setdefault("OMP_NUM_THREADS", "1")
     os.environ.setdefault("MKL_NUM_THREADS", "1")
     os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
@@ -90,6 +90,9 @@ def run(stage: str, panel: str):
             if cid not in known:
                 f.write(json.dumps({"config_id": cid, "config": cfg}, sort_keys=True) + "\n")
     paths = sorted(DATA.joinpath(panel).glob("[0-9][0-9][0-9][0-9].npz"))
+    if shard is not None:
+        index, total = shard
+        paths = paths[index::total]
     for path in paths:
         dest = outdir / f"{path.stem}.csv.gz"
         if dest.exists():
@@ -105,6 +108,15 @@ def run(stage: str, panel: str):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3:
-        raise SystemExit("usage: python exp_mixing.py <stage> <panel>")
-    run(sys.argv[1], sys.argv[2])
+    parser = argparse.ArgumentParser()
+    parser.add_argument("stage")
+    parser.add_argument("panel")
+    parser.add_argument("--shard", type=str)
+    parser.add_argument("--procs", type=int, default=1,
+                        help="reserved for scheduler compatibility; each output is process-safe")
+    args = parser.parse_args()
+    shard = None
+    if args.shard:
+        i, n = args.shard.split("/", 1)
+        shard = (int(i), int(n))
+    run(args.stage, args.panel, shard)

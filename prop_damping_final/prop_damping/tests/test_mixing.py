@@ -16,6 +16,13 @@ def test_config_id_stable():
     assert M.config_id(cfg) == M.config_id(json.loads(json.dumps(cfg)))
 
 
+def test_rrf_is_rank_based():
+    a = np.array([10.0, 2.0, 1.0])
+    b = np.array([1.0, 10.0, 2.0])
+    fused = M.fuse([a, b], method="rrf", beta=0.5, k=10)
+    assert np.argmax(fused) in (0, 1)
+
+
 def test_fusion_endpoints():
     a = np.array([1.0, 2.0, 3.0])
     b = np.array([3.0, 1.0, 2.0])
