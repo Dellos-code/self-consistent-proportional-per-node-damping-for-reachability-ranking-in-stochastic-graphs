@@ -100,7 +100,7 @@ def _ops(inst):
     return ops
 
 
-def evaluate(inst, yA, yB, cfg, cache=None):
+def evaluate(inst, yA, yB, cfg, cache=None, return_vector=False):
     cache = {} if cache is None else cache
     ops = cache.setdefault("ops", _ops(inst))
     rA = L.ranks_of(yA)
@@ -132,7 +132,7 @@ def evaluate(inst, yA, yB, cfg, cache=None):
                                        (cfg["steps"],), "none")
         b = traj[cfg["steps"]]
         y = M.fuse([a0, b], "rank_mean", beta=cfg.get("beta", 0.5))
-    return float(L.spearman(y, rA))
+    return y if return_vector else float(L.spearman(y, rA))
 
 
 def run(stage: str, panel: str, shard: tuple[int, int] | None = None):

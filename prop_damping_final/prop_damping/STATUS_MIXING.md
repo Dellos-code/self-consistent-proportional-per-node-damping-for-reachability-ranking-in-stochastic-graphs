@@ -50,3 +50,17 @@ Phase-B steps, excess embedding `gamma=16`, and rank-fusion `beta=0.7`
 qualify for W2. A 2,000-resample dev bootstrap gave top-1 frequencies 0.274
 for W1 and 0.184 for W3. The freeze contains W1 and W3 only; no confirmatory
 panel has been evaluated.
+
+Primary confirmation completed on `test2` and `scale2`. Mean Spearman values
+were W1/W3 = 0.9064/0.9072 on `test2` and 0.8650/0.8651 on `scale2`;
+`IRIE_exact` was 0.8841 and 0.8302, respectively. W1 versus IRIE had
+Wilcoxon p-values 0.00028 and 0.0130 (Holm-adjusted 0.00085 and 0.0389).
+Against `oracle:scalar`, the paired mean differences were +0.00547 on test2
+and -0.01256 on scale2, so the preregistered non-inferiority margin is not
+met on scale2.
+
+Secondary confirmation means were W1/W3 = 0.9183/0.9162 on `prior2`,
+0.9625/0.9638 on the available classic-only `real2`, and 0.9096/0.9099 on
+`big`. On the vendored 100-instance external holdout, W1/W3 scored
+0.9310/0.9289 versus 0.9142 for the pinned IRIE implementation and 0.8940
+for the external paper's calibrated escape-scaled rule.

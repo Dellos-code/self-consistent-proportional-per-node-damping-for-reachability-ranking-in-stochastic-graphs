@@ -328,6 +328,7 @@ def irie_wc(inst) -> np.ndarray:
 
 
 def baseline_scores(inst, yB: np.ndarray | None = None, *,
+                    names: tuple[str, ...] | None = None,
                     include_mc: bool = False, mc_k: tuple[int, ...] = (10, 20, 50, 100,
                     200, 500, 1000)) -> dict[str, np.ndarray]:
     """Return the common baseline family; oracle fits use ``yB`` only."""
@@ -350,14 +351,19 @@ def baseline_scores(inst, yB: np.ndarray | None = None, *,
         yw, _ = L.scalar_sweep(ops["WT"], x)
         idx = int(np.argmax(L.corr_ranks(L.ranks_of(yw), L.ranks_of(yB))))
         out["oracle:scalar_WT"] = yw[:, idx]
-    for t in (1, 2, 5, 10):
-        out[f"heat_kernel:{t}"] = heat_kernel(ops["W"], x, float(t))
-    out["TotalRank"] = total_rank(ops["EW"], x)
-    for a, b in ((0.5, 0.5), (1.0, 1.0), (2.0, 1.0)):
-        out[f"RAPr:{a:g},{b:g}"] = rapr(ops["EW"], x, a, b)
+    if names is None or any(name.startswith("heat_kernel") for name in names):
+        for t in (1, 2, 5, 10):
+            out[f"heat_kernel:{t}"] = heat_kernel(ops["W"], x, float(t))
+    if names is None or "TotalRank" in names:
+        out["TotalRank"] = total_rank(ops["EW"], x)
+    if names is None or any(name.startswith("RAPr") for name in names):
+        for a, b in ((0.5, 0.5), (1.0, 1.0), (2.0, 1.0)):
+            out[f"RAPr:{a:g},{b:g}"] = rapr(ops["EW"], x, a, b)
     if include_mc:
         for k in mc_k:
             out[f"MC_{k}"] = L.mc_reach(inst, k, L.stable_seed(inst.name, "MC", k))
+    if names is not None:
+        return {name: out[name] for name in names}
     return out
 
 

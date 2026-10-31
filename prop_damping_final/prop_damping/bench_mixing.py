@@ -20,12 +20,13 @@ def run(panel: str):
     paths = sorted((DATA / panel).glob("[0-9][0-9][0-9][0-9].npz"))[:9]
     rows = []
     for cfg in frozen["winners"]:
+        method_cfg = cfg["config"]
         times = []
         for _ in range(5):
             for path in paths:
                 inst, yA, yB, _ = load_instance(path)
                 t0 = time.perf_counter()
-                evaluate(inst, yA, yB, cfg)
+                evaluate(inst, yA, yB, method_cfg)
                 times.append(1000 * (time.perf_counter() - t0))
         rows.append({"winner": cfg["name"], "median_ms": statistics.median(times),
                      "cv": statistics.pstdev(times) / statistics.mean(times)})
